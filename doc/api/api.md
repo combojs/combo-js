@@ -7,7 +7,7 @@
 
 ## Combo.Component
 
-* [constructor](core/constructor.md)
-* [props](core/props.md)
-* [render](core/render.md)
-* [update](core/update.md)
+* [constructor](component/constructor.md)
+* [props](component/props.md)
+* [render](component/render.md)
+* [update](component/update.md)
