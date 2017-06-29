@@ -5,7 +5,7 @@
 A lightweight library for building user interfaces.
 
 * [Official Site](http://www.combojs.com/)
-* [API Reference](https://github.com/combjs/combo-js/blob/master/doc/api/api.md)
+* [API Reference](https://github.com/combojs/combo-js/blob/master/doc/api/api.md)
 * [Annotated Source](https://cdn.rawgit.com/combojs/combo-js/master/doc/docco/combo.full.html)
 
 ## Building from Source

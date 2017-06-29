@@ -1,6 +1,6 @@
 {
 	"name": "combo",
-	"description": "A lightweight component framework for creating user interfaces.",
+	"description": "A lightweight library for creating user interfaces.",
 	"version": "1.0.0",
 	"author": "Eric Harms",
 	"repository": {
