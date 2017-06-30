@@ -14,7 +14,7 @@ module.exports = function(grunt) {
 					"src/modules/component.js",				
 					"src/combo.suffix.js"					
 				],
-				dest: "dist/combo-modern.full.js"
+				dest: "dist/combo.full.js"
 			},
 		},
 		
@@ -25,7 +25,7 @@ module.exports = function(grunt) {
 				jshintrc: ".jshintrc",
 			},
 			files: [
-				"dist/combo-modern.full.js"
+				"dist/combo.full.js"
 			]
 		},
 
@@ -33,7 +33,7 @@ module.exports = function(grunt) {
 
 		docco: {
 			dist: {
-				src: ["dist/combo-modern.full.js"],
+				src: ["dist/combo.full.js"],
 				options: {
 					output: "doc/docco"
 				}
@@ -45,21 +45,17 @@ module.exports = function(grunt) {
 		babel: {	
 			dist: {
 				files: {
-					"dist/combo-legacy.full.js": "dist/combo-modern.full.js"
+					"dist/combo.full.js": "dist/combo.full.js"
 				}
 			}
 		},
 
 		// uglify -----------------------------------------------------------
 
-		//
-		// contrib-uglify does not support ES2015.
-		//
-
 		uglify: {
 			legacy: {
-				src: 'dist/combo-legacy.full.js',
-				dest: 'dist/combo-legacy.min.js'
+				src: 'dist/combo.full.js',
+				dest: 'dist/combo.min.js'
 			},
 		}
 	});

@@ -1,6 +1,6 @@
 ![Logo](https://github.com/combojs/combo-js/blob/master/doc/img/logo.png?raw=true)
 
-# Combo
+# Combo.js
 
 A lightweight library for building user interfaces.
 

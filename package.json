@@ -1,7 +1,7 @@
 {
-	"name": "combo",
+	"name": "combo-js",
 	"description": "A lightweight library for creating user interfaces.",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"author": "Eric Harms",
 	"repository": {
 		"type": "git",
@@ -16,11 +16,6 @@
 		"grunt-contrib-concat": "^1.0.1",
 		"grunt-contrib-jshint": "^1.1.0",
 		"grunt-contrib-uglify": "^2.0.0",
-		"uglify-es": "^3.0.21",
-		"grunt-docco": "0.5.0",
-		"http-server": "^0.10.0"
-	},
-	"scripts": {
-		"start": "http-server -a localhost -p 8000 -c-1"
+		"grunt-docco": "0.5.0"
 	}
 }
