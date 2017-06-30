@@ -2,11 +2,12 @@
 
 # Combo.js
 
-A lightweight library for building user interfaces.
+A lightweight library for building user interfaces. 
 
 * [Official Site](http://www.combojs.com/)
 * [API Reference](https://github.com/combojs/combo-js/blob/master/doc/api/api.md)
 * [Annotated Source](https://cdn.rawgit.com/combojs/combo-js/master/doc/docco/combo.full.html)
+* [Gitter](https://gitter.im/combo-js/)
 
 ## Building from Source
 
