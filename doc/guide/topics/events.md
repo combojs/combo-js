@@ -1,6 +1,6 @@
 # Events
 
-   var ListComponent = new class extends Combo.Component {
+    var ListComponent = new class extends Combo.Component {
         constructor() {
             super();
             

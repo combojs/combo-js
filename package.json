@@ -1,11 +1,11 @@
 {
 	"name": "combo",
 	"description": "A lightweight library for creating user interfaces.",
-	"version": "1.0.0",
+	"version": "0.0.1",
 	"author": "Eric Harms",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/eric-harms/combo.git"
+		"url": "https://github.com/combojs/combo-js.git"
 	},
 	"license": "MIT",
 	"devDependencies": {
