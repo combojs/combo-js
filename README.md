@@ -21,8 +21,8 @@ Before building this project, you must install and configure the following depen
 
 Once the dependencies are installed, clone the source code repository and use grunt to build it.
 
-	git clone https://github.com/eric-harms/combo.git
-	cd github-seed
+	git clone https://github.com/combojs/combo-js.git
+	cd combo-js
 	npm install
 	grunt
 
