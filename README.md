@@ -9,6 +9,43 @@ A lightweight library for building user interfaces.
 * [Annotated Source](https://cdn.rawgit.com/combojs/combo-js/master/doc/docco/combo.full.html)
 * [Gitter](https://gitter.im/combo-js/)
 
+## Quick Example
+
+	<div id="root"></div>
+	
+	<script>
+		var Layout = new class extends Combo.Component {
+			render() {
+				return `
+					${Header.render()}
+					${Content.render()}
+				`;		
+			}
+		}("root");
+
+		var Header = new class extends Combo.Component {
+			render() {
+				return `
+					<header>
+						<h1>Header</h1>
+					</header>
+				`;
+			}
+		}();
+
+		var Content = new class extends Combo.Component {
+			render() {
+				return `
+					<main>
+						<p>Content</p>
+					</main>
+				`;
+			}
+		}();
+
+		Combo.render(Layout);
+	</script>
+
 ## Building from Source
 
 Before building this project, you must install and configure the following dependencies on your machine.

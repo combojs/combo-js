@@ -1,28 +1,54 @@
 # Combo.render
 
-Render a [template literal](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) inside a container element.
+Render a component on the page.
 
 ----------------------------------------------------------------------
 
 ## Usage
 
-Combo.render(el, value) 
+Combo.render(component) 
 
 ### Params
 
 | Param           | Type          | Details                          |
 | --------------- | ------------- | -------------------------------- |
-| el              | `Object`      | The container element.           |
-| value           | `string`      | The template literal.            |
+| component       | `Object`      | The component.                   |
 
 ----------------------------------------------------------------------
 
 ## Example
 
-	const header = `
-		<header>
-			<h1>Combo</h1>
-		</header>
-	`;
+	<div id="root"></div>
+	
+	<script>
+		var Layout = new class extends Combo.Component {
+			render() {
+				return `
+					${Header.render()}
+					${Content.render()}
+				`;		
+			}
+		}("root");
 
-	Combo.render(document.getElementById("main"), header);
+		var Header = new class extends Combo.Component {
+			render() {
+				return `
+					<header>
+						<h1>Header</h1>
+					</header>
+				`;
+			}
+		}();
+
+		var Content = new class extends Combo.Component {
+			render() {
+				return `
+					<main>
+						<p>Content</p>
+					</main>
+				`;
+			}
+		}();
+
+		Combo.render(Layout);
+	</script>

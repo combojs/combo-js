@@ -2,12 +2,11 @@
 
 ## Combo
 
-* [map](core/map.md)
 * [render](core/render.md)
 
 ## Combo.Component
 
 * [constructor](component/constructor.md)
-* [props](component/props.md)
-* [render](component/render.md)
+* [root](component/root.md)
+* [state](component/state.md)
 * [update](component/update.md)

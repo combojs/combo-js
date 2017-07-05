@@ -1,19 +1,16 @@
-# Component Constructor
+# Component.root
 
-The constructor function.
+A string that contains the ID of the root element. This is usually the parent.
 		
 ----------------------------------------------------------------------
 
 ## Usage
 
-Component([root])
+Component.root
 
-### Params
+### Returns
 
-| Param             | Type        | Details                          |
-| ----------------- | ----------- | -------------------------------- |
-| root (_optional_) | `string`    | The component's root ID.         |
-
+`string` The root ID.
 
 ----------------------------------------------------------------------
 

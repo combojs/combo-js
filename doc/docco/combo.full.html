@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>Combo</title>
+  <title>combo.full.js</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -13,6 +13,12 @@
     
     <ul class="sections">
         
+          <li id="title">
+              <div class="annotation">
+                  <h1>combo.full.js</h1>
+              </div>
+          </li>
+        
         
         
         <li id="section-1">
@@ -21,12 +27,34 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <h1 id="combo">Combo</h1>
-<p>The core methods and properties.</p>
-
+              
             </div>
             
-            <div class="content"><div class='highlight'><pre>
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/** 
+ * Combo.js 
+ *
+ * Copyright 2017-present, Eric Harms.
+ *
+ * The MIT License
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */</span>
 <span class="hljs-keyword">var</span> Combo;
 
 (<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">Combo</span>) </span>{<span class="hljs-meta">
@@ -43,19 +71,12 @@
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
               <p><strong>render</strong></p>
-<p>Render a template literal inside a container element.</p>
+<p>Render a component inside its container element.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>Combo.render = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">el, value</span>) </span>{
-	<span class="hljs-keyword">if</span>(el.firstChild !== <span class="hljs-literal">undefined</span>) {
-		<span class="hljs-keyword">while</span>(el.firstChild) {
-			el.removeChild(el.firstChild);
-		}
-	}
-
-	el.insertAdjacentHTML(<span class="hljs-string">"beforeEnd"</span>, value);
-};</pre></div></div>
+            <div class="content"><div class='highlight'><pre>Combo.render = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">component, props</span>) </span>{
+	<span class="hljs-keyword">let</span> el = <span class="hljs-built_in">document</span>.getElementById(component.root);</pre></div></div>
             
         </li>
         
@@ -66,20 +87,15 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <p><strong>map</strong></p>
-<p>Return a concatenated string from elements in an Array.</p>
+              <p>Remove all child elements from the container.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>Combo.map = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">obj, fn</span>) </span>{
-	<span class="hljs-keyword">var</span> result = <span class="hljs-string">""</span>;
-
-	obj.map(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> {
-		result += fn(item);	
-	});
-
-	<span class="hljs-keyword">return</span> result;
-};</pre></div></div>
+            <div class="content"><div class='highlight'><pre>	<span class="hljs-keyword">if</span>(el.firstChild !== <span class="hljs-literal">undefined</span>) {
+		<span class="hljs-keyword">while</span>(el.firstChild) {
+			el.removeChild(el.firstChild);
+		}
+	}</pre></div></div>
             
         </li>
         
@@ -90,12 +106,12 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
-              <h2 id="component">Component</h2>
-<p>Represents a component.</p>
+              <p>Render the component, passing over properties.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>Combo.Component = <span class="hljs-class"><span class="hljs-keyword">class</span> </span>{</pre></div></div>
+            <div class="content"><div class='highlight'><pre>	el.insertAdjacentHTML(<span class="hljs-string">"beforeEnd"</span>, component.render(props));
+};</pre></div></div>
             
         </li>
         
@@ -106,12 +122,12 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
-              <p><strong>component</strong></p>
-<p>The constructor function.</p>
+              <h2 id="component-">Component.</h2>
+<p>Represents a component.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>	<span class="hljs-keyword">constructor</span>() {</pre></div></div>
+            <div class="content"><div class='highlight'><pre>Combo.Component = <span class="hljs-class"><span class="hljs-keyword">class</span> </span>{</pre></div></div>
             
         </li>
         
@@ -122,13 +138,12 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
-              <p><strong>props</strong></p>
-<p>An object containing the component’s properties.</p>
+              <p><strong>constructor</strong></p>
+<p>The constructor function.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">this</span>.props = {};
-	}</pre></div></div>
+            <div class="content"><div class='highlight'><pre>	<span class="hljs-keyword">constructor</span>(root) {</pre></div></div>
             
         </li>
         
@@ -139,15 +154,66 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
-              <p><strong>update</strong></p>
-<p>Update the properties from an object containing the new values. </p>
+              <p><strong>root</strong></p>
+<p>A string that contains the ID of the root element.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>	update(values = {}) {
-		<span class="hljs-keyword">this</span>.props = <span class="hljs-built_in">Object</span>.assign({}, <span class="hljs-keyword">this</span>.props, values);
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">this</span>.root = root;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p><strong>state</strong></p>
+<p>An object that contains data specific to this component.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">this</span>.state = {};
+	}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p><strong>update</strong></p>
+<p>Update the component’s state, then redraw the component.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	update(values) {
+		<span class="hljs-keyword">this</span>.state = <span class="hljs-built_in">Object</span>.assign({}, <span class="hljs-keyword">this</span>.state, values);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>Redraw the component if a root element was specified.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.root) {
+			Combo.render(<span class="hljs-keyword">this</span>);
+		}
 	}
 };
+
 })(Combo || (Combo = {}));</pre></div></div>
             
         </li>

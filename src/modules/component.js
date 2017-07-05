@@ -1,25 +1,36 @@
-// ## Component
+// ## Component.
 //
 // Represents a component.
 //
 Combo.Component = class {
-	// **component**
+	// **constructor**
 	//
 	// The constructor function.
 	//
-	constructor() {
-		// **props**
+	constructor(root) {
+		// **root**
 		//
-		// An object containing the component's properties.
+		// A string that contains the ID of the root element.
 		//
-		this.props = {};
-	}
+		this.root = root;
 
+		// **state**
+		//
+		// An object that contains data specific to this component.
+		//
+		this.state = {};
+	}
 	// **update**
 	//
-	// Update the properties from an object containing the new values. 
+	// Update the component's state, then redraw the component.
 	//
-	update(values = {}) {
-		this.props = Object.assign({}, this.props, values);
+	update(values) {
+		this.state = Object.assign({}, this.state, values);
+		//
+		// Redraw the component if a root element was specified.
+		//
+		if(this.root) {
+			Combo.render(this);
+		}
 	}
 };

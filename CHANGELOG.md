@@ -1,3 +1,11 @@
+# 0.1.0 (7/5/2017)
+
+* Added: Component.root to identify the container to update.	
+* Updated: Combo.render only accepts components.
+* Updated: Combo.render can pass properties.
+* Updated: Component.props has been renamed to Component.state.
+* Updated: Component.update redraws the control.
+
 # 0.0.2 (6/30/2017)
 	
 * Updated: Gruntfile changed to no longer generate two separate versions (legacy and modern).

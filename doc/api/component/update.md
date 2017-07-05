@@ -1,35 +1,42 @@
 # Component.update
 
-Update the properties from an object containing the new values. 
+Update the component's state, then redraw the component if the root was defined. 
 
 ----------------------------------------------------------------------
 
 ## Usage
 
-Component.update(values)
+Component.update([values])
 
 ### Params
 
-| Param           | Type          | Details                          |
-| --------------- | ------------- | -------------------------------- |
-| values          | `Object`      | The values.                      |
+| Param               | Type      | Details                          |
+| ------------------- | --------- | -------------------------------- |
+| values (_optional_) | `Object`  | A object containing the values.  |
+
 
 ----------------------------------------------------------------------
 
 ## Example
 
-    var Header = new class extends Combo.Component {
-        render() {
-            return `
-                <header>
-                    <h1>${this.props.title}</h1>
-                </header>
-            `;
-        }
-    }();
-    
-    Header.update({
-        title: "Combo"
-    });
+	<div id="container"></div>
 
-    Combo.render(document.getElementById("main"), Header.render());
+	<script>
+		var Hello = new class extends Combo.Component {
+			constructor(root) {
+				super(root);
+				this.state.times = 0;
+			}
+			render() {
+				this.state.times += 1;
+				return `
+					<h1>Times updated: ${this.state.times}</h1>
+				`;
+			}
+		}("container");
+
+		Combo.render(Hello);
+		Combo.render(Hello);
+		Combo.render(Hello);
+		
+	</script>
