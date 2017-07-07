@@ -5,45 +5,25 @@
 A lightweight library for building user interfaces. 
 
 * [Official Site](http://www.combojs.com/)
+* [Tutorial](https://github.com/combojs/combo-js/blob/master/doc/learn.md)
 * [API Reference](https://github.com/combojs/combo-js/blob/master/doc/api/api.md)
 * [Annotated Source](https://cdn.rawgit.com/combojs/combo-js/master/doc/docco/combo.full.html)
 * [Gitter](https://gitter.im/combo-js/)
 
 ## Quick Example
 
-	<div id="root"></div>
+	<div id="container"></div>
 	
 	<script>
-		var Layout = new class extends Combo.Component {
-			render() {
+		var Hello = new class extends Combo.Component {
+			render(props) {
 				return `
-					${Header.render()}
-					${Content.render()}
+					<div>Hello ${props.name}</div>
 				`;		
 			}
-		}("root");
+		}("container");
 
-		var Header = new class extends Combo.Component {
-			render() {
-				return `
-					<header>
-						<h1>Header</h1>
-					</header>
-				`;
-			}
-		}();
-
-		var Content = new class extends Combo.Component {
-			render() {
-				return `
-					<main>
-						<p>Content</p>
-					</main>
-				`;
-			}
-		}();
-
-		Combo.render(Layout);
+		Combo.render(Hello, {name: "World"});
 	</script>
 
 ## Building from Source

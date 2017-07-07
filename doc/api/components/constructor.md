@@ -20,15 +20,15 @@ Component([root])
 ## Example
 
 	<div id="container"></div>
-
+	
 	<script>
-		var Hello = new class extends Combo.Component {
-			render() {
+		var Layout = new class extends Combo.Component {
+			render(props) {
 				return `
-					<h1>Hello</h1>
-				`;
+					<div>Hello $props.name</div>
+				`;		
 			}
 		}("container");
 
-		Combo.render(Hello);
+		Combo.render(Example, {name: "World"});
 	</script>

@@ -22,7 +22,7 @@ Component.update([values])
 	<div id="container"></div>
 
 	<script>
-		var Hello = new class extends Combo.Component {
+		var Counter = new class extends Combo.Component {
 			constructor(root) {
 				super(root);
 				this.state.times = 0;
@@ -35,8 +35,8 @@ Component.update([values])
 			}
 		}("container");
 
-		Combo.render(Hello);
-		Combo.render(Hello);
-		Combo.render(Hello);
+		Combo.render(Counter);
+		Combo.render(Counter);
+		Combo.render(Counter);
 		
 	</script>

@@ -16,16 +16,18 @@ Component.root
 
 ## Example
 
-	<div id="container"></div>
+## Example
 
+	<div id="container"></div>
+	
 	<script>
-		var Hello = new class extends Combo.Component {
+		var Waldo = new class extends Combo.Component {
 			render() {
 				return `
-					<h1>Hello</h1>
-				`;
+					<h1>I'm finding in #${this.root}</h1>			
+				`;		
 			}
 		}("container");
 
-		Combo.render(Hello);
+		Combo.render(Waldo);
 	</script>
