@@ -125,7 +125,7 @@ Events are custom methods inside a component. Typically, they can be fired using
         Combo.render(Editor, {enabled: true});
     </script>
 
-Lists
+## Lists
 
     <div id="container"></div>
     
