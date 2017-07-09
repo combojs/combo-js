@@ -20,6 +20,17 @@ Combo.Component = class {
 		//
 		this.state = {};
 	}
+	// **getName**
+	//
+	// Return the variable name of the component's instance.
+	//
+	getName() {
+		for (var instance in window){
+			if (window[instance] === this){
+				return instance;
+			}
+		}
+	}
 	// **update**
 	//
 	// Update the component's state, then redraw the component.

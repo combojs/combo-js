@@ -80,13 +80,27 @@ var Combo;
 			//
 			this.state = {};
 		}
-		// **update**
+		// **getName**
 		//
-		// Update the component's state, then redraw the component.
+		// Return the variable name of the component's instance.
 		//
 
 
 		_createClass(_class, [{
+			key: "getName",
+			value: function getName() {
+				for (var instance in window) {
+					if (window[instance] === this) {
+						return instance;
+					}
+				}
+			}
+			// **update**
+			//
+			// Update the component's state, then redraw the component.
+			//
+
+		}, {
 			key: "update",
 			value: function update(values) {
 				this.state = Object.assign({}, this.state, values);

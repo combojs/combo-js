@@ -1,16 +1,16 @@
-# Component.root
+# Component.getName
 
-A string that contains the ID of the root element. This is usually the parent.
+Return the variable name of the component's instance.
 
 ----------------------------------------------------------------------
 
 ## Usage
 
-Component.root
+Component.getName()
 
 ### Returns
 
-`string` The root ID.
+`string` The name.
 
 ----------------------------------------------------------------------
 
@@ -21,13 +21,13 @@ Component.root
 	<div id="container"></div>
 
 	<script>
-		var Waldo = new class extends Combo.Component {
+		var Instance = new class extends Combo.Component {
 			render() {
 				return `
-					<h1>I'm hiding in #${this.root}</h1>			
-				`;		
+					<h1>${this.getName()}</h1>
+				`;
 			}
 		}("container");
 
-		Combo.render(Waldo);
+		Combo.render(Instance);
 	</script>
