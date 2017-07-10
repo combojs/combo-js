@@ -57,8 +57,8 @@
  */</span>
 <span class="hljs-keyword">var</span> Combo;
 
-(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">Combo</span>) </span>{
-<span class="hljs-meta">
+(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">Combo</span>) </span>{<span class="hljs-meta">
+
 	"use strict"</span>;</pre></div></div>
             
         </li>
@@ -214,7 +214,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>	update(values) {
+            <div class="content"><div class='highlight'><pre>	update(values, redraw = <span class="hljs-literal">true</span>) {
 		<span class="hljs-keyword">this</span>.state = <span class="hljs-built_in">Object</span>.assign({}, <span class="hljs-keyword">this</span>.state, values);</pre></div></div>
             
         </li>
@@ -230,7 +230,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.root) {
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.root &amp;&amp; redraw === <span class="hljs-literal">true</span>) {
 			Combo.render(<span class="hljs-keyword">this</span>);
 		}
 	}

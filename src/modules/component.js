@@ -35,12 +35,12 @@ Combo.Component = class {
 	//
 	// Update the component's state, then redraw the component.
 	//
-	update(values) {
+	update(values, redraw = true) {
 		this.state = Object.assign({}, this.state, values);
 		//
 		// Redraw the component if a root element was specified.
 		//
-		if(this.root) {
+		if(this.root && redraw === true) {
 			Combo.render(this);
 		}
 	}

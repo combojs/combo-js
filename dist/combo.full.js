@@ -103,11 +103,13 @@ var Combo;
 		}, {
 			key: "update",
 			value: function update(values) {
+				var redraw = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+
 				this.state = Object.assign({}, this.state, values);
 				//
 				// Redraw the component if a root element was specified.
 				//
-				if (this.root) {
+				if (this.root && redraw === true) {
 					Combo.render(this);
 				}
 			}

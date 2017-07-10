@@ -1,3 +1,11 @@
+# 0.3.0 (7/10/2017)
+
+* Updated: Component.update has the option to update without a redraw.
+
+# 0.2.0 (7/8/2017)
+
+* Added: Component.getName
+
 # 0.1.0 (7/5/2017)
 
 * Added: Component.root to identify the container to update.	

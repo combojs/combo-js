@@ -6,14 +6,16 @@ Update the component's state, then redraw the component if the root was defined.
 
 ## Usage
 
-Component.update([values])
+Component.update(values, [redraw])
 
 ### Params
 
 | Param               | Type      | Details                          |
 | ------------------- | --------- | -------------------------------- |
-| values (_optional_) | `Object`  | A object containing the values.  |
+| values              | `Object`  | A object containing the values.  |
+| redraw (_optional_) | `boolean` | Redraw the component.            |
 
+> The redraw argument defaults to `true` if not specified.
 
 ----------------------------------------------------------------------
 
