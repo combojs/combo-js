@@ -57,8 +57,8 @@
  */</span>
 <span class="hljs-keyword">var</span> Combo;
 
-(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">Combo</span>) </span>{
-<span class="hljs-meta">
+(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">Combo</span>) </span>{<span class="hljs-meta">
+
 	"use strict"</span>;</pre></div></div>
             
         </li>
@@ -70,10 +70,12 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              
+              <p><strong>mount</strong></p>
+<p>Mount a component to a container element.</p>
+
             </div>
             
-            <div class="content"><div class='highlight'><pre>Combo.render = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">el, component, data</span>) </span>{</pre></div></div>
+            <div class="content"><div class='highlight'><pre>Combo.mount = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">el, component, data</span>) </span>{</pre></div></div>
             
         </li>
         
@@ -90,7 +92,7 @@
             </div>
             
             <div class="content"><div class='highlight'><pre>	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">remove</span>(<span class="hljs-params"></span>) </span>{
-		<span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> component.el.firstChild !== <span class="hljs-string">"undefined"</span>) {
+		<span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> component.el.firstChild !== <span class="hljs-string">"undefined"</span>) {
 			<span class="hljs-keyword">while</span>(component.el.firstChild) {
 				component.el.removeChild(component.el.firstChild);
 			}
@@ -112,12 +114,7 @@
             </div>
             
             <div class="content"><div class='highlight'><pre>	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span>(<span class="hljs-params"></span>) </span>{
-		component.el.insertAdjacentHTML(<span class="hljs-string">"beforeEnd"</span>, component.render(data));
-
-		<span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> component.rendered === <span class="hljs-string">"function"</span>) {
-			component.rendered();
-		}
-	}</pre></div></div>
+		component.el.insertAdjacentHTML(<span class="hljs-string">"beforeEnd"</span>, component.render(data));</pre></div></div>
             
         </li>
         
@@ -128,23 +125,16 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
-              <p><strong>mount</strong></p>
-<p>Invoke the component’s mount lifecycle hook.</p>
+              <p>Invoke the component’s mounted lifecycle hook.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mount</span>(<span class="hljs-params"></span>) </span>{
-		<span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> component.mounted === <span class="hljs-string">"function"</span>) {
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> component.mounted === <span class="hljs-string">"function"</span>) {
 			component.mounted();
 		}
 	}
 
-	component.el = <span class="hljs-built_in">document</span>.getElementById(el);
-alert(component.el);
-	remove();
-	render();
-	mount();
-};</pre></div></div>
+	component.el = <span class="hljs-built_in">document</span>.getElementById(el);</pre></div></div>
             
         </li>
         
@@ -154,6 +144,23 @@ alert(component.el);
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Ensure the component has a render method.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	remove();
+	render();
+};</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
               <h2 id="component">Component</h2>
 <p>Represents a component, view, or fragment.</p>
@@ -165,11 +172,11 @@ alert(component.el);
         </li>
         
         
-        <li id="section-7">
+        <li id="section-8">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-7">&#182;</a>
+                <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
               <p><strong>constructor</strong></p>
 <p>The constructor function.</p>
@@ -181,34 +188,17 @@ alert(component.el);
         </li>
         
         
-        <li id="section-8">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-8">&#182;</a>
-              </div>
-              <p>Extend from the options.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>		<span class="hljs-built_in">Object</span>.assign(<span class="hljs-keyword">this</span>, options);</pre></div></div>
-            
-        </li>
-        
-        
         <li id="section-9">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
-              <p>Initialize the component.</p>
+              <p>Extend the properties from options.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> <span class="hljs-keyword">this</span>.init === <span class="hljs-string">"function"</span>) {
-			<span class="hljs-keyword">this</span>.init();
-		}</pre></div></div>
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-built_in">Object</span>.assign(<span class="hljs-keyword">this</span>, options);</pre></div></div>
             
         </li>
         
@@ -219,17 +209,13 @@ alert(component.el);
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
-              <p>Mount the container element.</p>
+              <p>Invoke the created lifecycle hook.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> <span class="hljs-keyword">this</span>.el !== <span class="hljs-string">"undefined"</span>) {
-			<span class="hljs-keyword">this</span>.$el = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-keyword">this</span>.el);
-
-			<span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> <span class="hljs-keyword">this</span>.mounted === <span class="hljs-string">"function"</span>) {
-				<span class="hljs-keyword">this</span>.mounted();
-			}
-		}
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> <span class="hljs-keyword">this</span>.created === <span class="hljs-string">"function"</span>) {
+			<span class="hljs-keyword">this</span>.created();
+		}		
 	}</pre></div></div>
             
         </li>
@@ -242,7 +228,7 @@ alert(component.el);
                 <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
               <p><strong>extend</strong></p>
-<p>Returns a new instance of the Component class.</p>
+<p>Return an instance of the component class.</p>
 
             </div>
             
@@ -259,12 +245,12 @@ alert(component.el);
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
-              <p><strong>update</strong></p>
-<p>Update options.data, then redraw the UI if mounted.</p>
+              <p><strong>extend</strong></p>
+<p>Update the data and redraw the component.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>	update(values = {}, redraw = <span class="hljs-literal">true</span>) {
+            <div class="content"><div class='highlight'><pre>	update(values = {}) {
 		<span class="hljs-keyword">this</span>.data = <span class="hljs-built_in">Object</span>.assign({}, <span class="hljs-keyword">this</span>.data, values);</pre></div></div>
             
         </li>
@@ -276,15 +262,51 @@ alert(component.el);
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-13">&#182;</a>
               </div>
-              <p>Redraw the component if a root element was specified.</p>
+              <p>Invoke the updated lifecycle hook.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.root &amp;&amp; redraw === <span class="hljs-literal">true</span>) {
-			Combo.render(<span class="hljs-keyword">this</span>);
-		}
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> <span class="hljs-keyword">this</span>.updated === <span class="hljs-string">"function"</span>) {
+			<span class="hljs-keyword">this</span>.updated();
+		}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>Redraw the component if it’s mounted.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.isMounted()) {
+			Combo.render(<span class="hljs-keyword">this</span>.el, <span class="hljs-keyword">this</span>);
+		}		
+	}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p><strong>isMounted</strong></p>
+<p>Returns a boolean value determining if the component was mounted.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	isMounted() {
+		<span class="hljs-keyword">return</span> !!<span class="hljs-keyword">this</span>.el;
 	}
 };
+
 
 })(Combo || (Combo = {}));</pre></div></div>
             

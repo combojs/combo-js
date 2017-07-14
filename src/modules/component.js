@@ -9,48 +9,54 @@ Combo.Component = class {
 	//
 	constructor(options = {}) {
 		//
-		// Extend from the options.
+		// Extend the properties from options.
 		//
 		Object.assign(this, options);
 
 		//
-		// Initialize the component.
+		// Invoke the created lifecycle hook.
 		//
-		if(typeof this.init === "function") {
-			this.init();
-		}
-
-		//
-		// Mount the container element.
-		//
-		if(typeof this.el !== "undefined") {
-			this.$el = document.getElementById(this.el);
-
-			if(typeof this.mounted === "function") {
-				this.mounted();
-			}
-		}
+		if(typeof this.created === "function") {
+			this.created();
+		}		
 	}
 
 	// **extend**
 	//
-	// Returns a new instance of the Component class.
+	// Return an instance of the component class.
 	//
 	static extend(options = {}) {
 		return new this(options);
 	}
-
-	// **update**
+	
+	// **extend**
 	//
-	// Update options.data, then redraw the UI if mounted.
+	// Update the data and redraw the component.
 	//
-	update(values = {}, redraw = true) {
+	update(values = {}) {
 		this.data = Object.assign({}, this.data, values);
+
 		//
-		// Redraw the component if a root element was specified.
+		// Invoke the updated lifecycle hook.
 		//
-		if(this.root && redraw === true) {
-			Combo.render(this);
+		if(typeof this.updated === "function") {
+			this.updated();
 		}
+
+		//
+		// Redraw the component if it's mounted.
+		//
+		if(this.isMounted()) {
+			Combo.render(this.el, this);
+		}		
+	}
+
+	// **isMounted**
+	//
+	// Returns a boolean value determining if the component was mounted.
+	//
+	isMounted() {
+		return !!this.el;
 	}
 };
+

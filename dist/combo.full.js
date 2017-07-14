@@ -35,12 +35,13 @@ var Combo;
 
 	"use strict";
 
+	// **mount**
 	//
-	//
-	//
+	// Mount a component to a container element.
 	//
 
-	Combo.render = function (el, component, data) {
+	Combo.mount = function (el, component, data) {
+
 		// **remove**
 		//
 		// Remove the children of the container element.
@@ -52,32 +53,28 @@ var Combo;
 				}
 			}
 		}
+
 		// **render**
 		//
 		// Render the component in the container element.
 		//
 		function render() {
 			component.el.insertAdjacentHTML("beforeEnd", component.render(data));
-
-			if (typeof component.rendered === "function") {
-				component.rendered();
-			}
-		}
-		// **mount**
-		//
-		// Invoke the component's mount lifecycle hook.
-		//
-		function mount() {
+			//	
+			// Invoke the component's mounted lifecycle hook.
+			//
 			if (typeof component.mounted === "function") {
 				component.mounted();
 			}
 		}
 
 		component.el = document.getElementById(el);
-		alert(component.el);
+
+		//
+		// Ensure the component has a render method.
+		//
 		remove();
 		render();
-		mount();
 	};
 
 	// ## Component
@@ -95,32 +92,21 @@ var Combo;
 			_classCallCheck(this, _class);
 
 			//
-			// Extend from the options.
+			// Extend the properties from options.
 			//
 			Object.assign(this, options);
 
 			//
-			// Initialize the component.
+			// Invoke the created lifecycle hook.
 			//
-			if (typeof this.init === "function") {
-				this.init();
-			}
-
-			//
-			// Mount the container element.
-			//
-			if (typeof this.el !== "undefined") {
-				this.$el = document.getElementById(this.el);
-
-				if (typeof this.mounted === "function") {
-					this.mounted();
-				}
+			if (typeof this.created === "function") {
+				this.created();
 			}
 		}
 
 		// **extend**
 		//
-		// Returns a new instance of the Component class.
+		// Return an instance of the component class.
 		//
 
 
@@ -128,21 +114,39 @@ var Combo;
 			key: "update",
 
 
-			// **update**
+			// **extend**
 			//
-			// Update options.data, then redraw the UI if mounted.
+			// Update the data and redraw the component.
 			//
 			value: function update() {
 				var values = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-				var redraw = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
 
 				this.data = Object.assign({}, this.data, values);
+
 				//
-				// Redraw the component if a root element was specified.
+				// Invoke the updated lifecycle hook.
 				//
-				if (this.root && redraw === true) {
-					Combo.render(this);
+				if (typeof this.updated === "function") {
+					this.updated();
 				}
+
+				//
+				// Redraw the component if it's mounted.
+				//
+				if (this.isMounted()) {
+					Combo.render(this.el, this);
+				}
+			}
+
+			// **isMounted**
+			//
+			// Returns a boolean value determining if the component was mounted.
+			//
+
+		}, {
+			key: "isMounted",
+			value: function isMounted() {
+				return !!this.el;
 			}
 		}], [{
 			key: "extend",
