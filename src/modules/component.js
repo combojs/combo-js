@@ -1,46 +1,53 @@
-// ## Component.
+// ## Component
 //
-// Represents a component.
+// Represents a component, view, or fragment.
 //
 Combo.Component = class {
 	// **constructor**
 	//
 	// The constructor function.
 	//
-	constructor(root) {
-		// **root**
+	constructor(options = {}) {
 		//
-		// A string that contains the ID of the root element.
+		// Extend from the options.
 		//
-		this.root = root;
+		Object.assign(this, options);
 
-		// **state**
 		//
-		// An object that contains data specific to this component.
+		// Initialize the component.
 		//
-		this.state = {};
-	}
-	// **getName**
-	//
-	// Return the variable name of the component's instance.
-	//
-	getName() {
-		for (var instance in window){
-			if (window[instance] === this){
-				return instance;
+		if(typeof this.init === "function") {
+			this.init();
+		}
+
+		//
+		// Mount the container element.
+		//
+		if(typeof this.el !== "undefined") {
+			this.$el = document.getElementById(this.el);
+
+			if(typeof this.mounted === "function") {
+				this.mounted();
 			}
 		}
 	}
+
+	// **extend**
+	//
+	// Returns a new instance of the Component class.
+	//
+	static extend(options = {}) {
+		return new this(options);
+	}
+
 	// **update**
 	//
-	// Update the component's state, then redraw the component.
+	// Update options.data, then redraw the UI if mounted.
 	//
-	update(values) {
-		this.state = Object.assign({}, this.state, values);
-		//
-		// Redraw the component if a root element was specified.
-		//
-		if(this.root) {
+	update(values = {}, redraw = true) {
+		this.data = Object.assign({}, this.data, values);
+
+		if(this.$el && redraw === true) {
 			Combo.render(this);
 		}
 	}

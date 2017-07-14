@@ -1,21 +1,39 @@
 // **render**
 //
-// Render a component inside its container element.
+// Render a component inside a container element.
 //
-Combo.render = function(component, props) {
-	let el = document.getElementById(component.root);
+Combo.render = function(component, data) {
+	// **remove**
 	//
-	// Remove all child elements from the container.
+	// Remove children of the container element.
 	//
-	if(el.firstChild !== undefined) {
-		while(el.firstChild) {
-			el.removeChild(el.firstChild);
+	function remove() {
+		if (typeof component.$el.firstChild !== "undefined") {
+			while(component.$el.firstChild) {
+				component.$el.removeChild(component.$el.firstChild);
+			}
 		}
 	}
+
+	// **insert**
 	//
-	// Render the component, passing over properties.
+	// Insert the template literal from render().
 	//
-	el.insertAdjacentHTML("beforeEnd", component.render(props));
+	function insert() {
+		component.$el.insertAdjacentHTML("beforeEnd", component.render(data));
+	}
+
+	//
+	// Ensure the component has been mounted.
+	//
+	if(typeof component.$el !== "undefined") {
+		remove();
+		insert();
+	}
 };
 
- 
+// **version**
+//
+// Return the semantic version number of Combo.js.
+//
+Combo.version = "1.0.0";

@@ -1,39 +1,22 @@
 # Combo.render
 
-Render a component on the page. 
+Render a component inside a container element.
 
 ----------------------------------------------------------------------
 
 ## Usage
 
-Combo.render(component, [props]) 
+Combo.render(component, [data = {}])
 
 ### Params
 
-| Param              | Type          | Details                       |
-| ---------------    | ------------- | ----------------------------- |
-| component          | `Object`      | The component.                |
-| props (_optional_) | `*`           | The properties.               |
+| Param           | Type          | Details                       |
+| --------------- | ------------- | ----------------------------- |
+| component       | `Object`      | The component.                |
+| data            | `*`           | The data.                     |
 
 ----------------------------------------------------------------------
 
 ## Example
 
-	<div id="container"></div>
-	
-	<script>
-		var Fruits = new class extends Combo.Component {
-			render() {
-				return `
-					<h1>Fruits</h1>
-					<ul>
-						<li>Apple</li>
-						<li>Oranges</li>
-						<li>Bananas</li>
-					</ul>
-				`;
-			}
-		}("container")
-
-		Combo.render(Fruits);
-	</script>
+Coming soon.
