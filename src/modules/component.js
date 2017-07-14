@@ -44,10 +44,19 @@ Combo.Component = class {
 	//
 	// Update options.data, then redraw the UI if mounted.
 	//
+<<<<<<< HEAD
 	update(values = {}, redraw = true) {
 		this.data = Object.assign({}, this.data, values);
 
 		if(this.$el && redraw === true) {
+=======
+	update(values, redraw = true) {
+		this.state = Object.assign({}, this.state, values);
+		//
+		// Redraw the component if a root element was specified.
+		//
+		if(this.root && redraw === true) {
+>>>>>>> e3259e14c7631462ac6e98544cae4cc22d0e5452
 			Combo.render(this);
 		}
 	}

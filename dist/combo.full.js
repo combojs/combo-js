@@ -132,9 +132,22 @@ var Combo;
 				var values = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 				var redraw = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
 
+<<<<<<< HEAD
 				this.data = Object.assign({}, this.data, values);
 
 				if (this.$el && redraw === true) {
+=======
+		}, {
+			key: "update",
+			value: function update(values) {
+				var redraw = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+
+				this.state = Object.assign({}, this.state, values);
+				//
+				// Redraw the component if a root element was specified.
+				//
+				if (this.root && redraw === true) {
+>>>>>>> e3259e14c7631462ac6e98544cae4cc22d0e5452
 					Combo.render(this);
 				}
 			}
