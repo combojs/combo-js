@@ -24,4 +24,4 @@ Component.isMounted
 
 	Combo.mount("root", Message);
 
-	console.log(Message.isMounted;
+	console.log(Message.isMounted);
