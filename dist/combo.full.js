@@ -114,7 +114,7 @@ var Combo;
 			key: "update",
 
 
-			// **extend**
+			// **update**
 			//
 			// Update the data, then redraw the component if it's mounted.
 			//
