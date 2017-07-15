@@ -1,16 +1,12 @@
-# Component.el
+# Component.mounted
 
-Returns the element the instance is mounted to.
+Called when the instance gets mounted to an element.
 
 ----------------------------------------------------------------------
 
 ## Usage
 
-Component.el
-
-### Returns
-
-`Object` The element.
+Component.mounted
 
 ----------------------------------------------------------------------
 
@@ -18,12 +14,10 @@ Component.el
 
 	var Message = Combo.Component.extend({
 		mounted: function() {
-			this.el.addEventListener("click", function() {
-				alert("Hello Combo.")
-			});
+			console.log("The instance was mounted.");
 		},
 		render: function() {
-			return `<div>Click me for a message.</div>`;
+			return `<div>Hello Combo</div>`;
 		}
 	});
 

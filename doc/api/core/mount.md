@@ -1,22 +1,29 @@
-# Combo.render
+# Combo.mount
 
-Render a component inside a container element.
+Mount a component to a container element.
 
 ----------------------------------------------------------------------
 
 ## Usage
 
-Combo.render(component, [data = {}])
+Combo.mount(el, component, [data = {}])
 
 ### Params
 
 | Param           | Type          | Details                       |
 | --------------- | ------------- | ----------------------------- |
+| el              | `string`      | The ID.                       |
 | component       | `Object`      | The component.                |
-| data            | `*`           | The data.                     |
+| [data]          | `*`           | The data.                     |
 
 ----------------------------------------------------------------------
 
 ## Example
 
-Coming soon.
+	var Message = Combo.Component.extend({
+		render: function() {
+			return `<div>Hello Combo</div>`;
+		}
+	});
+
+	Combo.mount("root", Message);

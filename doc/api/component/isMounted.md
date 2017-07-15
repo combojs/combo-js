@@ -1,30 +1,27 @@
-# Component.el
+# Component.isMounted
 
-Returns the element the instance is mounted to.
+Returns a boolean value determining if the instance is mounted.
 
 ----------------------------------------------------------------------
 
 ## Usage
 
-Component.el
+Component.isMounted
 
 ### Returns
 
-`Object` The element.
+`boolean` True if the instance is mounted.
 
 ----------------------------------------------------------------------
 
 ## Example
 
 	var Message = Combo.Component.extend({
-		mounted: function() {
-			this.el.addEventListener("click", function() {
-				alert("Hello Combo.")
-			});
-		},
 		render: function() {
-			return `<div>Click me for a message.</div>`;
+			return `<div>Hello Combo</div>`;
 		}
 	});
 
 	Combo.mount("root", Message);
+
+	console.log(Message.isMounted;

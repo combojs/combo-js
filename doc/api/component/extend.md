@@ -19,4 +19,10 @@ Component.extend([options = {}])
 
 ## Example
 
-Coming soon
+	var Message = Combo.Component.extend({
+		render: function() {
+			return `<div>Hello Combo</div>`;
+		}
+	});
+
+	Combo.mount("root", Message);

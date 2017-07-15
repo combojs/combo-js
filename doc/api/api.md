@@ -2,20 +2,25 @@
 
 ## Combo
 
-* [render](core/render.md)
-* [version](core/version.md)
+* [mount](core/mount.md)
 
 ## Component
 
-* [constructor](component/constructor.md)
-* [$el](component/el.md)
+* [el](component/el.md)
 * [extend](component/extend.md)
+* [isMounted](component/isMounted.md)
 * [update](component/update.md)
 
-**options**
+**Options / Template**
 
-* [data](component/options/data.md)
-* [el](component/options/el.md)
-* [init](component/options/init.md)
-* [mounted](component/options/mounted.md)
-* [render](component/options/render.md)
+* [render](component/template/render.md)
+
+**Options / Data**
+
+* [data](component/data/data.md)
+
+**Options / Lifecycle Hooks**
+
+* [created](component/hooks/created.md)
+* [mounted](component/hooks/mounted.md)
+* [updated](component/hooks/updated.md)

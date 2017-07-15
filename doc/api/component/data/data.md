@@ -1,12 +1,12 @@
-# Component.update
+# Component.data
 
-Update the data, then redraw the component if it's mounted.
+An object that contains data specific to this component.
 
 ----------------------------------------------------------------------
 
 ## Usage
 
-Component.update(values)
+Component.data
 
 ----------------------------------------------------------------------
 

@@ -1,12 +1,12 @@
-# Component.update
+# Component.updated
 
-Update the data, then redraw the component if it's mounted.
+Called when the instance's data is updated.
 
 ----------------------------------------------------------------------
 
 ## Usage
 
-Component.update(values)
+Component.updated
 
 ----------------------------------------------------------------------
 

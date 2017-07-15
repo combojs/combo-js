@@ -18,7 +18,7 @@ Combo.Component = class {
 		//
 		if(typeof this.created === "function") {
 			this.created();
-		}		
+		}
 	}
 
 	// **extend**
@@ -28,10 +28,10 @@ Combo.Component = class {
 	static extend(options = {}) {
 		return new this(options);
 	}
-	
+
 	// **extend**
 	//
-	// Update the data and redraw the component.
+	// Update the data, then redraw the component if it's mounted.
 	//
 	update(values = {}) {
 		this.data = Object.assign({}, this.data, values);
@@ -48,15 +48,14 @@ Combo.Component = class {
 		//
 		if(this.isMounted()) {
 			Combo.render(this.el, this);
-		}		
+		}
 	}
 
 	// **isMounted**
 	//
 	// Returns a boolean value determining if the component was mounted.
 	//
-	isMounted() {
+	get isMounted() {
 		return !!this.el;
 	}
 };
-

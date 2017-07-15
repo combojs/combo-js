@@ -1,6 +1,6 @@
-# Options.render
+# Component.render
 
-The lifecycle hook that is called either by Combo.render or a parent component.
+Returns a template literal containing the instance's markup.
 
 ----------------------------------------------------------------------
 
@@ -8,7 +8,7 @@ The lifecycle hook that is called either by Combo.render or a parent component.
 
 Component.render()
 
-## Usage
+### Returns
 
 `string` The template literal containing the markup.
 
@@ -16,4 +16,10 @@ Component.render()
 
 ## Example
 
-Coming soon.
+	var Message = Combo.Component.extend({
+		render: function() {
+			return `<div>Hello Combo`;
+		}
+	});
+
+	Combo.mount("root", Message);

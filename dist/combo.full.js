@@ -116,7 +116,7 @@ var Combo;
 
 			// **extend**
 			//
-			// Update the data and redraw the component.
+			// Update the data, then redraw the component if it's mounted.
 			//
 			value: function update() {
 				var values = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -145,7 +145,7 @@ var Combo;
 
 		}, {
 			key: "isMounted",
-			value: function isMounted() {
+			get: function get() {
 				return !!this.el;
 			}
 		}], [{
