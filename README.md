@@ -6,8 +6,12 @@ A lightweight library for creating user interfaces.
 
 * [Official Site](http://www.combojs.com/)
 * [API Reference](doc/api/api.md)
-* [Annotated Source](doc/docco/combo.full.html)
+* [Annotated Source](cdn.rawgit.com/combojs/combo-js/master/doc/docco/combo.full.html)
 * [Gitter](https://gitter.im/combo-js/)
+
+## Dependencies
+
+* [Babel Polyfill](https://babeljs.io/docs/usage/polyfill/)
 
 ## Building from Source
 
@@ -21,7 +25,7 @@ Before building this project, you must install and configure the following depen
 
 Once the dependencies are installed, clone the source code repository and use grunt to build it.
 
-	git clone https://github.com/combojs/combo-seed.git
+	git clone https://github.com/combojs/combo-js.git
 	cd combo-seed
 	npm install
 	grunt
