@@ -31,30 +31,7 @@ Combo.mount(el, component, [data = {}])
 
 ----------------------------------------------------------------------
 
-## Notes
-
-Not every instance needs to be mounted to an element. Parents redraw their
-children when they receive an update.
-
-	var Navigation = Combo.Component.extend({
-		render: function() {
-			return `
-				<nav>
-					<ul>
-						${NavigationLink.render("home", "home.html")}
-						${NavigationLink.render("store", "store.html")}
-					</ul>
-				</nav>
-			`;
-		}
-	});
-
-	var NavigationLink = Combo.Component.extend({
-		render: function(text, url) {
-			return `
-				<li><a href="${url}">${text}</a></li>
-			`;
-		}
-	});
-
-	Combo.mount("root", Navigation);
+> ## Notes
+>
+> Not every instance needs to be mounted to an element. Parents redraw their
+> children when they receive an update.
