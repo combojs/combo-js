@@ -31,7 +31,7 @@ Combo.mount(el, component, [data = {}])
 
 ----------------------------------------------------------------------
 
-> ## Notes
->
-> Not every instance needs to be mounted to an element. Parents redraw their
-> children when they receive an update.
+## Notes
+
+Not every instance needs to be mounted to an element. Parents redraw their
+children when they receive an update.
