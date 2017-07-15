@@ -29,7 +29,7 @@ Combo.Component = class {
 		return new this(options);
 	}
 
-	// **extend**
+	// **update**
 	//
 	// Update the data, then redraw the component if it's mounted.
 	//
