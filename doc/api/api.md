@@ -11,16 +11,10 @@
 * [isMounted](component/isMounted.md)
 * [update](component/update.md)
 
-**Options / Template**
+**Options**
 
-* [render](component/template/render.md)
-
-**Options / Data**
-
-* [data](component/data/data.md)
-
-**Options / Lifecycle Hooks**
-
-* [created](component/hooks/created.md)
-* [mounted](component/hooks/mounted.md)
-* [updated](component/hooks/updated.md)
+* [created](component/opts/created.md)
+* [data](component/opts/data.md)
+* [mounted](component/opts/mounted.md)
+* [render](component/opts/render.md)
+* [updated](component/opts/updated.md)
