@@ -21,13 +21,16 @@ Combo.mount = function(el, component, data) {
 	// Render the component in the container element.
 	//
 	function render() {
-		component.el.insertAdjacentHTML("beforeEnd", component.render(data));
-		//	
+		//
 		// Invoke the component's mounted lifecycle hook.
 		//
 		if(typeof component.mounted === "function") {
 			component.mounted();
 		}
+		//
+		// Insert the HTML.
+		//
+		component.el.insertAdjacentHTML("beforeEnd", component.render(data));
 	}
 
 	component.el = document.getElementById(el);
@@ -38,4 +41,3 @@ Combo.mount = function(el, component, data) {
 	remove();
 	render();
 };
-

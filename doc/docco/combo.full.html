@@ -113,8 +113,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span>(<span class="hljs-params"></span>) </span>{
-		component.el.insertAdjacentHTML(<span class="hljs-string">"beforeEnd"</span>, component.render(data));</pre></div></div>
+            <div class="content"><div class='highlight'><pre>	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span>(<span class="hljs-params"></span>) </span>{</pre></div></div>
             
         </li>
         
@@ -131,10 +130,7 @@
             
             <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> component.mounted === <span class="hljs-string">"function"</span>) {
 			component.mounted();
-		}
-	}
-
-	component.el = <span class="hljs-built_in">document</span>.getElementById(el);</pre></div></div>
+		}</pre></div></div>
             
         </li>
         
@@ -144,6 +140,24 @@
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Insert the HTML.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		component.el.insertAdjacentHTML(<span class="hljs-string">"beforeEnd"</span>, component.render(data));
+	}
+
+	component.el = <span class="hljs-built_in">document</span>.getElementById(el);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
               <p>Ensure the component has a render method.</p>
 
@@ -156,11 +170,11 @@
         </li>
         
         
-        <li id="section-7">
+        <li id="section-8">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-7">&#182;</a>
+                <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
               <h2 id="component">Component</h2>
 <p>Represents a component, view, or fragment.</p>
@@ -172,11 +186,11 @@
         </li>
         
         
-        <li id="section-8">
+        <li id="section-9">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-8">&#182;</a>
+                <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
               <p><strong>constructor</strong></p>
 <p>The constructor function.</p>
@@ -188,11 +202,11 @@
         </li>
         
         
-        <li id="section-9">
+        <li id="section-10">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-9">&#182;</a>
+                <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
               <p>Extend the properties from options.</p>
 
@@ -203,11 +217,11 @@
         </li>
         
         
-        <li id="section-10">
+        <li id="section-11">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-10">&#182;</a>
+                <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
               <p>Invoke the created lifecycle hook.</p>
 
@@ -221,11 +235,11 @@
         </li>
         
         
-        <li id="section-11">
+        <li id="section-12">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-11">&#182;</a>
+                <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
               <p><strong>extend</strong></p>
 <p>Return an instance of the component class.</p>
@@ -239,11 +253,11 @@
         </li>
         
         
-        <li id="section-12">
+        <li id="section-13">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-12">&#182;</a>
+                <a class="pilcrow" href="#section-13">&#182;</a>
               </div>
               <p><strong>update</strong></p>
 <p>Update the data, then redraw the component if it’s mounted.</p>
@@ -256,11 +270,11 @@
         </li>
         
         
-        <li id="section-13">
+        <li id="section-14">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-13">&#182;</a>
+                <a class="pilcrow" href="#section-14">&#182;</a>
               </div>
               <p>Invoke the updated lifecycle hook.</p>
 
@@ -273,11 +287,11 @@
         </li>
         
         
-        <li id="section-14">
+        <li id="section-15">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-14">&#182;</a>
+                <a class="pilcrow" href="#section-15">&#182;</a>
               </div>
               <p>Redraw the component if it’s mounted.</p>
 
@@ -291,11 +305,11 @@
         </li>
         
         
-        <li id="section-15">
+        <li id="section-16">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-15">&#182;</a>
+                <a class="pilcrow" href="#section-16">&#182;</a>
               </div>
               <p><strong>isMounted</strong></p>
 <p>Returns a boolean value determining if the component was mounted.</p>
