@@ -6,6 +6,7 @@
 
 ## Component
 
+* [constructor](component/constructor.md)
 * [el](component/el.md)
 * [extend](component/extend.md)
 * [isMounted](component/isMounted.md)
