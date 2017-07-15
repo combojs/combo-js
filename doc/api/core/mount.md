@@ -16,6 +16,11 @@ Combo.mount(el, component, [data = {}])
 | component       | `Object`      | The component.                |
 | [data]          | `*`           | The data.                     |
 
+### Notes
+
+Not every instance needs to be mounted to an element. Parents redraw their
+children when they receive an update.
+
 ----------------------------------------------------------------------
 
 ## Example
@@ -27,11 +32,3 @@ Combo.mount(el, component, [data = {}])
 	});
 
 	Combo.mount("root", Message);
-
-
-----------------------------------------------------------------------
-
-## Notes
-
-Not every instance needs to be mounted to an element. Parents redraw their
-children when they receive an update.
