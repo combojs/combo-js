@@ -6,4 +6,4 @@ engines:
 
 ratings:
    paths:
-   - "**.js"
+   - "dist/combo.full.js"
