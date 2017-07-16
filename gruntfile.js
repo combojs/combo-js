@@ -10,14 +10,14 @@ module.exports = function(grunt) {
 			dist: {
 				src: [
 					"src/combo.prefix.js",
-					"src/modules/core.js",						
-					"src/modules/component.js",				
-					"src/combo.suffix.js"					
+					"src/modules/core.js",
+					"src/modules/component.js",
+					"src/combo.suffix.js"
 				],
 				dest: "dist/combo.full.js"
-			},
+			}
 		},
-		
+
 		// jshint -------------------------------------------------------------
 
 		jshint: {
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
 
 		// babel --------------------------------------------------------------
 
-		babel: {	
+		babel: {
 			dist: {
 				files: {
 					"dist/combo.full.js": "dist/combo.full.js"
@@ -56,7 +56,7 @@ module.exports = function(grunt) {
 			legacy: {
 				src: 'dist/combo.full.js',
 				dest: 'dist/combo.min.js'
-			},
+			}
 		}
 	});
 
@@ -64,15 +64,15 @@ module.exports = function(grunt) {
 
 
 	grunt.loadNpmTasks("grunt-contrib-concat");
-	grunt.loadNpmTasks("grunt-contrib-jshint");	
-	grunt.loadNpmTasks("grunt-contrib-uglify");	
+	grunt.loadNpmTasks("grunt-contrib-jshint");
+	grunt.loadNpmTasks("grunt-contrib-uglify");
 	grunt.loadNpmTasks("grunt-babel");
-	grunt.loadNpmTasks("grunt-docco");		
+	grunt.loadNpmTasks("grunt-docco");
 
 	// register ---------------------------------------------------------------
 
 	grunt.registerTask("default", [
-		"concat", 
+		"concat",
 		"jshint",
 		"docco",
 		"babel",
