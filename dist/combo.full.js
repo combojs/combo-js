@@ -1,3 +1,9 @@
+"use strict";
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 /**
  * Combo.js
  *
@@ -29,110 +35,131 @@ var Combo;
 
 	"use strict";
 
-// **mount**
-//
-// Mount a component to a container element.
-//
-Combo.mount = function(el, component, data) {
+	// **mount**
+	//
+	// Mount a component to a container element.
+	//
 
-	// **remove**
-	//
-	// Remove the children of the container element.
-	//
-	function remove() {
-		if(typeof component.el.firstChild !== "undefined") {
-			while(component.el.firstChild) {
-				component.el.removeChild(component.el.firstChild);
+	Combo.mount = function (el, component, data) {
+
+		// **remove**
+		//
+		// Remove the children of the container element.
+		//
+		function remove() {
+			if (typeof component.el.firstChild !== "undefined") {
+				while (component.el.firstChild) {
+					component.el.removeChild(component.el.firstChild);
+				}
 			}
 		}
-	}
 
-	// **render**
-	//
-	// Render the component in the container element.
-	//
-	function render() {
+		// **render**
 		//
-		// Invoke the component's mounted lifecycle hook.
+		// Render the component in the container element.
 		//
-		if(typeof component.mounted === "function") {
-			component.mounted();
-		}
-		//
-		// Insert the HTML.
-		//
-		component.el.insertAdjacentHTML("beforeEnd", component.render(data));
-	}
-
-	component.el = document.getElementById(el);
-
-	//
-	// Ensure the component has a render method.
-	//
-	remove();
-	render();
-};
-
-// ## Component
-//
-// Represents a component, view, or fragment.
-//
-Combo.Component = class {
-	// **constructor**
-	//
-	// The constructor function.
-	//
-	constructor(options = {}) {
-		//
-		// Extend the properties from options.
-		//
-		Object.assign(this, options);
-
-		//
-		// Invoke the created lifecycle hook.
-		//
-		if(typeof this.created === "function") {
-			this.created();
-		}
-	}
-
-	// **extend**
-	//
-	// Return an instance of the component class.
-	//
-	static extend(options = {}) {
-		return new this(options);
-	}
-
-	// **update**
-	//
-	// Update the data, then redraw the component if it's mounted.
-	//
-	update(values = {}) {
-		this.data = Object.assign({}, this.data, values);
-
-		//
-		// Invoke the updated lifecycle hook.
-		//
-		if(typeof this.updated === "function") {
-			this.updated();
+		function render() {
+			//
+			// Invoke the component's mounted lifecycle hook.
+			//
+			if (typeof component.mounted === "function") {
+				component.mounted();
+			}
+			//
+			// Insert the HTML.
+			//
+			component.el.insertAdjacentHTML("beforeEnd", component.render(data));
 		}
 
+		component.el = document.getElementById(el);
+
 		//
-		// Redraw the component if it's mounted.
+		// Ensure the component has a render method.
 		//
-		if(this.isMounted()) {
-			Combo.render(this.el, this);
+		remove();
+		render();
+	};
+
+	// ## Component
+	//
+	// Represents a component, view, or fragment.
+	//
+	Combo.Component = function () {
+		// **constructor**
+		//
+		// The constructor function.
+		//
+		function _class() {
+			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+			_classCallCheck(this, _class);
+
+			//
+			// Extend the properties from options.
+			//
+			Object.assign(this, options);
+
+			//
+			// Invoke the created lifecycle hook.
+			//
+			if (typeof this.created === "function") {
+				this.created();
+			}
 		}
-	}
 
-	// **isMounted**
-	//
-	// Returns a boolean value determining if the component was mounted.
-	//
-	get isMounted() {
-		return !!this.el;
-	}
-};
+		// **extend**
+		//
+		// Return an instance of the component class.
+		//
 
+
+		_createClass(_class, [{
+			key: "update",
+
+
+			// **update**
+			//
+			// Update the data, then redraw the component if it's mounted.
+			//
+			value: function update() {
+				var values = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+				this.data = Object.assign({}, this.data, values);
+
+				//
+				// Invoke the updated lifecycle hook.
+				//
+				if (typeof this.updated === "function") {
+					this.updated();
+				}
+
+				//
+				// Redraw the component if it's mounted.
+				//
+				if (this.isMounted()) {
+					Combo.render(this.el, this);
+				}
+			}
+
+			// **isMounted**
+			//
+			// Returns a boolean value determining if the component was mounted.
+			//
+
+		}, {
+			key: "isMounted",
+			get: function get() {
+				return !!this.el;
+			}
+		}], [{
+			key: "extend",
+			value: function extend() {
+				var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+				return new this(options);
+			}
+		}]);
+
+		return _class;
+	}();
 })(Combo || (Combo = {}));
