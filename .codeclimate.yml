@@ -1,3 +1,9 @@
 engines:
   csslint:
     enabled: false
+  eslint:
+    enabled: true
+
+ratings:
+   paths:
+   - "**.js"
