@@ -22,7 +22,7 @@ module.exports = function(grunt) {
 
 		jshint: {
 			options: {
-				jshintrc: ".jshintrc",
+				jshintrc: ".jshintrc"
 			},
 			files: [
 				"dist/combo.full.js"
@@ -76,6 +76,6 @@ module.exports = function(grunt) {
 		"jshint",
 		"docco",
 		"babel",
-		"uglify",
+		"uglify"
 	]);
 }
