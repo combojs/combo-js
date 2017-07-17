@@ -2,6 +2,7 @@
 
 # Combo.js
 
+[![NPM](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/combo-js)
 [![Code Climate](https://codeclimate.com/github/combojs/combo-js/badges/gpa.svg)](https://codeclimate.com/github/combojs/combo-js)
 [![Dependencies](https://img.shields.io/badge/dependencies-babel--polyfill-blue.svg)](https://babeljs.io/docs/usage/polyfill/)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/MIT)
