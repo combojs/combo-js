@@ -9,6 +9,10 @@
 
 Combo.js is a lightweight library for creating user-interfaces.
 
+* [Website](http://www.combojs.com/)
+* [API](doc/api/api.md)
+* [Annotated Source](doc/docco/combo.full.html)
+
 ## Contributing
 
-See [See CONTRIBUTING.md](CONTRIBUTING.md)
+See [CONTRIBUTING.md](CONTRIBUTING.md)
