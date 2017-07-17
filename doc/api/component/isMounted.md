@@ -2,8 +2,6 @@
 
 Returns a boolean value determining if the instance is mounted.
 
-----------------------------------------------------------------------
-
 ## Usage
 
 Component.isMounted
@@ -11,8 +9,6 @@ Component.isMounted
 ### Returns
 
 `boolean` True if the instance is mounted.
-
-----------------------------------------------------------------------
 
 ## Example
 
