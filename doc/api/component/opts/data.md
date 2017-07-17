@@ -2,13 +2,9 @@
 
 An object that contains data specific to this component.
 
-----------------------------------------------------------------------
-
 ## Usage
 
 Component.data
-
-----------------------------------------------------------------------
 
 ## Example
 

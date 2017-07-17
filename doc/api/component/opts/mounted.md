@@ -2,13 +2,9 @@
 
 Called when the instance gets mounted to an element.
 
-----------------------------------------------------------------------
-
 ## Usage
 
 Component.mounted
-
-----------------------------------------------------------------------
 
 ## Example
 
