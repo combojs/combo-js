@@ -3,7 +3,8 @@ engines:
     enabled: false
   eslint:
     enabled: true
-
+      wrap-iife:
+        enabled: false
 ratings:
    paths:
    - "dist/combo.full.js"
