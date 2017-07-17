@@ -2,8 +2,6 @@
 
 Returns the element the instance is mounted to.
 
-----------------------------------------------------------------------
-
 ## Usage
 
 Component.el
@@ -11,8 +9,6 @@ Component.el
 ### Returns
 
 `Object` The element.
-
-----------------------------------------------------------------------
 
 ## Example
 

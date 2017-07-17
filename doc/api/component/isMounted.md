@@ -1,6 +1,6 @@
 # Component.isMounted
 
-Returns a boolean value determining if the instance is mounted.
+Determines if the instance is mounted.
 
 ## Usage
 

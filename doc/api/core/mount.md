@@ -1,8 +1,6 @@
 # Combo.mount
 
-Mount a component to a container element. 
-
-----------------------------------------------------------------------
+Mount a component to a container element.
 
 ## Usage
 
@@ -15,8 +13,6 @@ Combo.mount(el, component, [data = {}])
 | el              | `string`      | The ID.                       |
 | component       | `Object`      | The component.                |
 | [data]          | `*`           | The data.                     |
-
-----------------------------------------------------------------------
 
 ## Example
 

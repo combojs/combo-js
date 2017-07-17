@@ -2,8 +2,6 @@
 
 The constructor function.
 
-----------------------------------------------------------------------
-
 ## Usage
 
 Component([options = {}])

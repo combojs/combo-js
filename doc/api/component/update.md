@@ -2,13 +2,9 @@
 
 Update the data, then redraw the component if it's mounted.
 
-----------------------------------------------------------------------
-
 ## Usage
 
 Component.update(values)
-
-----------------------------------------------------------------------
 
 ## Example
 
