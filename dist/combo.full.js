@@ -136,7 +136,7 @@ var Combo;
 				//
 				// Redraw the component if it's mounted.
 				//
-				if (this.isMounted()) {
+				if (this.isMounted) {
 					Combo.render(this.el, this);
 				}
 			}
