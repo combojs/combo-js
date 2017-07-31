@@ -8,7 +8,7 @@ Component.mounted
 
 ## Example
 
-	var Message = Combo.Component.extend({
+	var Message = new Combo.Component({
 		mounted: function() {
 			console.log("The instance was mounted.");
 		},

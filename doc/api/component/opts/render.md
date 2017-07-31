@@ -12,7 +12,7 @@ Component.render()
 
 ## Example
 
-	var Message = Combo.Component.extend({
+	var Message = new Combo.Component({
 		render: function() {
 			return `<div>Hello Combo`;
 		}

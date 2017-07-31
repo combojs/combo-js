@@ -12,7 +12,7 @@ Component.el
 
 ## Example
 
-	var Message = Combo.Component.extend({
+	var Message = new Combo.Component({
 		mounted: function() {
 			this.el.addEventListener("click", function() {
 				alert("Hello Combo.")

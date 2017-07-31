@@ -8,13 +8,14 @@
 
 * [constructor](component/constructor.md)
 * [el](component/el.md)
-* [extend](component/extend.md)
+* [clone](component/clone.md)
 * [isMounted](component/isMounted.md)
 * [update](component/update.md)
 
 **Options**
 
 * [created](component/opts/created.md)
+* [cloned](component/opts/cloned.md)
 * [data](component/opts/data.md)
 * [mounted](component/opts/mounted.md)
 * [render](component/opts/render.md)

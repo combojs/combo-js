@@ -8,7 +8,7 @@ Component.created
 
 ## Example
 
-	var Message = Combo.Component.extend({
+	var Message = new Combo.Component({
 		created: function() {
 			console.log("The instance was created.");
 		},

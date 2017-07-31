@@ -1,10 +1,10 @@
-# Component.extend
+# Component.clone
 
-Returns a new instance of the Component class.
+Returns a new instance of the component.
 
 ## Usage
 
-Component.extend([options = {}])
+Component.clone();
 
 ### Params
 
@@ -14,10 +14,13 @@ Component.extend([options = {}])
 
 ## Example
 
-	var Message = Combo.Component.extend({
+	var Message = new Combo.Component({
+		cloned: function() {
+			console.log("The instance was cloned.");
+		},
 		render: function() {
 			return `<div>Hello Combo</div>`;
 		}
 	});
 
-	Combo.mount("root", Message);
+	var Message2 = Message.clone();

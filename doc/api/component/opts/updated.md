@@ -8,7 +8,7 @@ Component.updated
 
 ## Example
 
-	var Message = Combo.Component.extend({
+	var Message = new Combo.Component({
 		created: function() {
 			this.update({
 				name: "Combo"

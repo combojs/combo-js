@@ -21,12 +21,20 @@ Combo.Component = class {
 		}
 	}
 
-	// **extend**
+	// **clone**
 	//
-	// Return an instance of the component class.
-	//
-	static extend(options = {}) {
-		return new this(options);
+	// Returns a new instance of the component.
+	//	
+	clone() {
+		var clone = Object.assign(Object.create(this), this);
+		//
+		// Invoke the cloned lifecycle hook.
+		//
+		if(typeof this.cloned === "function") {
+			this.cloned();
+		}
+
+		return clone;
 	}
 
 	// **update**

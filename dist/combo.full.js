@@ -73,13 +73,9 @@ var Combo;
 
 		component.el = document.getElementById(el);
 
-		//
-		// Ensure the component has a render method.
-		//
 		remove();
 		render();
 	};
-
 	// ## Component
 	//
 	// Represents a component, view, or fragment.
@@ -107,20 +103,33 @@ var Combo;
 			}
 		}
 
-		// **extend**
+		// **clone**
 		//
-		// Return an instance of the component class.
-		//
+		// Returns a new instance of the component.
+		//	
 
 
 		_createClass(_class, [{
-			key: "update",
+			key: "clone",
+			value: function clone() {
+				var clone = Object.assign(Object.create(this), this);
+				//
+				// Invoke the cloned lifecycle hook.
+				//
+				if (typeof this.cloned === "function") {
+					this.cloned();
+				}
 
+				return clone;
+			}
 
 			// **update**
 			//
 			// Update the data, then redraw the component if it's mounted.
 			//
+
+		}, {
+			key: "update",
 			value: function update() {
 				var values = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
@@ -150,13 +159,6 @@ var Combo;
 			key: "isMounted",
 			get: function get() {
 				return !!this.el;
-			}
-		}], [{
-			key: "extend",
-			value: function extend() {
-				var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-				return new this(options);
 			}
 		}]);
 

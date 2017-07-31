@@ -35,9 +35,6 @@ Combo.mount = function(el, component, data) {
 
 	component.el = document.getElementById(el);
 
-	//
-	// Ensure the component has a render method.
-	//
 	remove();
 	render();
 };
