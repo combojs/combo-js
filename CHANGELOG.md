@@ -17,6 +17,6 @@
 
 * Fixed: Bug treating isMounted as a method instead of a property.
 
-# 1.0.0 (7/16/2017)
+# 1.0.0 
 
 * Initial public release.
