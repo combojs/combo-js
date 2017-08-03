@@ -1,9 +1,5 @@
 # API Reference
 
-## Combo
-
-* [mount](core/mount.md)
-
 ## Component
 
 * [constructor](component/constructor.md)
@@ -11,6 +7,7 @@
 * [clone](component/clone.md)
 * [isMounted](component/isMounted.md)
 * [update](component/update.md)
+* [mount](component/mount.md)
 
 **Options**
 

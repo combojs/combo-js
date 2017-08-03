@@ -1,18 +1,16 @@
-# Combo.mount
+# Component.mount
 
 Mount a component to a container element.
 
 ## Usage
 
-Combo.mount(el, component, [data = {}])
+Component.mount(el)
 
 ### Params
 
 | Param           | Type          | Details                       |
 | --------------- | ------------- | ----------------------------- |
-| el              | `string`      | The ID.                       |
-| component       | `Object`      | The component.                |
-| [data]          | `*`           | The data.                     |
+| el              | `HTMLElement` | The container element.        |
 
 ## Example
 
@@ -22,4 +20,4 @@ Combo.mount(el, component, [data = {}])
 		}
 	});
 
-	Combo.mount("root", Message);
+	Message.mount(document.getElementById("root"));

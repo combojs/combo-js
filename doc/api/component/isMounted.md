@@ -18,6 +18,6 @@ Component.isMounted
 		}
 	});
 
-	Combo.mount("root", Message);
+	Message.mount(document.getElementById("root"));
 
 	console.log(Message.isMounted);

@@ -1,0 +1,36 @@
+<html>
+	<body>
+		<div id="root"></div>
+
+		<script src="dist/combo.full.js"></script>
+		<script>
+			var Test = new Combo.Component({
+				created: function() {
+
+					this.data = { name: "Component" };
+				},
+				render: function() {
+					return "<br>Rendered: " + this.data.name + " " + this.isMounted;
+				},
+				mounted: function() {
+					document.write("<br>Mounted: " + this.data.name);
+				},
+				cloned: function() {
+					document.write("<br>Cloned:" + this.data.name);
+				}
+			});
+
+
+			Test.mount(document.getElementById("root"));
+Test.update({
+	name:"Combo"
+})
+Test.update({
+	name:"Combo"
+})
+Test.update({
+	name:"Combo"
+})
+		</script>
+	</body>
+</html>

@@ -1,40 +1,18 @@
-// **mount**
+// **replaceHTML**
 //
-// Mount a component to a container element.
+// Replace the contents of the container element with an HTML string.
 //
-Combo.mount = function(el, component, data) {
-
-	// **remove**
+function replaceHTML(el, html) {
 	//
-	// Remove the children of the container element.
+	// Remove the child nodes from the container element.
 	//
-	function remove() {
-		if(typeof component.el.firstChild !== "undefined") {
-			while(component.el.firstChild) {
-				component.el.removeChild(component.el.firstChild);
-			}
+	if(typeof el.firstChild !== "undefined") {
+		while(el.firstChild) {
+			el.removeChild(el.firstChild);
 		}
 	}
-
-	// **render**
 	//
-	// Render the component in the container element.
+	// Insert the HTML.
 	//
-	function render() {
-		//
-		// Invoke the component's mounted lifecycle hook.
-		//
-		if(typeof component.mounted === "function") {
-			component.mounted();
-		}
-		//
-		// Insert the HTML.
-		//
-		component.el.insertAdjacentHTML("beforeEnd", component.render(data));
-	}
-
-	component.el = document.getElementById(el);
-
-	remove();
-	render();
-};
+	el.insertAdjacentHTML("beforeEnd", html);
+}

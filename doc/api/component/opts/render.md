@@ -18,4 +18,5 @@ Component.render()
 		}
 	});
 
-	Combo.mount("root", Message);
+	Message.mount(document.getElementById("root"));
+

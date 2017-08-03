@@ -22,5 +22,6 @@ Component.el
 			return `<div>Click me for a message.</div>`;
 		}
 	});
+	
+	Message.mount(document.getElementById("root"));
 
-	Combo.mount("root", Message);

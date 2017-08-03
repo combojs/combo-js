@@ -1,3 +1,12 @@
+# 1.2.0
+
+* Updated: Combo.mount has been changed to component.mount
+* Updated: Component.mount accepts an HTMLElement instead of an ID
+
+# 1.1.1
+
+* Fixed: combo.render() called instead of combo.mount()
+
 # 1.1.0
 
 * Added: component.clone()
