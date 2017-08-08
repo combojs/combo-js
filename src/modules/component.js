@@ -1,3 +1,7 @@
+// ## Component
+//
+// Represents a component, view, or fragment.
+//
 Combo.Component = class {
 	// **constructor**
 	//
