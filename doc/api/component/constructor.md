@@ -11,3 +11,13 @@ Component([options = {}])
 | Param             | Type        | Details                          |
 | ----------------- | ----------- | -------------------------------- |
 | options           | `Object`    | The options.                     |
+
+## Example
+
+	var Message = new Combo.Component({
+		render: function() {
+			return `<div>Hello Combo`;
+		}
+	});
+	
+	Message.mount(document.getElementById("root"));
