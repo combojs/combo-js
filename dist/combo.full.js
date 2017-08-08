@@ -54,6 +54,10 @@ var Combo;
 		//
 		el.insertAdjacentHTML("beforeEnd", html);
 	}
+	// ## Component
+	//
+	// Represents a component, view, or fragment.
+	//
 	Combo.Component = function () {
 		// **constructor**
 		//
@@ -153,5 +157,32 @@ var Combo;
 		}]);
 
 		return _class;
+	}();
+	// ## Stylesheet
+	//
+	// Represents a stylesheet.
+	//
+	Combo.Stylesheet = function () {
+		// **constructor**
+		//
+		// The constructor function.
+		//	
+		function _class2() {
+			var styles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+			_classCallCheck(this, _class2);
+
+			for (var style in styles) {
+				var result = "";
+
+				for (var rule in styles[style]) {
+					result += rule + ":" + styles[style][rule] + ";";
+				}
+
+				this[style] = result;
+			}
+		}
+
+		return _class2;
 	}();
 })(Combo || (Combo = {}));
