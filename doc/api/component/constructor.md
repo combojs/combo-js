@@ -1,4 +1,4 @@
-# Component.Constructor
+# Component.constructor
 
 The constructor function.
 
@@ -16,8 +16,9 @@ Component([options = {}])
 
 	var Message = new Combo.Component({
 		render: function() {
-			return `<div>Hello Combo`;
+			return `<div>Hello Combo.</div>`;
 		}
 	});
+
 	
 	Message.mount(document.getElementById("root"));
