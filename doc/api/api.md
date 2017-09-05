@@ -11,6 +11,7 @@
 
 **Options**
 
+* [beforeMount](component/opts/beforeMount.md)
 * [created](component/opts/created.md)
 * [cloned](component/opts/cloned.md)
 * [data](component/opts/data.md)
