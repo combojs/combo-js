@@ -1,3 +1,7 @@
+# 1.3.0
+	
+* Added: Combo.StyleSheet
+
 # 1.2.0
 
 * Updated: Combo.mount has been changed to component.mount
