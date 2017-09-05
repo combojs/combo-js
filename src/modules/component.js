@@ -13,6 +13,12 @@ Combo.Component = class {
 		//
 		Object.assign(this, options);
 		//
+		// Add the data object if undefined.
+		//
+		if(typeof this.data === "undefined") {
+			this.data = {};
+		}
+		//
 		// Invoke the created lifecycle hook.
 		//
 		if(typeof this.created === "function") {
@@ -61,6 +67,12 @@ Combo.Component = class {
 	//
 	mount(el) {
 		this.el = el;
+		//
+		// Invoke the beforeMount lifecycle hook.
+		//
+		if(typeof this.beforeMount === "function") {
+			this.beforeMount();
+		}			
 		//
 		// Replace the HTML of the container element.
 		//
