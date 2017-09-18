@@ -10,7 +10,7 @@ Component.mounted
 
 	var Message = new Combo.Component({
 		cloned: function() {
-			console.log("The instance was cloned.");
+			console.log("The component was cloned.");
 		}
 	});
 

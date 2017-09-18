@@ -20,9 +20,12 @@ Component.render([params])
 
 	var Message = new Combo.Component({
 		render: function() {
-			return `<div>Hello Combo`;
+			return `
+				<div>Hello World</div>
+			`;
 		}
 	});
 
 	Message.mount(document.getElementById("root"));
+
 

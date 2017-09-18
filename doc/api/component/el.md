@@ -13,15 +13,23 @@ Component.el
 ## Example
 
 	var Message = new Combo.Component({
+		created: function() {
+			this.update({
+				text: "Click Me"
+			});
+		},
 		mounted: function() {
-			this.el.addEventListener("click", function() {
-				alert("Hello Combo.")
+			this.el.addEventListener("click", ()=> {
+				this.update({
+					text: "Hello World"
+				});
 			});
 		},
 		render: function() {
-			return `<div>Click me for a message.</div>`;
+			return `
+				<div>${this.data.text}</div>
+			`;
 		}
 	});
-	
-	Message.mount(document.getElementById("root"));
 
+	Message.mount(document.getElementById("root"));

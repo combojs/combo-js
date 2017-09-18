@@ -1,6 +1,6 @@
 # Component.mount
 
-Mount a component to a container element.
+Attach a component to a container element. 
 
 ## Usage
 
@@ -12,11 +12,17 @@ Component.mount(el)
 | --------------- | ------------- | ----------------------------- |
 | el              | `HTMLElement` | The container element.        |
 
+### Notes
+
+> Child components do not need to be mounted, unless they need to be updated independently from their parent.
+
 ## Example
 
-	var Message = Combo.Component.extend({
+	var Message = new Combo.Component({
 		render: function() {
-			return `<div>Hello Combo</div>`;
+			return `
+				<div>Hello World</div>
+			`;
 		}
 	});
 

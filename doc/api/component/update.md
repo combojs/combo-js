@@ -11,16 +11,16 @@ Component.update(values)
 	var Message = new Combo.Component({
 		created: function() {
 			this.update({
-				name: "Combo"
+				text: "Hello World"
 			});
 		},
-		updated: function() {
-			console.log("The instance was updated.");
-		},
 		render: function() {
-			return `<div>Hello ${this.data.name}</div>`;
+			return `
+				<div>${this.data.text}</div>
+			`;
 		}
 	});
 
 	Message.mount(document.getElementById("root"));
+
 

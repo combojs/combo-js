@@ -14,10 +14,12 @@ Component.isMounted
 
 	var Message = new Combo.Component({
 		render: function() {
-			return `<div>Hello Combo</div>`;
+			return `
+				<div>Hello World</div>
+			`;
 		}
 	});
 
 	Message.mount(document.getElementById("root"));
 
-	console.log(Message.isMounted);
+	console.log(Message.isMounted)

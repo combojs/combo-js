@@ -10,12 +10,13 @@ Component.mounted
 
 	var Message = new Combo.Component({
 		mounted: function() {
-			console.log("The instance was mounted.");
+			console.log("The component was mounted.");
 		},
 		render: function() {
-			return `<div>Hello Combo</div>`;
+			return `
+				<div>Hello World</div>
+			`;
 		}
 	});
 
 	Message.mount(document.getElementById("root"));
-

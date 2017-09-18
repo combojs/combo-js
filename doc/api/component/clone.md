@@ -19,7 +19,9 @@ Component.clone();
 			console.log("The instance was cloned.");
 		},
 		render: function() {
-			return `<div>Hello Combo</div>`;
+			return `
+				<div>Hello Combo</div>
+			`;
 		}
 	});
 

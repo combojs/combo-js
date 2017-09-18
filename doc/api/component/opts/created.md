@@ -10,10 +10,14 @@ Component.created
 
 	var Message = new Combo.Component({
 		created: function() {
-			console.log("The instance was created.");
+			this.update({
+				text: "Hello World"
+			});
 		},
 		render: function() {
-			return `<div>Hello Combo</div>`;
+			return `
+				<div>${this.data.text}</div>
+			`;
 		}
 	});
 

@@ -16,7 +16,9 @@ Component([options = {}])
 
 	var Message = new Combo.Component({
 		render: function() {
-			return `<div>Hello Combo.</div>`;
+			return `
+				<div>Hello World.</div>
+			`;
 		}
 	});
 

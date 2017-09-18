@@ -10,10 +10,12 @@ Component.beforeMount
 
 	var Message = new Combo.Component({
 		beforeMount: function() {
-			console.log("The instance is about to be mounted.");
+			console.log("The component is about to be mounted.");
 		},
 		render: function() {
-			return `<div>Hello Combo</div>`;
+			return `
+				<div>Hello World</div>
+			`;
 		}
 	});
 
