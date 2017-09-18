@@ -1,3 +1,8 @@
+# 1.4.0
+	
+* Added: Component.beforeMount
+* Updated: Component.render API documentation
+
 # 1.3.0
 	
 * Added: Combo.StyleSheet

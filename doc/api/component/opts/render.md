@@ -4,7 +4,13 @@ Returns a template literal containing the instance's markup.
 
 ## Usage
 
-Component.render()
+Component.render([params])
+
+### Params
+
+| Param           | Type          | Details                            |
+| --------------- | ------------- | ---------------------------------- |
+| params          | `Object`      | An object containing optional data |
 
 ### Returns
 
