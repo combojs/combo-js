@@ -4,13 +4,14 @@ Attach a component to a container element.
 
 ## Usage
 
-Component.mount(el)
+Component.mount(el, [props])
 
 ### Params
 
 | Param           | Type          | Details                       |
 | --------------- | ------------- | ----------------------------- |
 | el              | `HTMLElement` | The container element.        |
+| [props]         | `*`           | Optional data to pass.        |
 
 ### Notes
 
@@ -19,11 +20,13 @@ Component.mount(el)
 ## Example
 
 	var Message = new Combo.Component({
-		render: function() {
+		render: function(props) {
 			return `
-				<div>Hello World</div>
+				<div>Hello ${props.title}</div>
 			`;
 		}
 	});
 
-	Message.mount(document.getElementById("root"));
+	Message.mount(document.getElementById("root"), {
+		name: "World"
+	});

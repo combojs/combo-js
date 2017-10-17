@@ -65,23 +65,23 @@ Combo.Component = class {
 	//
 	// Mount the component to a container element.
 	//
-	mount(el) {
+	mount(el, props = {}) {
 		this.el = el;
 		//
 		// Invoke the beforeMount lifecycle hook.
 		//
 		if(typeof this.beforeMount === "function") {
-			this.beforeMount();
+			this.beforeMount(props);
 		}			
 		//
 		// Replace the HTML of the container element.
 		//
-		replaceHTML(el, this.render());
+		replaceHTML(el, this.render(props));
 		//
 		// Invoke the mounted lifecycle hook.
 		//
 		if(typeof this.mounted === "function") {
-			this.mounted();
+			this.mounted(props);
 		}
 	}
 	// **isMounted**

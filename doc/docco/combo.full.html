@@ -310,7 +310,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>	mount(el) {
+            <div class="content"><div class='highlight'><pre>	mount(el, props = {}) {
 		<span class="hljs-keyword">this</span>.el = el;</pre></div></div>
             
         </li>
@@ -327,7 +327,7 @@
             </div>
             
             <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> <span class="hljs-keyword">this</span>.beforeMount === <span class="hljs-string">"function"</span>) {
-			<span class="hljs-keyword">this</span>.beforeMount();
+			<span class="hljs-keyword">this</span>.beforeMount(props);
 		}</pre></div></div>
             
         </li>
@@ -343,7 +343,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>		replaceHTML(el, <span class="hljs-keyword">this</span>.render());</pre></div></div>
+            <div class="content"><div class='highlight'><pre>		replaceHTML(el, <span class="hljs-keyword">this</span>.render(props));</pre></div></div>
             
         </li>
         
@@ -359,7 +359,7 @@
             </div>
             
             <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> <span class="hljs-keyword">this</span>.mounted === <span class="hljs-string">"function"</span>) {
-			<span class="hljs-keyword">this</span>.mounted();
+			<span class="hljs-keyword">this</span>.mounted(props);
 		}
 	}</pre></div></div>
             
