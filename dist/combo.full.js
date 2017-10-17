@@ -54,6 +54,7 @@ var Combo;
 		//
 		el.insertAdjacentHTML("beforeEnd", html);
 	}
+
 	// ## Component
 	//
 	// Represents a component, view, or fragment.
@@ -138,22 +139,24 @@ var Combo;
 		}, {
 			key: "mount",
 			value: function mount(el) {
+				var props = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
 				this.el = el;
 				//
 				// Invoke the beforeMount lifecycle hook.
 				//
 				if (typeof this.beforeMount === "function") {
-					this.beforeMount();
+					this.beforeMount(props);
 				}
 				//
 				// Replace the HTML of the container element.
 				//
-				replaceHTML(el, this.render());
+				replaceHTML(el, this.render(props));
 				//
 				// Invoke the mounted lifecycle hook.
 				//
 				if (typeof this.mounted === "function") {
-					this.mounted();
+					this.mounted(props);
 				}
 			}
 			// **isMounted**
