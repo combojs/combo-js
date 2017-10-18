@@ -11,7 +11,6 @@
 * Changed Component.beforeMount lifecycle hook to mounting.
 * Changed Component.mount to store properties in Component.props option.
 * Fixed issue with components being remounted on an update.
-* Removed Combo.Stylesheet. It will become its own repository
 
 ## 1.5.0
 
