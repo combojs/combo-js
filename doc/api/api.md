@@ -4,8 +4,8 @@
 
 ### Options
 
-* [manipulating](core/manipulating.md)
-* [manipulated](core/manipulated.md)
+* [manipulating](core/options/manipulating.md)
+* [manipulated](core/options/manipulated.md)
 
 ## Combo.Component 
 
@@ -21,14 +21,14 @@
 
 ### Options
 
-* [cloning](component/cloning.md)
-* [cloned](component/cloned.md)
-* [creating](component/creating.md)
-* [created](component/created.md)
-* [mounting](component/mounting.md)
-* [mounted](component/mounted.md)
-* [render](component/render.md)
-* [unmounting](component/unmounting.md)
-* [unmounted](component/unmounted.md)
-* [updating](component/updating.md)
-* [updated](component/updated.md)
+* [cloning](component/options/cloning.md)
+* [cloned](component/options/cloned.md)
+* [creating](component/options/creating.md)
+* [created](component/options/created.md)
+* [mounting](component/options/mounting.md)
+* [mounted](component/options/mounted.md)
+* [render](component/options/render.md)
+* [unmounting](component/options/unmounting.md)
+* [unmounted](component/options/unmounted.md)
+* [updating](component/options/updating.md)
+* [updated](component/options/updated.md)
