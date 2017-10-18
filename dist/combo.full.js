@@ -296,4 +296,4 @@ var Combo;
 
 		return _class;
 	}();
-})(Combo || (Combo = {}));
+})(Combo);
