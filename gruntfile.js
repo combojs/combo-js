@@ -58,8 +58,7 @@ module.exports = function(grunt) {
 				src: 'dist/combo.full.js',
 				dest: 'dist/combo.min.js'
 			}
-		},
-
+		}
 	});
 
 	// load -------------------------------------------------------------------
