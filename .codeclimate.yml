@@ -3,10 +3,6 @@ engines:
         enabled: false
     eslint:
         enabled: true
-            config:
-                ignore_warnings: true
 ratings:
    paths:
     - "dist/combo.full.js"
-exclude_paths:
-    - "dist/combo"
