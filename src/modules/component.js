@@ -1,94 +1,189 @@
-// ## Component
-//
-// Represents a component, view, or fragment.
-//
 Combo.Component = class {
-	// **constructor**
+
+	// **clone**
 	//
-	// The constructor function.
+	// Return a new instance of the component.
 	//
 	constructor(options = {}) {
+		// **creating**
 		//
-		// Extend the component from the options.
+		// Invoked before the component is created.
+		//
+		if(typeof options.creating === "function") {
+			options.creating();
+		}
+
+		//
+		// Extend the component with the options.
 		//
 		Object.assign(this, options);
+
 		//
-		// Add the data object if undefined.
+		// Extend the component with a props object.
+		//
+		if(typeof this.props === "undefined") {
+			this.props = {};
+		}
+
+		//
+		// Extend the component with a data object.
 		//
 		if(typeof this.data === "undefined") {
 			this.data = {};
 		}
+
+		// **created**
 		//
-		// Invoke the created lifecycle hook.
-		//
+		// Invoked after the component is created.
+		//	
 		if(typeof this.created === "function") {
 			this.created();
 		}
 	}
+
 	// **clone**
 	//
 	// Return a new instance of the component.
 	//
 	clone() {
+		// **cloning**
+		//
+		// Invoked before the component is cloned.
+		//
+		if(typeof this.cloning === "function") {
+			this.cloning();
+		}
+		
+		//
+		// Create a new instance of the component.
+		//
 		var clone = Object.assign(Object.create(this), this);
+
+		// **cloned**
 		//
-		// Invoke the cloned lifecycle hook.
-		//
+		// Invoked after the component is cloned.
+		//	
 		if(typeof this.cloned === "function") {
 			this.cloned();
-		}
+		}			
+
 		//
-		// Return the instance of the component.
+		// Return the new instance of the component.
 		//
 		return clone;
 	}
+
 	// **update**
 	//
-	// Update the component's data and redraw it.
+	// Update the data and redraw the component if it's mounted.
 	//
 	update(values = {}) {
-		this.data = Object.assign({}, this.data, values);
+		// **updating**
 		//
-		// Invoke the updated lifecycle hook.
+		// Invoked before the component is updated.
 		//
-		if(typeof this.updated === "function") {
-			this.updated();
+		if(typeof this.updating === "function") {
+			this.updating();
 		}
+		
 		//
-		// Redraw the component if it's mounted.
+		// Update the component's data object.
+		//
+		this.data = Object.assign({}, this.data, values);
+
+		//
+		// Redraw the component if it was mounted.
 		//
 		if(this.isMounted) {
-			this.mount(this.el);
+			_replaceHTML(this.el, this.render());
 		}
-	}	
+
+		// **updated**
+		//
+		// Invoked after the component is updated.
+		//	
+		if(typeof this.updated === "function") {
+			this.updated();
+		}		
+	}
+	
 	// **mount**
 	//
 	// Mount the component to a container element.
 	//
-	mount(el, props = {}) {
-		this.el = el;
+	mount(el, values = {}) {
+		// **mounting**
 		//
-		// Invoke the beforeMount lifecycle hook.
+		// Invoked before the component is mounted.
 		//
-		if(typeof this.beforeMount === "function") {
-			this.beforeMount(props);
-		}			
-		//
-		// Replace the HTML of the container element.
-		//
-		replaceHTML(el, this.render(props));
-		//
-		// Invoke the mounted lifecycle hook.
-		//
-		if(typeof this.mounted === "function") {
-			this.mounted(props);
+		if(typeof this.mounting === "function") {
+			this.mounting();
 		}
+		
+		//
+		// Mount the component to a container element.
+		//
+		this.el = el;
+
+		//
+		// Update the component's prop object.
+		//
+		this.props = Object.assign({}, this.props, values);
+
+		//
+		// Draw the component in its container element.
+		//
+		_replaceHTML(this.el, this.render());
+
+		// **mounted**
+		//
+		// Invoked after the component is mounted.
+		//	
+		if(typeof this.mounted === "function") {
+			this.mounted();
+		}		
 	}
+	
+	// **unmount**
+	//
+	// Unmount the component from its container element.
+	//
+	unmount(remove = false) {
+		// **unmounting**
+		//
+		// Invoked before the component is unmounted.
+		//
+		if(typeof this.unmounting === "function") {
+			this.unmounting();
+		}
+
+		//
+		// Remove the component from the container element.
+		//
+		if(remove === true) {
+			_removeHTML(this.el);
+		}
+
+		//
+		// Delete the assignment to the container element.
+		//	
+		delete this.el;
+
+		// **unmounted**
+		//
+		// Invoked after the component is mounted.
+		//	
+		if(typeof this.unmounted === "function") {
+			this.unmounted();
+		}			
+	}
+
 	// **isMounted**
 	//
-	// Determining if the component is mounted.
+	// Returns a boolean value that indicates if the component is mounted.
 	//
 	get isMounted() {
 		return !!this.el;
 	}
 };
+

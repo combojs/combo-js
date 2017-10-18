@@ -1,14 +1,10 @@
-# Component.el
+# Component.data
 
-Returns the element the instance is mounted to.
+An object that contains data specific to the component.
 
 ## Usage
 
-Component.el
-
-### Returns
-
-`Object` The element.
+Component.data
 
 ## Example
 
@@ -18,13 +14,6 @@ Component.el
 				name: "World"
 			});
 		},
-		mounted: function() {
-			el.addEventListener("click", () => {
-				this.update({
-					name: "Combo"
-				});
-			});
-		}
 		render: function() {
 			return `
 				<div>Hello ${this.data.name}</div>

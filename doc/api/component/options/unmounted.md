@@ -1,14 +1,17 @@
-# Component.isMounted
+# Component.unmounted
 
-Returns a boolean value that indicates if the component is mounted.
+Invoked after the component is unmounted.
 
 ## Usage
 
-Component.isMounted
+Component.unmounted
 
 ## Example
 
 	var Greeting = new Combo.Component({
+		unmounted: function() {
+			console.log("The component was unmounted.");
+		},
 		render: function() {
 			return `
 				<div>Hello World</div>
@@ -18,4 +21,4 @@ Component.isMounted
 
 	Greeting.mount(document.getElementById("root"));
 
-	console.log(Greeting.isMounted)
+	Greeting.unmount();

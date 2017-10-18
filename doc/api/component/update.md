@@ -6,21 +6,28 @@ Update the data, then redraw the component if it's mounted.
 
 Component.update(values)
 
+| Param           | Type          | Details                       |
+| --------------- | ------------- | ----------------------------- |
+| values          | `Object`      | The data.                     |
+
 ## Example
 
-	var Message = new Combo.Component({
+	var Greeting = new Combo.Component({
 		created: function() {
 			this.update({
-				text: "Hello World"
+				name: "World"
 			});
 		},
 		render: function() {
 			return `
-				<div>${this.data.text}</div>
+				<div>Hello ${this.data.name}</div>
 			`;
 		}
 	});
 
-	Message.mount(document.getElementById("root"));
+	Greeting.mount(document.getElementById("root"));
 
-
+	Greeting.update({
+		name: "Combo"
+	});
+	

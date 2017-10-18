@@ -6,23 +6,20 @@ Returns a new instance of the component.
 
 Component.clone();
 
-### Params
+### Returns
 
-| Param             | Type        | Details                          |
-| ----------------- | ----------- | -------------------------------- |
-| options           | `Object`    | The options.                     |
+`Object` The new instance.
 
 ## Example
 
-	var Message = new Combo.Component({
-		cloned: function() {
-			console.log("The instance was cloned.");
-		},
+	var Greeting = new Combo.Component({
 		render: function() {
 			return `
-				<div>Hello Combo</div>
+				<div>Hello World</div>
 			`;
 		}
 	});
 
-	var Message2 = Message.clone();
+	var Salutation = Greeting.clone();
+
+	Salutation.mount(document.getElementById("root"));

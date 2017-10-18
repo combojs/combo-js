@@ -1,16 +1,10 @@
-# Component.el
+# Component.updated
 
-Returns the element the instance is mounted to.
+Invoked after the component is updated.
 
 ## Usage
 
-Component.el
-
-### Returns
-
-`Object` The element.
-
-## Example
+Component.updated
 
 	var Greeting = new Combo.Component({
 		created: function() {
@@ -18,13 +12,9 @@ Component.el
 				name: "World"
 			});
 		},
-		mounted: function() {
-			el.addEventListener("click", () => {
-				this.update({
-					name: "Combo"
-				});
-			});
-		}
+		updated: function() {
+			console.log("The component was updated.");
+		},
 		render: function() {
 			return `
 				<div>Hello ${this.data.name}</div>

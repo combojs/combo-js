@@ -1,32 +1,31 @@
 # Component.mount
 
-Attach a component to a container element. 
+Mount the component to a container element.
 
 ## Usage
 
 Component.mount(el, [props])
 
-### Params
-
 | Param           | Type          | Details                       |
 | --------------- | ------------- | ----------------------------- |
 | el              | `HTMLElement` | The container element.        |
-| [props]         | `*`           | Optional data to pass.        |
-
-### Notes
-
-> Child components do not need to be mounted, unless they need to be updated independently from their parent.
+| [props]         | `Object`      | The props.                    |
 
 ## Example
 
-	var Message = new Combo.Component({
-		render: function(props) {
+	var Greeting = new Combo.Component({
+		render: function() {
 			return `
-				<div>Hello ${props.title}</div>
+				<div>Hello World</div>
 			`;
 		}
 	});
 
-	Message.mount(document.getElementById("root"), {
-		name: "World"
-	});
+	Greeting.mount(document.getElementById("root"));
+
+## Notes
+
+Child components do not need to be mounted, unless they need to be updated independently from their parent.
+
+[See Render Example](options/render.md)
+

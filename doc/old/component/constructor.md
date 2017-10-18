@@ -1,6 +1,6 @@
 # Component.constructor
 
-The constructor function. 
+The constructor function.
 
 ## Usage
 
@@ -14,12 +14,13 @@ Component([options = {}])
 
 ## Example
 
-	var Greeting = new Combo.Component({
+	var Message = new Combo.Component({
 		render: function() {
 			return `
-				<div>Hello World</div>
+				<div>Hello World.</div>
 			`;
 		}
 	});
 
-	Greeting.mount(document.getElementById("root"));
+	
+	Message.mount(document.getElementById("root"));

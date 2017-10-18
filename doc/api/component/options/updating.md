@@ -1,14 +1,10 @@
-# Component.el
+# Component.updating
 
-Returns the element the instance is mounted to.
+Invoked before the component is updated.
 
 ## Usage
 
-Component.el
-
-### Returns
-
-`Object` The element.
+Component.updating
 
 ## Example
 
@@ -18,13 +14,9 @@ Component.el
 				name: "World"
 			});
 		},
-		mounted: function() {
-			el.addEventListener("click", () => {
-				this.update({
-					name: "Combo"
-				});
-			});
-		}
+		updating: function() {
+			console.log("The component is about to be updated.");
+		},
 		render: function() {
 			return `
 				<div>Hello ${this.data.name}</div>

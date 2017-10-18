@@ -1,24 +1,34 @@
 # API Reference
 
-## Component
+## Combo
+
+### Options
+
+* [manipulating](core/manipulating.md)
+* [manipulated](core/manipulated.md)
+
+## Combo.Component 
 
 * [constructor](component/constructor.md)
-* [el](component/el.md)
 * [clone](component/clone.md)
+* [data](component/data.md)
+* [el](component/el.md)
 * [isMounted](component/isMounted.md)
-* [update](component/update.md)
 * [mount](component/mount.md)
+* [props](component/props.md)
+* [unmount](component/unmount.md)
+* [update](component/update.md)
 
-**Options**
+### Options
 
-* [beforeMount](component/opts/beforeMount.md)
-* [created](component/opts/created.md)
-* [cloned](component/opts/cloned.md)
-* [data](component/opts/data.md)
-* [mounted](component/opts/mounted.md)
-* [render](component/opts/render.md)
-* [updated](component/opts/updated.md)
-
-## Stylesheet
-
-* [constructor](stylesheet/constructor.md)
+* [cloning](component/cloning.md)
+* [cloned](component/cloned.md)
+* [creating](component/creating.md)
+* [created](component/created.md)
+* [mounting](component/mounting.md)
+* [mounted](component/mounted.md)
+* [render](component/render.md)
+* [unmounting](component/unmounting.md)
+* [unmounted](component/unmounted.md)
+* [updating](component/updating.md)
+* [updated](component/updated.md)

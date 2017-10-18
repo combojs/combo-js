@@ -12,24 +12,24 @@ Component.el
 
 ## Example
 
-	var Greeting = new Combo.Component({
+	var Message = new Combo.Component({
 		created: function() {
 			this.update({
-				name: "World"
+				text: "Click Me"
 			});
 		},
 		mounted: function() {
-			el.addEventListener("click", () => {
+			this.el.addEventListener("click", ()=> {
 				this.update({
-					name: "Combo"
+					text: "Hello World"
 				});
 			});
-		}
+		},
 		render: function() {
 			return `
-				<div>Hello ${this.data.name}</div>
+				<div>${this.data.text}</div>
 			`;
 		}
 	});
 
-	Greeting.mount(document.getElementById("root"));
+	Message.mount(document.getElementById("root"));

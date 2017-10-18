@@ -1,37 +1,43 @@
 # Change Log
 
+## 2.0.0
+
+* Completely rewritten
+* Added Combo.manipulating lifecycle hook.
+* Added Combo.manipulated lifecycle hook.
+* Added Component.creating lifecycle hook.
+* Added Component.cloning lifecycle hook.
+* Added Component.updating lifecycle hook.
+* Changed Component.beforeMount lifecycle hook to mounting.
+* Changed Component.mount to store properties in Component.props option.
+* Fixed issue with components being remounted on an update.
+* Removed Combo.Stylesheet. It will become its own repository
+
 ## 1.5.0
-	
-* Added: mount() can pass optional data to beforeMount(), render(), and mounted()
+
+* Added the ability for Component.mount to pass arguments
 
 ## 1.4.0
-	
-* Added: Component.beforeMount
-* Updated: Component.render API documentation
+
+* Added Component.beforeMount lifecycle hook
 
 ## 1.3.0
-	
-* Added: Combo.StyleSheet
+
+* Added Combo.stylesheet
 
 ## 1.2.0
 
-* Updated: Combo.mount has been changed to component.mount
-* Updated: Component.mount accepts an HTMLElement instead of an ID
+* Changed Combo.mount to accept elements, and moved it to Component.
 
 ## 1.1.1
 
-* Fixed: combo.render() called instead of combo.mount()
+* Fixed issue with Combo.render being called instead of Combo.mount.
 
 ## 1.1.0
 
-* Added: component.clone()
-* Added: component.options.cloned()
-* Removed: component.extend()
+* Fixed issue with Component.isMounted being defined incorrectly.
 
-## 1.0.1 
-
-* Fixed: Bug treating isMounted as a method instead of a property.
-
-# 1.0.0 
+## 1.0.0
 
 * Initial public release.
+

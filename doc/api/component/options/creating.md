@@ -1,14 +1,17 @@
-# Component.isMounted
+# Component.creating
 
-Returns a boolean value that indicates if the component is mounted.
+Invoked before the component is created.
 
 ## Usage
 
-Component.isMounted
+Component.creating
 
 ## Example
 
 	var Greeting = new Combo.Component({
+		creating: function() {
+			console.log("The component is about to be created.");
+		},
 		render: function() {
 			return `
 				<div>Hello World</div>
@@ -18,4 +21,3 @@ Component.isMounted
 
 	Greeting.mount(document.getElementById("root"));
 
-	console.log(Greeting.isMounted)

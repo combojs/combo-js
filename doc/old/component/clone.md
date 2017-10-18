@@ -1,10 +1,10 @@
-# Component.constructor
+# Component.clone
 
-The constructor function. 
+Returns a new instance of the component.
 
 ## Usage
 
-Component([options = {}])
+Component.clone();
 
 ### Params
 
@@ -14,12 +14,15 @@ Component([options = {}])
 
 ## Example
 
-	var Greeting = new Combo.Component({
+	var Message = new Combo.Component({
+		cloned: function() {
+			console.log("The instance was cloned.");
+		},
 		render: function() {
 			return `
-				<div>Hello World</div>
+				<div>Hello Combo</div>
 			`;
 		}
 	});
 
-	Greeting.mount(document.getElementById("root"));
+	var Message2 = Message.clone();

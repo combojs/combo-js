@@ -35,57 +35,97 @@ var Combo;
 
 	"use strict";
 
-	// **replaceHTML**
+	// **removeHTML**
 	//
-	// Replace the contents of the container element with an HTML string.
+	// Remove children from a container element.
 	//
 
-	function replaceHTML(el, html) {
-		//
-		// Remove the child nodes from the container element.
-		//
+	function _removeHTML(el) {
 		if (typeof el.firstChild !== "undefined") {
 			while (el.firstChild) {
 				el.removeChild(el.firstChild);
 			}
 		}
-		//
-		// Insert the HTML.
-		//
-		el.insertAdjacentHTML("beforeEnd", html);
 	}
 
-	// ## Component
+	// **replaceHTML**
 	//
-	// Represents a component, view, or fragment.
+	// Replace children with an HTML string.
 	//
-	Combo.Component = function () {
-		// **constructor**
+	function _replaceHTML(el, html) {
+		// **manipulating**
 		//
-		// The constructor function.
+		// Called before the DOM is manipulated.
+		//
+		if (typeof Combo.manipulating === "function") {
+			Combo.manipulating(el);
+		}
+
+		//
+		// Remove the child elements.
+		//
+		_removeHTML(el);
+
+		// Insert the HTML string.
+		//
+		el.insertAdjacentHTML("beforeEnd", html);
+
+		// **manipulated**
+		//
+		// Called after the DOM is manipulated.
+		//
+		if (typeof Combo.manipulated === "function") {
+			Combo.manipulated(el);
+		}
+	}
+
+	Combo.Component = function () {
+
+		// **clone**
+		//
+		// Return a new instance of the component.
 		//
 		function _class() {
 			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 			_classCallCheck(this, _class);
 
+			// **creating**
 			//
-			// Extend the component from the options.
+			// Invoked before the component is created.
+			//
+			if (typeof options.creating === "function") {
+				options.creating();
+			}
+
+			//
+			// Extend the component with the options.
 			//
 			Object.assign(this, options);
+
 			//
-			// Add the data object if undefined.
+			// Extend the component with a props object.
+			//
+			if (typeof this.props === "undefined") {
+				this.props = {};
+			}
+
+			//
+			// Extend the component with a data object.
 			//
 			if (typeof this.data === "undefined") {
 				this.data = {};
 			}
+
+			// **created**
 			//
-			// Invoke the created lifecycle hook.
-			//
+			// Invoked after the component is created.
+			//	
 			if (typeof this.created === "function") {
 				this.created();
 			}
 		}
+
 		// **clone**
 		//
 		// Return a new instance of the component.
@@ -95,21 +135,36 @@ var Combo;
 		_createClass(_class, [{
 			key: "clone",
 			value: function clone() {
+				// **cloning**
+				//
+				// Invoked before the component is cloned.
+				//
+				if (typeof this.cloning === "function") {
+					this.cloning();
+				}
+
+				//
+				// Create a new instance of the component.
+				//
 				var clone = Object.assign(Object.create(this), this);
+
+				// **cloned**
 				//
-				// Invoke the cloned lifecycle hook.
-				//
+				// Invoked after the component is cloned.
+				//	
 				if (typeof this.cloned === "function") {
 					this.cloned();
 				}
+
 				//
-				// Return the instance of the component.
+				// Return the new instance of the component.
 				//
 				return clone;
 			}
+
 			// **update**
 			//
-			// Update the component's data and redraw it.
+			// Update the data and redraw the component if it's mounted.
 			//
 
 		}, {
@@ -117,20 +172,35 @@ var Combo;
 			value: function update() {
 				var values = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
+				// **updating**
+				//
+				// Invoked before the component is updated.
+				//
+				if (typeof this.updating === "function") {
+					this.updating();
+				}
+
+				//
+				// Update the component's data object.
+				//
 				this.data = Object.assign({}, this.data, values);
+
 				//
-				// Invoke the updated lifecycle hook.
+				// Redraw the component if it was mounted.
 				//
+				if (this.isMounted) {
+					_replaceHTML(this.el, this.render());
+				}
+
+				// **updated**
+				//
+				// Invoked after the component is updated.
+				//	
 				if (typeof this.updated === "function") {
 					this.updated();
 				}
-				//
-				// Redraw the component if it's mounted.
-				//
-				if (this.isMounted) {
-					this.mount(this.el);
-				}
 			}
+
 			// **mount**
 			//
 			// Mount the component to a container element.
@@ -139,29 +209,82 @@ var Combo;
 		}, {
 			key: "mount",
 			value: function mount(el) {
-				var props = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+				var values = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-				this.el = el;
+				// **mounting**
 				//
-				// Invoke the beforeMount lifecycle hook.
+				// Invoked before the component is mounted.
 				//
-				if (typeof this.beforeMount === "function") {
-					this.beforeMount(props);
+				if (typeof this.mounting === "function") {
+					this.mounting();
 				}
+
 				//
-				// Replace the HTML of the container element.
+				// Mount the component to a container element.
 				//
-				replaceHTML(el, this.render(props));
+				this.el = el;
+
 				//
-				// Invoke the mounted lifecycle hook.
+				// Update the component's prop object.
 				//
+				this.props = Object.assign({}, this.props, values);
+
+				//
+				// Draw the component in its container element.
+				//
+				_replaceHTML(this.el, this.render());
+
+				// **mounted**
+				//
+				// Invoked after the component is mounted.
+				//	
 				if (typeof this.mounted === "function") {
-					this.mounted(props);
+					this.mounted();
 				}
 			}
+
+			// **unmount**
+			//
+			// Unmount the component from its container element.
+			//
+
+		}, {
+			key: "unmount",
+			value: function unmount() {
+				var remove = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
+				// **unmounting**
+				//
+				// Invoked before the component is unmounted.
+				//
+				if (typeof this.unmounting === "function") {
+					this.unmounting();
+				}
+
+				//
+				// Remove the component from the container element.
+				//
+				if (remove === true) {
+					_removeHTML(this.el);
+				}
+
+				//
+				// Delete the assignment to the container element.
+				//	
+				delete this.el;
+
+				// **unmounted**
+				//
+				// Invoked after the component is mounted.
+				//	
+				if (typeof this.unmounted === "function") {
+					this.unmounted();
+				}
+			}
+
 			// **isMounted**
 			//
-			// Determining if the component is mounted.
+			// Returns a boolean value that indicates if the component is mounted.
 			//
 
 		}, {
@@ -172,32 +295,5 @@ var Combo;
 		}]);
 
 		return _class;
-	}();
-	// ## Stylesheet
-	//
-	// Represents a stylesheet.
-	//
-	Combo.Stylesheet = function () {
-		// **constructor**
-		//
-		// The constructor function.
-		//	
-		function _class2() {
-			var styles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-			_classCallCheck(this, _class2);
-
-			for (var style in styles) {
-				var result = "";
-
-				for (var rule in styles[style]) {
-					result += rule + ":" + styles[style][rule] + ";";
-				}
-
-				this[style] = result;
-			}
-		}
-
-		return _class2;
 	}();
 })(Combo || (Combo = {}));
