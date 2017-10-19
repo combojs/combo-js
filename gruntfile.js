@@ -54,11 +54,11 @@ module.exports = function(grunt) {
 		// uglify -------------------------------------------------------------
 
 		uglify: {
-			legacy: {
+			dist: {
 				src: 'dist/combo.full.js',
 				dest: 'dist/combo.min.js'
 			}
-		}
+		} 	
 	});
 
 	// load -------------------------------------------------------------------
