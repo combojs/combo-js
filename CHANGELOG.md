@@ -1,5 +1,10 @@
 # Change Log
 
+## 2.1.0
+
+* Added a link to combo-examples on the README.md 
+* Removed Component.props and changed Component.mount to optionally pass data.
+
 ## 2.0.0
 
 * Completely rewritten
