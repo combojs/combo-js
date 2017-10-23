@@ -4,24 +4,26 @@ Mount the component to a container element.
 
 ## Usage
 
-Component.mount(el, [props])
+Component.mount(el, [data])
 
 | Param           | Type          | Details                       |
 | --------------- | ------------- | ----------------------------- |
 | el              | `HTMLElement` | The container element.        |
-| [props]         | `Object`      | The props.                    |
-
+| [data]          | `Object`      | The data.                     |
+ 
 ## Example
 
 	var Greeting = new Combo.Component({
 		render: function() {
 			return `
-				<div>Hello World</div>
+				<div>Hello ${this.data.name}</div>
 			`;
 		}
 	});
 
-	Greeting.mount(document.getElementById("root"));
+	Greeting.mount(document.getElementById("root"), {
+		name: "World"	
+	});
 
 ## Notes
 

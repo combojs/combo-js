@@ -126,9 +126,9 @@ Combo.Component = class {
 		this.el = el;
 
 		//
-		// Update the component's prop object.
+		// Update the component's data object.
 		//
-		this.props = Object.assign({}, this.props, values);
+		this.data = Object.assign({}, this.data, values);
 
 		//
 		// Draw the component in its container element.

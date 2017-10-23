@@ -15,7 +15,6 @@
 * [el](component/el.md)
 * [isMounted](component/isMounted.md)
 * [mount](component/mount.md)
-* [props](component/props.md)
 * [unmount](component/unmount.md)
 * [update](component/update.md)
 
