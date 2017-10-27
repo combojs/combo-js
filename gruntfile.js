@@ -11,8 +11,7 @@ module.exports = function(grunt) {
 				src: [
 					"src/combo.prefix.js",
 					"src/modules/core.js",
-					"src/modules/component.js",
-					"src/modules/stylesheet.js",					
+					"src/modules/component.js"				
 					"src/combo.suffix.js"
 				],
 				dest: "dist/combo.full.js"

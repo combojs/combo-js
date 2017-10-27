@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.1.1
+
+* Fixed documentation showing Combo.Stylesheet still part of the core library.
+
 ## 2.1.0
 
 * Added a link to combo-examples on the README.md 
@@ -16,6 +20,7 @@
 * Changed Component.beforeMount lifecycle hook to mounting.
 * Changed Component.mount to store properties in Component.props option.
 * Fixed issue with components being remounted on an update.
+* Removed Combo.Stylesheet. This will be in a separate repository.
 
 ## 1.5.0
 
