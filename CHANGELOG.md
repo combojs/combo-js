@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.2.0
+
+* Added: Combo.version property
+* Added: Component.ref property
+* Added: Additional package.json settings
+
 ## 2.1.1
 
 * Fixed documentation showing Combo.Stylesheet still part of the core library.

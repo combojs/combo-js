@@ -166,6 +166,7 @@
 	}
 }
 
+Combo.version = <span class="hljs-string">"2.2.0"</span>;
 Combo.Component = <span class="hljs-class"><span class="hljs-keyword">class</span> </span>{</pre></div></div>
             
         </li>
@@ -630,6 +631,28 @@ Combo.Component = <span class="hljs-class"><span class="hljs-keyword">class</spa
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-35">&#182;</a>
               </div>
+              <p><strong>ref</strong></p>
+<p>Returns the variable name the component is assigned to.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	get ref() {
+		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> instance <span class="hljs-keyword">in</span> <span class="hljs-built_in">window</span>){
+			<span class="hljs-keyword">if</span> (!<span class="hljs-regexp">/webkitStorageInfo|webkitIndexedDB/</span>.test(instance) &amp;&amp; <span class="hljs-built_in">window</span>[instance] === <span class="hljs-keyword">this</span>) {
+				<span class="hljs-keyword">return</span> instance;
+			}
+		}
+	}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-36">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-36">&#182;</a>
+              </div>
               <p><strong>isMounted</strong></p>
 <p>Returns a boolean value that indicates if the component is mounted.</p>
 
@@ -639,8 +662,6 @@ Combo.Component = <span class="hljs-class"><span class="hljs-keyword">class</spa
 		<span class="hljs-keyword">return</span> !!<span class="hljs-keyword">this</span>.el;
 	}
 };
-
-
 
 })(Combo || (Combo = {}));</pre></div></div>
             

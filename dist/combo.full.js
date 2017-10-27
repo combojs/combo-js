@@ -79,6 +79,7 @@ var Combo;
 		}
 	}
 
+	Combo.version = "2.2.0";
 	Combo.Component = function () {
 
 		// **clone**
@@ -279,6 +280,21 @@ var Combo;
 				//	
 				if (typeof this.unmounted === "function") {
 					this.unmounted();
+				}
+			}
+
+			// **ref**
+			//
+			// Returns the variable name the component is assigned to.
+			//
+
+		}, {
+			key: "ref",
+			get: function get() {
+				for (var instance in window) {
+					if (!/webkitStorageInfo|webkitIndexedDB/.test(instance) && window[instance] === this) {
+						return instance;
+					}
 				}
 			}
 
