@@ -1,8 +1,19 @@
 {
 	"name": "combo-js",
 	"description": "A lightweight library for creating user interfaces.",
-	"version": "2.0.0",
+	"homepage": "http://www.combojs.com/",
+	"version": "2.2.0",
 	"author": "Eric Harms",
+	"keywords": [
+		"javascript",
+		"framework",
+		"library",
+		"templating",
+		"template",
+		"combojs",
+		"combo.js",
+		"combo"
+	],
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/combojs/combo-js.git"
@@ -16,9 +27,7 @@
 		"grunt-contrib-concat": "^1.0.1",
 		"grunt-contrib-jshint": "^1.1.0",
 		"grunt-contrib-uglify": "^2.0.0",
-		"grunt-docco": "0.5.0"
-	},
-	"dependencies": {
-		"bower": "^1.8.0"
+		"grunt-docco": "^0.5.0",
+		"grunt-text-replace": "^0.4.0"
 	}
 }

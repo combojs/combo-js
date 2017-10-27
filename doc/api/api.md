@@ -2,6 +2,8 @@
 
 ## Combo
 
+* [version](core/version.md)
+
 ### Options
 
 * [manipulating](core/options/manipulating.md)
@@ -15,6 +17,7 @@
 * [el](component/el.md)
 * [isMounted](component/isMounted.md)
 * [mount](component/mount.md)
+* [ref](component/ref.md)
 * [unmount](component/unmount.md)
 * [update](component/update.md)
 

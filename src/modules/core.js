@@ -40,3 +40,5 @@ function _replaceHTML(el, html) {
 		Combo.manipulated(el);
 	}
 }
+
+Combo.version = "@version";
