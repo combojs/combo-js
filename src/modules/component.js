@@ -178,6 +178,18 @@ Combo.Component = class {
 		}			
 	}
 
+	// **ref**
+	//
+	// Returns the variable name the component is assigned to.
+	//
+	get ref() {
+		for (var instance in window){
+			if (!/webkitStorageInfo|webkitIndexedDB/.test(instance) && window[instance] === this) {
+				return instance;
+			}
+		}
+	}
+
 	// **isMounted**
 	//
 	// Returns a boolean value that indicates if the component is mounted.
@@ -186,4 +198,3 @@ Combo.Component = class {
 		return !!this.el;
 	}
 };
-
