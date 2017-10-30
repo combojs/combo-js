@@ -1,3 +1,5 @@
+// ## Core
+
 // **removeHTML**
 //
 // Remove children from a container element.
@@ -41,4 +43,8 @@ function _replaceHTML(el, html) {
 	}
 }
 
+// **version**
+//
+// Returns the semantic version number.
+//
 Combo.version = "@version";
