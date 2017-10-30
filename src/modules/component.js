@@ -1,3 +1,7 @@
+// ## Component
+//
+// Represents a component, view, or fragment.
+//
 Combo.Component = class {
 
 	// **clone**
@@ -78,12 +82,14 @@ Combo.Component = class {
 	// Update the data and redraw the component if it's mounted.
 	//
 	update(values = {}) {
+		var prior = this.data;
+
 		// **updating**
 		//
 		// Invoked before the component is updated.
 		//
 		if(typeof this.updating === "function") {
-			this.updating();
+			this.updating(prior);
 		}
 		
 		//
@@ -103,7 +109,7 @@ Combo.Component = class {
 		// Invoked after the component is updated.
 		//	
 		if(typeof this.updated === "function") {
-			this.updated();
+			this.updated(prior);
 		}		
 	}
 	
