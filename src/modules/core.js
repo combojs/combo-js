@@ -12,14 +12,14 @@ function _removeHTML(el) {
 	}
 }
 
-// **replaceHTML**
+// **outputHTML**
 //
-// Replace children with an HTML string.
+// Replace or append children in a container element.
 //
-function _replaceHTML(el, html) {
+function _outputHTML(el, html, append = false) {
 	// **manipulating**
 	//
-	// Called before the DOM is manipulated.
+	// Invoked before the DOM is manipulated.
 	//
 	if(typeof Combo.manipulating === "function") {
 		Combo.manipulating(el);
@@ -28,7 +28,9 @@ function _replaceHTML(el, html) {
 	//
 	// Remove the child elements.
 	//
-	_removeHTML(el);
+	if (append === false) {
+		_removeHTML(el);
+	}
 
 	// Insert the HTML string.
 	//
@@ -36,7 +38,7 @@ function _replaceHTML(el, html) {
 
 	// **manipulated**
 	//
-	// Called after the DOM is manipulated.
+	// Invoked after the DOM is manipulated.
 	//
 	if(typeof Combo.manipulated === "function") {
 		Combo.manipulated(el);
