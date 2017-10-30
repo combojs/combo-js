@@ -173,12 +173,14 @@ var Combo;
 			value: function update() {
 				var values = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
+				var prior = this.data;
+
 				// **updating**
 				//
 				// Invoked before the component is updated.
 				//
 				if (typeof this.updating === "function") {
-					this.updating();
+					this.updating(prior);
 				}
 
 				//
@@ -198,7 +200,7 @@ var Combo;
 				// Invoked after the component is updated.
 				//	
 				if (typeof this.updated === "function") {
-					this.updated();
+					this.updated(prior);
 				}
 			}
 
