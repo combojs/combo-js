@@ -4,9 +4,9 @@
 //
 Combo.Component = class {
 
-	// **clone**
+	// **constructor**
 	//
-	// Return a new instance of the component.
+	// Represents the constructor function.
 	//
 	constructor(options = {}) {
 		// **creating**
@@ -21,13 +21,6 @@ Combo.Component = class {
 		// Extend the component with the options.
 		//
 		Object.assign(this, options);
-
-		//
-		// Extend the component with a props object.
-		//
-		if(typeof this.props === "undefined") {
-			this.props = {};
-		}
 
 		//
 		// Extend the component with a data object.
