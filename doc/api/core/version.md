@@ -1,6 +1,6 @@
 # Combo.version
 
-Returns the version number.
+Returns the current semantic version number.
 
 ## Usage
 
@@ -13,4 +13,3 @@ Combo.version
 ## Example
 
 	console.log(Combo.version);
-
