@@ -35,6 +35,8 @@ var Combo;
 
 	"use strict";
 
+	// ## Core
+
 	// **removeHTML**
 	//
 	// Remove children from a container element.
@@ -48,14 +50,16 @@ var Combo;
 		}
 	}
 
-	// **replaceHTML**
+	// **outputHTML**
 	//
-	// Replace children with an HTML string.
+	// Replace or append children in a container element.
 	//
-	function _replaceHTML(el, html) {
+	function _outputHTML(el, html) {
+		var append = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+
 		// **manipulating**
 		//
-		// Called before the DOM is manipulated.
+		// Invoked before the DOM is manipulated.
 		//
 		if (typeof Combo.manipulating === "function") {
 			Combo.manipulating(el);
@@ -64,7 +68,9 @@ var Combo;
 		//
 		// Remove the child elements.
 		//
-		_removeHTML(el);
+		if (append === false) {
+			_removeHTML(el);
+		}
 
 		// Insert the HTML string.
 		//
@@ -72,19 +78,21 @@ var Combo;
 
 		// **manipulated**
 		//
-		// Called after the DOM is manipulated.
+		// Invoked after the DOM is manipulated.
 		//
 		if (typeof Combo.manipulated === "function") {
 			Combo.manipulated(el);
 		}
 	}
-
-	Combo.version = "2.2.0";
+	// ## Component
+	//
+	// Represents a component, view, or fragment.
+	//
 	Combo.Component = function () {
 
-		// **clone**
+		// **constructor**
 		//
-		// Return a new instance of the component.
+		// Represents the constructor function.
 		//
 		function _class() {
 			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -103,13 +111,6 @@ var Combo;
 			// Extend the component with the options.
 			//
 			Object.assign(this, options);
-
-			//
-			// Extend the component with a props object.
-			//
-			if (typeof this.props === "undefined") {
-				this.props = {};
-			}
 
 			//
 			// Extend the component with a data object.
@@ -192,7 +193,7 @@ var Combo;
 				// Redraw the component if it was mounted.
 				//
 				if (this.isMounted) {
-					_replaceHTML(this.el, this.render());
+					_outputHTML(this.el, this.render());
 				}
 
 				// **updated**
@@ -235,7 +236,7 @@ var Combo;
 				//
 				// Draw the component in its container element.
 				//
-				_replaceHTML(this.el, this.render());
+				_outputHTML(this.el, this.render());
 
 				// **mounted**
 				//
@@ -244,6 +245,17 @@ var Combo;
 				if (typeof this.mounted === "function") {
 					this.mounted();
 				}
+			}
+
+			// **mount**
+			//
+			// Append the UI to the bottom of a container element.
+			//
+
+		}, {
+			key: "append",
+			value: function append(el) {
+				_outputHTML(el, this.render(), true);
 			}
 
 			// **unmount**
