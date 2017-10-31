@@ -12,18 +12,29 @@ Component.unmount([remove])
 
 ## Example
 
-	var Greeting = new Combo.Component({
-		unmounted: function() {
-			console.log("The component was unmounted.");
-		},
-		render: function() {
-			return `
-				<div>Hello World</div>
-			`;
-		}
-	});
+    var Message = new Combo.Component({
+        close: function() {
+            this.unmount(true);
+        },  
+        render: function() {
+            let me = this.ref;
 
-	Greeting.mount(document.getElementById("root"));
+            return `
+                <div class="message">
+                    <div class="message-header">
+                        Important
+                        <button onclick="${me}.close()" class="delete is-large" aria-label="delete"/>
+                    </div>
+                    <div class="message-body">
+                        ${this.data.message}
+                    </div>
+                </div>
+            `;
+        }, 
+    });
 
-	Greeting.unmount();
-	
+    Message.mount(document.getElementById("root"), {
+        message: "Classes will be cancelled today due to inclement weather."
+    });
+
+[View on CodePen](https://codepen.io/combojs/pen/rYadby?editors=0110)

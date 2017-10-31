@@ -12,22 +12,28 @@ Component.update(values)
 
 ## Example
 
-	var Greeting = new Combo.Component({
+	var Timer = new Combo.Component({
 		created: function() {
 			this.update({
-				name: "World"
+				tick: 0
 			});
+		},
+		mounted: function() {
+			setInterval(()=> {
+				this.update({
+					tick: this.data.tick + 1
+				});
+			}, 1000);
 		},
 		render: function() {
 			return `
-				<div>Hello ${this.data.name}</div>
+				<div class="box">
+					${this.data.tick} seconds elapsed.
+				</div>
 			`;
 		}
 	});
 
-	Greeting.mount(document.getElementById("root"));
+	Timer.mount(document.getElementById("root"));
 
-	Greeting.update({
-		name: "Combo"
-	});
-	
+[View on CodePen](https://codepen.io/combojs/pen/bYdYdK?editors=0010)

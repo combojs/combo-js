@@ -8,17 +8,18 @@ Component.data
 
 ## Example
 
-	var Greeting = new Combo.Component({
-		created: function() {
-			this.update({
-				name: "World"
-			});
-		},
+	var Header = new Combo.Component({
 		render: function() {
-			return `
-				<div>Hello ${this.data.name}</div>
+			return `	
+				<header>
+					<h1 class="title">${this.data.title}</h1>
+				</header>
 			`;
 		}
 	});
 
-	Greeting.mount(document.getElementById("root"));
+	Header.mount(document.getElementById("root"), {
+		title: "Combo"
+	});
+
+[View on CodePen](https://codepen.io/combojs/pen/KypZEm)
