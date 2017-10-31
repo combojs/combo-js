@@ -6,16 +6,6 @@ Returns a boolean value that indicates if the component is mounted.
 
 Component.isMounted
 
-## Example
+### Returns
 
-	var Greeting = new Combo.Component({
-		render: function() {
-			return `
-				<div>Hello World</div>
-			`;
-		}
-	});
-
-	Greeting.mount(document.getElementById("root"));
-
-	console.log(Greeting.isMounted)
+`boolean` True if the component has been mounted.

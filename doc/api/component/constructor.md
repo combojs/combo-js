@@ -11,15 +11,3 @@ Component([options = {}])
 | Param             | Type        | Details                          |
 | ----------------- | ----------- | -------------------------------- |
 | options           | `Object`    | The options.                     |
-
-## Example
-
-	var Greeting = new Combo.Component({
-		render: function() {
-			return `
-				<div>Hello World</div>
-			`;
-		}
-	});
-
-	Greeting.mount(document.getElementById("root"));

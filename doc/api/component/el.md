@@ -1,6 +1,6 @@
 # Component.el
 
-Returns the element the instance is mounted to.
+Returns the container element the component is mounted to. 
 
 ## Usage
 
@@ -8,28 +8,4 @@ Component.el
 
 ### Returns
 
-`Object` The element.
-
-## Example
-
-	var Greeting = new Combo.Component({
-		created: function() {
-			this.update({
-				name: "World"
-			});
-		},
-		mounted: function() {
-			el.addEventListener("click", () => {
-				this.update({
-					name: "Combo"
-				});
-			});
-		}
-		render: function() {
-			return `
-				<div>Hello ${this.data.name}</div>
-			`;
-		}
-	});
-
-	Greeting.mount(document.getElementById("root"));
+`HTMLElement` The container element.
