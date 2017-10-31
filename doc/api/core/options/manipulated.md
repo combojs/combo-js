@@ -1,6 +1,6 @@
 # Combo.manipulated
 
-Invoked after the DOM was manipulated.
+Invoked after the DOM has been manipulated. 
 
 ## Usage
 
@@ -11,20 +11,3 @@ Component.manipulated
 | Param           | Type          | Details                       |
 | --------------- | ------------- | ----------------------------- |
 | el              | `HTMLElement` | The container element.        |
-
-
-## Example
-
-	var Greeting = new Combo.Component({
-		render: function() {
-			return `
-				<div>Hello World</div>
-			`;
-		}
-	});
-	
-	Combo.manipulated = function() {
-		console.log("The DOM was manipulated");
-	}
-
-	Greeting.mount(document.getElementById("root"));
