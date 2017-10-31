@@ -9,25 +9,46 @@ Component.mount(el, [data])
 | Param           | Type          | Details                       |
 | --------------- | ------------- | ----------------------------- |
 | el              | `HTMLElement` | The container element.        |
-| [data]          | `Object`      | The data.                     |
- 
+| [data]          | `Object`      | The optional data.            |
+
 ## Example
 
-	var Greeting = new Combo.Component({
-		render: function() {
-			return `
-				<div>Hello ${this.data.name}</div>
-			`;
-		}
-	});
+    var Tabs = new Combo.Component({
+        render: function() {
+            let tabs = this.data.tabs.map((item) => {
+                return `
+                    <li>
+                        <a href="${item.url}">${item.text}</a>
+                    </li>
+                `;
+            }).join("");
 
-	Greeting.mount(document.getElementById("root"), {
-		name: "World"	
-	});
+            return `
+                <div class="tabs">
+                    <ul>
+                        ${tabs}
+                    </ul>
+                </div>
+            `;
+        }
+    });
 
-## Notes
+    Tabs.mount(document.getElementById("root"), {
+        tabs: [
+            {
+                text: "Pictures",
+                url: "#"
+            },
+            {
+                text: "Music",
+                url: "#"
+            },              
+            {
+                text: "Videos",
+                url: "#"
+            }                      
+        ]
+    });
 
-Child components do not need to be mounted, unless they need to be updated independently from their parent.
-
-[See Render Example](options/render.md)
+[View in CodePen](https://codepen.io/combojs/pen/EbaRNz)
 
