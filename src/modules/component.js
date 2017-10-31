@@ -94,7 +94,7 @@ Combo.Component = class {
 		// Redraw the component if it was mounted.
 		//
 		if(this.isMounted) {
-			_replaceHTML(this.el, this.render());
+			_outputHTML(this.el, this.render());
 		}
 
 		// **updated**
@@ -132,7 +132,7 @@ Combo.Component = class {
 		//
 		// Draw the component in its container element.
 		//
-		_replaceHTML(this.el, this.render());
+		_outputHTML(this.el, this.render());
 
 		// **mounted**
 		//
@@ -143,6 +143,14 @@ Combo.Component = class {
 		}		
 	}
 	
+	// **mount**
+	//
+	// Append the UI to the bottom of a container element.
+	//
+	append(el) {
+		_outputHTML(el, this.render(), true);
+	}
+
 	// **unmount**
 	//
 	// Unmount the component from its container element.
