@@ -1,6 +1,6 @@
 # Combo.manipulating
 
-Invoked before the DOM is manipulated.
+Invoked before the DOM is manipulated by Combo.
 
 ## Usage
 
