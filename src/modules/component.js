@@ -143,7 +143,7 @@ Combo.Component = class {
 		}		
 	}
 	
-	// **mount**
+	// **append**
 	//
 	// Append the UI to the bottom of a container element.
 	//
