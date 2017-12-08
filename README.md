@@ -17,17 +17,17 @@ Combo.js is a lightweight library for creating user-interfaces.
 
 ## Example
 
-    var Message = new class extends Combo.Component {
+    var Greeting = new class extends Combo.Component {
         render() {
             return `
-                <div>Hello ${this.data.name}</div>
+                <h1>Hello ${this.data.name}
             `;
         }
     }();
-    
-    Message.mount(document.getElementById("root"), {
-    	name: "Combo"
-	});
+
+    Greeting.mount(document.getElementById("root"), {
+        name: "Combo"
+    });
     
 ## Contributing
 
