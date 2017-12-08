@@ -145,10 +145,29 @@ Combo.Component = class {
 	
 	// **append**
 	//
-	// Append the UI to the bottom of a container element.
+	// Append the component's markup to the bottom of a container element.
 	//
 	append(el) {
+		// **appending**
+		//
+		// Invoked before the component is appended.
+		//
+		if(typeof this.appending === "function") {
+			this.appending();
+		}
+
+		//
+		// Draw the component at the end of the container element.
+		//
 		_outputHTML(el, this.render(), true);
+
+		// **appended**
+		//
+		// Invoked after the component is appended.
+		//
+		if(typeof this.appended === "function") {
+			this.appended();
+		}		
 	}
 
 	// **unmount**
