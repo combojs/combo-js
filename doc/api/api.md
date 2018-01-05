@@ -6,31 +6,32 @@
 
 ### Options
 
-* [manipulating](core/options/manipulating.md)
-* [manipulated](core/options/manipulated.md)
+* [manipulating](core/opts/manipulating.md)
+* [manipulated](core/opts/manipulated.md)
 
-## Combo.Component 
+## Combo.Component
 
-* [constructor](component/constructor.md)
-* [clone](component/clone.md)
-* [data](component/data.md)
-* [el](component/el.md)
-* [isMounted](component/isMounted.md)
-* [mount](component/mount.md)
-* [ref](component/ref.md)
-* [unmount](component/unmount.md)
-* [update](component/update.md)
+* [constructor](com/constructor.md)
+* [clone](com/clone.md)
+* [data](com/data.md)
+* [el](com/el.md)
+* [isMounted](com/isMounted.md)
+* [mount](com/mount.md)
+* [ref](com/ref.md)
+* [unmount](com/unmount.md)
+* [update](com/update.md)
 
 ### Options
 
-* [cloning](component/options/cloning.md)
-* [cloned](component/options/cloned.md)
-* [creating](component/options/creating.md)
-* [created](component/options/created.md)
-* [mounting](component/options/mounting.md)
-* [mounted](component/options/mounted.md)
-* [render](component/options/render.md)
-* [unmounting](component/options/unmounting.md)
-* [unmounted](component/options/unmounted.md)
-* [updating](component/options/updating.md)
-* [updated](component/options/updated.md)
+* [cloning](com/opts/cloning.md)
+* [cloned](com/opts/cloned.md)
+* [created](com/opts/created.md)
+* [mounting](com/opts/mounting.md)
+* [mounted](com/opts/mounted.md)
+* [render](com/opts/render.md)
+* [unmounting](com/opts/unmounting.md)
+* [unmounted](com/opts/unmounted.md)
+* [updating](com/opts/updating.md)
+* [updated](com/opts/updated.md)
+
+
