@@ -27,7 +27,7 @@ Inside the `mounted` lifecycle method.
 
 ## Do I need to mount all child components?
    
-No. If a component doesn't update itself, it doesn't need to be mounted.
+No. If a component doesn't redraw itself, it doesn't need to be mounted.
 
     var Foo = new class extends Combo.Component {
         render() {
