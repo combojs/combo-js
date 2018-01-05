@@ -12,21 +12,35 @@ Combo.js is a lightweight library for creating user-interfaces.
 
 * [Website](http://www.combojs.com/)
 * [API](doc/api/api.md)
+* [FAQ](doc/faq/faq.md)
 * [Annotated Source](https://cdn.rawgit.com/combojs/combo-js/master/doc/docco/combo.full.html)
 * [Combo Seed](https://github.com/combojs/combo-seed)
 
 ## Example
 
-    var Greeting = new class extends Combo.Component {
+    var Fruit = new class extends Combo.Component {
+        _items() {
+            return this.data.items.map((item) => {
+                return `
+                    <li>${item}</li>
+                `;
+            }).join("");
+        }
         render() {
             return `
-                <h1>Hello ${this.data.name}
+                <ul>
+                    ${this._items()}
+                </ul>
             `;
         }
     }();
 
-    Greeting.mount(document.getElementById("root"), {
-        name: "Combo"
+    Fruit.mount(document.getElementById("root"), {
+        items: [
+            "Apple",
+            "Orange",
+            "Bannana"
+        ]
     });
     
 ## Contributing
