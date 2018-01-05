@@ -1,6 +1,6 @@
 # Combo.version
 
-Returns the current semantic version number.
+Returns the current version number.
 
 ## Usage
 
@@ -11,5 +11,13 @@ Combo.version
 `string` The version number.
 
 ## Example
+            
+    var Version = new class extends Combo.Component {
+        render() {
+            return `
+                <div>Version: ${Combo.version}.</div>
+            `;
+        }
+    }();
 
-	console.log(Combo.version);
+    Version.mount(document.getElementById("root"));
