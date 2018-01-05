@@ -84,6 +84,12 @@ var Combo;
 			Combo.manipulated(el);
 		}
 	}
+
+	// **version**
+	//
+	// Returns the semantic version number.
+	//
+	Combo.version = "2.2.0";
 	// ## Component
 	//
 	// Represents a component, view, or fragment.
@@ -245,17 +251,6 @@ var Combo;
 				if (typeof this.mounted === "function") {
 					this.mounted();
 				}
-			}
-
-			// **mount**
-			//
-			// Append the UI to the bottom of a container element.
-			//
-
-		}, {
-			key: "append",
-			value: function append(el) {
-				_outputHTML(el, this.render(), true);
 			}
 
 			// **unmount**
