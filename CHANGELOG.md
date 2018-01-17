@@ -1,58 +1,6 @@
 # Change Log
 
-## 2.2.0
+## 3.0.0
 
-* Added: Combo.version property
-* Added: Component.ref property
-* Added: Additional package.json settings
-
-## 2.1.1
-
-* Fixed documentation showing Combo.Stylesheet still part of the core library.
-
-## 2.1.0
-
-* Added a link to combo-examples on the README.md 
-* Removed Component.props and changed Component.mount to optionally pass data.
-
-## 2.0.0
-
-* Completely rewritten
-* Added Combo.manipulating lifecycle hook.
-* Added Combo.manipulated lifecycle hook.
-* Added Component.creating lifecycle hook.
-* Added Component.cloning lifecycle hook.
-* Added Component.updating lifecycle hook.
-* Changed Component.beforeMount lifecycle hook to mounting.
-* Changed Component.mount to store properties in Component.props option.
-* Fixed issue with components being remounted on an update.
-* Removed Combo.Stylesheet. This will be in a separate repository.
-
-## 1.5.0
-
-* Added the ability for Component.mount to pass arguments
-
-## 1.4.0
-
-* Added Component.beforeMount lifecycle hook
-
-## 1.3.0
-
-* Added Combo.stylesheet
-
-## 1.2.0
-
-* Changed Combo.mount to accept elements, and moved it to Component.
-
-## 1.1.1
-
-* Fixed issue with Combo.render being called instead of Combo.mount.
-
-## 1.1.0
-
-* Fixed issue with Component.isMounted being defined incorrectly.
-
-## 1.0.0
-
-* Initial public release.
+* Combo has been rewritten to use modules.
 

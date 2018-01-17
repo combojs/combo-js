@@ -1,4 +1,44 @@
-import {_removeHTML, _replaceHTML} from "./utils.js";
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/modules/component.js | Combo</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="A lightweight library for creating user interfaces."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="Combo"><meta property="twitter:description" content="A lightweight library for creating user interfaces."></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#modules">modules</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/modules/component.js~Component.html">Component</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_removeHTML">_removeHTML</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_replaceHTML">_replaceHTML</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-version">version</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/modules/component.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {_removeHTML, _replaceHTML} from &quot;./utils.js&quot;;
 
 /**
  * Represents a component or template.
@@ -23,13 +63,13 @@ export default class Component {
 	 * var Message = new class extends Combo.Component {
 	 *     render() {
 	 *         return `
-	 *             <p>Hello ${this.data.name}</p>
+	 *             &lt;p&gt;Hello ${this.data.name}&lt;/p&gt;
 	 *         `;
 	 *     }
 	 * }();
 	 *
-	 * Message.mount(document.getElementById("root"), {
-	 *    name: "World"
+	 * Message.mount(document.getElementById(&quot;root&quot;), {
+	 *    name: &quot;World&quot;
 	 * });
 	 */
 	constructor(options) {
@@ -41,7 +81,7 @@ export default class Component {
 		//
 		// If undefined, extend options with a data object.
 		//
-		if(typeof this.data === "undefined") {
+		if(typeof this.data === &quot;undefined&quot;) {
 			/**
 			 * Returns an object that contains data specific to the component.
 			 *
@@ -52,13 +92,13 @@ export default class Component {
 			 * var Message = new class extends Combo.Component {
 			 *     render() {
 			 *         return `
-			 *             <p>Hello ${this.data.name}</p>
+			 *             &lt;p&gt;Hello ${this.data.name}&lt;/p&gt;
 			 *         `;
 			 *     }
 			 * }();
 			 *
-			 * Message.mount(document.getElementById("root"), {
-			 *     name: "World"
+			 * Message.mount(document.getElementById(&quot;root&quot;), {
+			 *     name: &quot;World&quot;
 			 * });
 			 *
 			 */
@@ -68,7 +108,7 @@ export default class Component {
 		//
 		// If defined, invoke the created lifecycle method.
 		//
-		if(typeof this.created === "function") {
+		if(typeof this.created === &quot;function&quot;) {
 			this.created();
 		}
 	}
@@ -84,7 +124,7 @@ export default class Component {
 		//
 		// If defined, invoke the cloning lifecycle method.
 		//
-		if(typeof this.cloning === "function") {
+		if(typeof this.cloning === &quot;function&quot;) {
 			this.cloning();
 		}
 
@@ -96,7 +136,7 @@ export default class Component {
 		//
 		// If defined, invoke the cloned lifecycle method.
 		//
-		if(typeof this.cloned === "function") {
+		if(typeof this.cloned === &quot;function&quot;) {
 			this.cloned();
 		}
 
@@ -107,7 +147,7 @@ export default class Component {
 	}
 
 	/**
-	 * Update the component's data and force a redraw if it's mounted.
+	 * Update the component&apos;s data and force a redraw if it&apos;s mounted.
 	 *
 	 * @param {Object} [values={}] The values.
 	 *
@@ -120,7 +160,7 @@ export default class Component {
 	 *         });
 	 *     }
 	 *     mounted() {
-	 *         setInterval(()=> {
+	 *         setInterval(()=&gt; {
 	 *             this.update({
 	 *                 tick: this.data.tick + 1;
 	 *             });
@@ -128,12 +168,12 @@ export default class Component {
 	 *     }
 	 *     render() {
 	 *         return `
-	 *              <p>${this.data.tick} seconds elapsed.</p>
+	 *              &lt;p&gt;${this.data.tick} seconds elapsed.&lt;/p&gt;
 	 *         `;
 	 *     }
 	 * }();
 	 *
-	 * Timer.mount(document.getElementById("root"));
+	 * Timer.mount(document.getElementById(&quot;root&quot;));
 	 *
 	 */
 	update(values = {}) {
@@ -142,20 +182,20 @@ export default class Component {
 		//
 		// If defined, invoke the updating lifecycle method.
 		//
-		if(typeof this.updating === "function") {
+		if(typeof this.updating === &quot;function&quot;) {
 			this.updating(prior);
 		}
 
 		//
-		// Update the component's data from the values object.
+		// Update the component&apos;s data from the values object.
 		//
 		this.data = Object.assign({}, this.data, values);
 
 		//
-		// If mounted, update the component's user interface.
+		// If mounted, update the component&apos;s user interface.
 		//
 		if(this.isMounted) {
-			if(typeof this.render === "function") {
+			if(typeof this.render === &quot;function&quot;) {
 				_replaceHTML(this.el, this.render());
 			}
 		}
@@ -163,7 +203,7 @@ export default class Component {
 		//
 		// If defined, invoke the updated lifecycle method.
 		//
-		if(typeof this.updated === "function") {
+		if(typeof this.updated === &quot;function&quot;) {
 			this.updated(prior);
 		}
 	}
@@ -178,26 +218,26 @@ export default class Component {
 	 *
 	 * var List = new class extends Combo.Component {
 	 *     _items() {
-	 *         return this.data.items.map((item) => {
+	 *         return this.data.items.map((item) =&gt; {
 	 *             return `
-	 *                 <li>${item}</li>
+	 *                 &lt;li&gt;${item}&lt;/li&gt;
 	 *             `;
-	 *         }).join("");
+	 *         }).join(&quot;&quot;);
 	 *     }
 	 *     render() {
 	 *         return `
-	 *             <ul>
+	 *             &lt;ul&gt;
 	 *                 ${this.items()}
-	 *             </ul>
+	 *             &lt;/ul&gt;
 	 *         `;
 	 *     }
 	 * }();
 	 *
-	 * List.mount(document.getElementById("root"), {
+	 * List.mount(document.getElementById(&quot;root&quot;), {
 	 *     items: [
-	 *         "Apple",
-	 *         "Orange",
-	 *         "Bannana"
+	 *         &quot;Apple&quot;,
+	 *         &quot;Orange&quot;,
+	 *         &quot;Bannana&quot;
 	 *     ]
 	 * });
 	 *
@@ -206,7 +246,7 @@ export default class Component {
 		//
 		// If defined, invoke the mounting lifecycle method.
 		//
-		if(typeof this.mounting === "function") {
+		if(typeof this.mounting === &quot;function&quot;) {
 			this.mounting();
 		}
 
@@ -220,17 +260,17 @@ export default class Component {
 		 * var Canvas = new class extends Combo.Component {
 		 *     mounted() {
 		 *         if(this.el.getContext) {
-		 *             this.context = this.el.getContext("2d");
+		 *             this.context = this.el.getContext(&quot;2d&quot;);
 		 *         }
 		 *     }
 		 *     render() {
 		 *         return `
-		 *             <p>Your browser does not support the Canvas element.</p>
+		 *             &lt;p&gt;Your browser does not support the Canvas element.&lt;/p&gt;
 		 *         `;
 		 *     }
 		 * }();
 	 	 *
-	 	 * Canvas.mount(document.getElementById("root"));
+	 	 * Canvas.mount(document.getElementById(&quot;root&quot;));
 	 	 *
 		 */
 		this.el = el;
@@ -243,14 +283,14 @@ export default class Component {
 		//
 		// If defined, invoke the render lifecycle method.
 		//
-		if(typeof this.render === "function") {
+		if(typeof this.render === &quot;function&quot;) {
 			_replaceHTML(this.el, this.render());
 		}
 
 		//
 		// If defined, invoke the mounted lifecycle method.
 		//
-		if(typeof this.mounted === "function") {
+		if(typeof this.mounted === &quot;function&quot;) {
 			this.mounted();
 		}
 	}
@@ -268,16 +308,16 @@ export default class Component {
 	 *     }
 	 *     render() {
 	 *         return `
-	 *             <div>
+	 *             &lt;div&gt;
 	 *                 ${this.data.text}
-	 *                 <button onclick="${this.ref}._close()">Close</button>
-	 *             </div>
+	 *                 &lt;button onclick=&quot;${this.ref}._close()&quot;&gt;Close&lt;/button&gt;
+	 *             &lt;/div&gt;
 	 *         `;
 	 *     }
 	 * }();
 	 *
-	 * Alert.mount(document.getElementById("root"), {
-	 *      text: "The college will be closed today."
+	 * Alert.mount(document.getElementById(&quot;root&quot;), {
+	 *      text: &quot;The college will be closed today.&quot;
 	 * });
 	 *
 	 */
@@ -285,12 +325,12 @@ export default class Component {
 		//
 		// If defined, invoke the unmounting lifecycle method.
 		//
-		if(typeof this.unmounting === "function") {
+		if(typeof this.unmounting === &quot;function&quot;) {
 			this.unmounting();
 		}
 
 		//
-		// If true, remove the component's HTML from the page.
+		// If true, remove the component&apos;s HTML from the page.
 		//
 		if(remove === true) {
 			_removeHTML(this.el);
@@ -304,7 +344,7 @@ export default class Component {
 		//
 		// If defined, invoke the unmounted lifecycle method.
 		//
-		if(typeof this.unmounted === "function") {
+		if(typeof this.unmounted === &quot;function&quot;) {
 			this.unmounted();
 		}
 	}
@@ -319,7 +359,7 @@ export default class Component {
 	 * var Message = new class extends Combo.Component {
 	 *     render() {
 	 *         return `
-	 *             <p>Hello ${this.data.name}</p>
+	 *             &lt;p&gt;Hello ${this.data.name}&lt;/p&gt;
 	 *         `;
 	 *     }
 	 * }();
@@ -343,26 +383,43 @@ export default class Component {
 	 *     }
 	 *     render() {
 	 *         return `
-	 *             <div>
+	 *             &lt;div&gt;
 	 *                 ${this.data.text}
-	 *                 <button onclick="${this.ref}._close()">Close</button>
-	 *             </div>
+	 *                 &lt;button onclick=&quot;${this.ref}._close()&quot;&gt;Close&lt;/button&gt;
+	 *             &lt;/div&gt;
 	 *         `;
 	 *     }
 	 * }();
 	 *
-	 * Alert.mount(document.getElementById("root"), {
-	 *      text: "The college will be closed today."
+	 * Alert.mount(document.getElementById(&quot;root&quot;), {
+	 *      text: &quot;The college will be closed today.&quot;
 	 * });
 	 *
 	 */
 	get ref() {
 		/*eslint-disable */
 			for (var instance in window){
-				if (!/webkitStorageInfo|webkitIndexedDB/.test(instance) && window[instance] === this) {
+				if (!/webkitStorageInfo|webkitIndexedDB/.test(instance) &amp;&amp; window[instance] === this) {
 					return instance;
 				}
 			}
 		/*eslint-enable */
 	}
 }
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.4)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
