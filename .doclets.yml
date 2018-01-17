@@ -1,4 +1,7 @@
-dir: src
+files:
+
+	- src/modules/component.js
+	- src/modules/utils.js
 
 packageJson: package.json
 
