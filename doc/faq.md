@@ -4,8 +4,6 @@
 
 - [Data](#data)
 
-### Do I need to mount child components?
-
 ## Data
 
 ### How do I define default data?
