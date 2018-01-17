@@ -1,5 +1,3 @@
-![Logo](https://github.com/combojs/combo-js/blob/master/doc/img/logo.png?raw=true)
-
 # Combo
 
 [![npm version](https://badge.fury.io/js/combo-js.svg)](https://badge.fury.io/js/combo-js)
@@ -12,9 +10,38 @@ Combo is a lightweight library for building user interfaces.
 ## Documentation
 
 * [Website](https://www.combojs.com/)
-* [Tutorial](https://www.combojs.com/)
-* [API Reference](https://www.combojs.com/)
+* [API Reference](doc/api.md)
+* [Frequently Asked Questions](doc/faq.md)
 * [Examples](https://github.com/combojs/combo-examples/)
+
+## Quick Example
+
+More examples can be found [here](https://github.com/combojs/combo-examples/).
+
+	var List = new class extends Combo.Component {
+	  _items() {
+	    return this.data.items.map((item) => {
+	      return `
+	        <li>${item}</li>
+	      `;
+	    }).join("");
+	  }
+	  render() {
+	    return `
+	      <ul>
+	        ${this._items()}
+	      </ul>
+	    `;
+	  }
+	}();
+
+	List.mount(document.getElementById("root"), {
+	  items: [
+	    "Apple",
+	    "Orange",
+	    "Bannana"
+	  ]
+	});
 
 ## Contributing
 

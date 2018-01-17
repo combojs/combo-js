@@ -1,4 +1,4 @@
-# Data
+# Frequently Asked Questions
 
 ## Where do I define my default values?
 

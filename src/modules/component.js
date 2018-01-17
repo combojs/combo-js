@@ -2,36 +2,33 @@ import {_removeHTML, _replaceHTML} from "./utils.js";
 
 /**
  * Represents a component or template.
+ *
+ * @param {Object} options The options.
+ * @param {Function} options.cloned Invoked after the component is cloned.
+ * @param {Function} options.cloning Invoked before the component is cloned.
+ * @param {Function} options.created Invoked after the component is created.
+ * @param {Function} options.creating Invoked before the component is created.
+ * @param {Function} options.render Invoked when the component needs a render.
+ * @param {Function} options.mounted Invoked after the component is mounted.
+ * @param {Function} options.mounting Invoked before the component is mounting.
+ * @param {Function} options.updated Invoked after the component is updated.
+ * @param {Function} options.updating Invoked before the component is updated.
+ *
+ * @example
+ *
+ * var Message = new class extends Combo.Component {
+ *     render() {
+ *         return `
+ *             <p>Hello ${this.data.name}</p>
+ *         `;
+ *     }
+ * }();
+ *
+ * Message.mount(document.getElementById("root"), {
+ *    name: "World"
+ * });
  */
 export default class Component {
-	/**
-	 * The constructor function.
-	 *
-	 * @param {Object} options The options.
-	 * @param {Function} options.cloned Invoked after the component is cloned.
-	 * @param {Function} options.cloning Invoked before the component is cloned.
-	 * @param {Function} options.created Invoked after the component is created.
-	 * @param {Function} options.creating Invoked before the component is created.
-	 * @param {Function} options.render Invoked when the component needs a render.
-	 * @param {Function} options.mounted Invoked after the component is mounted.
-	 * @param {Function} options.mounting Invoked before the component is mounting.
-	 * @param {Function} options.updated Invoked after the component is updated.
-	 * @param {Function} options.updating Invoked before the component is updated.
-	 *
-	 * @example
-	 *
-	 * var Message = new class extends Combo.Component {
-	 *     render() {
-	 *         return `
-	 *             <p>Hello ${this.data.name}</p>
-	 *         `;
-	 *     }
-	 * }();
-	 *
-	 * Message.mount(document.getElementById("root"), {
-	 *    name: "World"
-	 * });
-	 */
 	constructor(options) {
 		//
 		// Extend the component with the options object.
