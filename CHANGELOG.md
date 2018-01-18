@@ -4,7 +4,6 @@
 
 * Updated main field in package.json
 * Updated description in package.json
-* Updated Code Climate badge
 
 ## 3.0.1 (2018-01-18)
 
