@@ -9,7 +9,7 @@ A mean component-based user interface library.
 
 ## Documentation
 
-* [Website](https://www.combojs.com/)
+* [Website](http://www.combojs.com/)
 * [API Reference](https://github.com/combojs/combo-js/blob/master/doc/api.md)
 * [Frequently Asked Questions](https://github.com/combojs/combo-js/blob/master/doc/faq.md)
 * [Examples](https://github.com/combojs/combo-examples/)

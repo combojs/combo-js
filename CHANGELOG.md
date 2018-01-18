@@ -1,10 +1,11 @@
 # Change Log
 
-## Unreleased changes
+## Unreleased Changes
 
 * Added link to Combo Seed on README.md.
 * Updated main field in package.json.
 * Updated description in package.json.
+* Fixed invalid link to the Combo website on README.md
 
 ## 3.0.1 (2018-01-18)
 
