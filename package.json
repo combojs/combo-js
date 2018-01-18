@@ -1,6 +1,6 @@
 {
   "name": "combo-js",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "A lightweight library for creating user interfaces.",
   "main": "index.js",
   "scripts": {
