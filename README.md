@@ -1,3 +1,5 @@
+[![logo](https://github.com/combojs/combo-js/blob/master/img/logo.png)]
+
 # Combo
 
 [![npm version](https://badge.fury.io/js/combo-js.svg)](https://badge.fury.io/js/combo-js)
