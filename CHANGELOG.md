@@ -13,6 +13,7 @@
 
 ## 3.0.0 (2018-01-17)
 
+* Complete rewrite
 * Updated the project to use Webpack.
 * Updated the project to use Document JS.
 * Updated the project to use Eslint.
