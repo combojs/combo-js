@@ -1,8 +1,8 @@
 {
   "name": "combo-js",
   "version": "3.0.1",
-  "description": "A lightweight library for creating user interfaces.",
-  "main": "index.js",
+  "description": "A mean component-based user interface library.",
+  "main": "dist/combo.js",
   "scripts": {
     "build": "webpack",
     "doc": "documentation build src/combo.js -f md -o doc/api.md"

@@ -8,13 +8,13 @@
  *
  * _removeHTML(document.getElementById("root"));
  *
- */	
+ */
 export function _removeHTML(el) {
 	if(typeof el.firstChild !== "undefined") {
 		while(el.firstChild) {
 			el.removeChild(el.firstChild);
 		}
-	}	
+	}
 }
 
 /**
@@ -28,8 +28,8 @@ export function _removeHTML(el) {
  *
  * _removeHTML(document.getElementById("root"));
  *
- */	
-export function _replaceHTML(el, html) {	
+ */
+export function _replaceHTML(el, html) {
 	_removeHTML(el);
 	el.insertAdjacentHTML("beforeEnd", html);
 }
