@@ -2,6 +2,7 @@
 
 ## Unreleased changes
 
+* Added link to Combo Seed on README.md.
 * Updated main field in package.json.
 * Updated description in package.json.
 

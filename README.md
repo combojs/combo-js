@@ -13,6 +13,7 @@ A mean component-based user interface library.
 * [API Reference](https://github.com/combojs/combo-js/blob/master/doc/api.md)
 * [Frequently Asked Questions](https://github.com/combojs/combo-js/blob/master/doc/faq.md)
 * [Examples](https://github.com/combojs/combo-examples/)
+* [Boilerplate/Seed](https://github.com/combojs/combo-seed)
 
 ## Quick Example
 
