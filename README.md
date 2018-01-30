@@ -40,7 +40,7 @@ More examples can be found [here](https://github.com/combojs/combo-examples/).
 	  items: [
 	    "Apple",
 	    "Orange",
-	    "Bannana"
+	    "Banana"
 	  ]
 	});
 
