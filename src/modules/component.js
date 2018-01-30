@@ -1,7 +1,7 @@
 import {_removeHTML, _replaceHTML} from "./utils.js";
 
 /**
- * Represents a component or template.
+ * Represents a component or view.
  *
  * @param {Object} options The options.
  * @param {Function} options.cloned Invoked after the component is cloned.
@@ -75,6 +75,28 @@ export default class Component {
 	 *
 	 * @returns {Object} The component.
 	 *
+	 * @example
+	 *
+	 * var Message1 = new class extends Combo.Component {
+	 *     render() {
+	 *         return `
+	 *             ${this.data.text}
+	 *         `;
+	 *     }
+	 * }();
+	 *
+	 * var Message2 = Message1.clone();
+	 *
+	 * Message1.update({
+	 *     text: "Hello World";
+	 * });
+	 *
+	 * Message2.update({
+	 *     text: "Goodbye World";
+	 * });
+	 *
+	 * Message1.mount(document.getElementById("root1"));
+	 * Message2.mount(document.getElementById("root2"));
 	 */
 	clone() {
 
@@ -151,17 +173,44 @@ export default class Component {
 		//
 		// If mounted, update the component's user interface.
 		//
-		if(this.isMounted) {
-			if(typeof this.render === "function") {
-				_replaceHTML(this.el, this.render());
-			}
-		}
+		this.refresh();
 
 		//
 		// If defined, invoke the updated lifecycle method.
 		//
 		if(typeof this.updated === "function") {
 			this.updated(prior);
+		}
+	}
+
+	/**
+	 * Forces a mounted component to re-render.
+	 *
+	 * @example
+	 *
+	 * var Message = new class extends Combo.Component {
+	 *     render() {
+	 *         return `
+	 *             <p>Hello ${this.data.name}</p>
+	 *         `;
+	 *     }
+	 * }();
+	 *
+	 * Message.mount(document.getElementById("root"), {
+	 *     name: "World"
+	 * });
+	 *
+	 * Message.refresh();
+	 *
+	 */
+	refresh() {
+		//
+		// If mounted, re-render the component.
+		//
+		if(this.isMounted) {
+			if(typeof this.render === "function") {
+				_replaceHTML(this.el, this.render());
+			}
 		}
 	}
 
@@ -194,7 +243,7 @@ export default class Component {
 	 *     items: [
 	 *         "Apple",
 	 *         "Orange",
-	 *         "Bannana"
+	 *         "Banana"
 	 *     ]
 	 * });
 	 *
@@ -325,41 +374,5 @@ export default class Component {
 	 */
 	get isMounted() {
 		return !!this.el;
-	}
-
-	/**
-	 * Returns the variable name the component is assigned to.
-	 *
-	 * @returns {string} The variable name.
-	 *
-	 * @example
-	 *
-	 * var Alert = new class extends Combo.Component {
-	 *     _close() {
-	 *         this.unmount(true);
-	 *     }
-	 *     render() {
-	 *         return `
-	 *             <div>
-	 *                 ${this.data.text}
-	 *                 <button onclick="${this.ref}._close()">Close</button>
-	 *             </div>
-	 *         `;
-	 *     }
-	 * }();
-	 *
-	 * Alert.mount(document.getElementById("root"), {
-	 *      text: "The college will be closed today."
-	 * });
-	 *
-	 */
-	get ref() {
-		/*eslint-disable */
-			for (var instance in window){
-				if (!/webkitStorageInfo|webkitIndexedDB/.test(instance) && window[instance] === this) {
-					return instance;
-				}
-			}
-		/*eslint-enable */
 	}
 }
