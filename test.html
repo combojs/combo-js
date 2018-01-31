@@ -1,0 +1,17 @@
+<html>
+	<body>
+		<div id="root"></div>
+
+		<script src="dist/combo.js"></script>
+		<script>
+			var Eric = new class extends Combo.Component {
+				render() {
+					return `so far so good ${this.data.name}`;	
+				}			
+			}();
+			Eric.mount(document.getElementById("root"), {
+				name: "Eric"
+			})
+		</script>
+	</body>
+</html>

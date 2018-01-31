@@ -1,5 +1,9 @@
 # Change Log
 
+## Unreleased changes
+
+* Moved .eslintrc configuration into a separate repository.
+
 ## 3.0.2 (2018-01-30)
 
 * Added Component.refresh.
