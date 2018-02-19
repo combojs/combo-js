@@ -3,6 +3,7 @@
 ## Unreleased changes
 
 * Moved .eslintrc configuration into a separate repository.
+* Removed test files.
 
 ## 3.0.2 (2018-01-30)
 
