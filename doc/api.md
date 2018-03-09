@@ -25,7 +25,15 @@ Returns a boolean value determining if an object is a component.
 **Examples**
 
 ```javascript
-_removeHTML(document.getElementById("root"));
+var Message = new class extends Combo.Component {
+    render() {
+        return `
+            <p>Hello ${this.data.name}</p>
+        `;
+    }
+}();
+
+console.log(Combo.isComponent(Message)); // "true"
 ```
 
 Returns **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** True if `obj` is a component.
