@@ -31,11 +31,34 @@ export function _removeHTML(el) {
  *
  */
 export function _replaceHTML(el, html, append = false) {
-	if(append==false) {
+	if(append == false) {
 		_removeHTML(el);
 	}
 
 	el.insertAdjacentHTML("beforeEnd", html);
+}
+
+/**
+ * Returns a boolean value determining if an object is a component.
+ *
+ * @param {Object} obj The object.
+ *
+ * @returns {boolean} True if `obj` is a component.
+ *
+ * @example
+ *
+ * var Message = new class extends Combo.Component {
+ *     render() {
+ *         return `
+ *             <p>Hello ${this.data.name}</p>
+ *         `;
+ *     }
+ * }();
+ *
+ * console.log(Combo.isComponent(Message)); // "true"
+ */
+export function isComponent(obj) {
+	return typeof obj.mount === "function"
 }
 
 /**

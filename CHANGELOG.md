@@ -1,7 +1,8 @@
 # Change Log
 
-## Unreleased changes
+## 3.1.0 (2018-03-9)
 
+* Added Combo.isComponent.
 * Moved .eslintrc configuration into a separate repository.
 * Removed test files.
 
