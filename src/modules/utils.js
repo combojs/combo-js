@@ -62,6 +62,29 @@ export function isComponent(obj) {
 }
 
 /**
+ * Returns a boolean value determining if a component is renderable.
+ *
+ * @param {Object} com The component.
+ *
+ * @returns {boolean} True if `com` is renderable.
+ *
+ * @example
+ *
+ * var Message = new class extends Combo.Component {
+ *     render() {
+ *         return `
+ *             <p>Hello ${this.data.name}</p>
+ *         `;
+ *     }
+ * }();
+ *
+ * console.log(Combo.isRenderable(Message)); // "true"
+ */
+export function isRenderable(com) {
+	return typeof com.render === "function"
+}
+
+/**
  * Returns the version number.
  *
  * @returns {string} The version number.

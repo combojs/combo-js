@@ -1,8 +1,9 @@
-import {isComponent, version} from "./modules/utils.js";
+import {isComponent, isRenderable, version} from "./modules/utils.js";
 import Component from "./modules/component.js";
 
 export {
-	Component,
 	isComponent,
-	version
+	isRenderable,
+	version,
+	Component
 };

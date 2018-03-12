@@ -3,6 +3,7 @@
 ### Table of Contents
 
 -   [isComponent](#iscomponent)
+-   [isRenderable](#isrenderable)
 -   [version](#version)
 -   [Component](#component)
     -   [data](#data)
@@ -37,6 +38,30 @@ console.log(Combo.isComponent(Message)); // "true"
 ```
 
 Returns **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** True if `obj` is a component.
+
+## isRenderable
+
+Returns a boolean value determining if a component is renderable.
+
+**Parameters**
+
+-   `com` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The component.
+
+**Examples**
+
+```javascript
+var Message = new class extends Combo.Component {
+    render() {
+        return `
+            <p>Hello ${this.data.name}</p>
+        `;
+    }
+}();
+
+console.log(Combo.isRenderable(Message)); // "true"
+```
+
+Returns **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** True if `com` is renderable.
 
 ## version
 

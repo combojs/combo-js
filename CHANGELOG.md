@@ -1,5 +1,10 @@
 # Change Log
 
+## 3.2.0 (2018-03-12)
+
+* Added: Combo.isRenderable.
+* Fixed version number.
+
 ## 3.1.0 (2018-03-9)
 
 * Added Combo.isComponent.
