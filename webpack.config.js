@@ -38,7 +38,7 @@ module.exports = {
                 loader: "string-replace-loader",
                 query: {
                     search: "$VERSION",
-                    replace: "3.0.2"
+                    replace: "3.2.0"
                 }
             },
             {
