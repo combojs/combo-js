@@ -72,11 +72,7 @@ Data can ne passed through a component's `render` method.
         render() {
             return `
                 <div>
-                	${Bar.render(
-                		{
-            				name: this.data.name
-            			}
-        			)}
+                	${Bar.render({name: this.data.name})}
                 </div>
             `;
         }
@@ -102,9 +98,7 @@ Simply use the `update` method.
         render() {
             return `
                 <div>
-                	${Bar.render({
-            			name: this.data.name
-            		})}
+                	${Bar.render({name: this.data.name})}
                 </div>
             `;
         }
