@@ -25,13 +25,13 @@ module.exports = {
     // plugins ---------------------------------------------------------------
 
     plugins: [
-        new minifyPlugin()
+       // new minifyPlugin()
     ],
 
     // module -----------------------------------------------------------------
 
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.js$/,
             	exclude: /node_modules/,
