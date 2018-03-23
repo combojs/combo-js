@@ -2,5 +2,5 @@
 
 ### Table of Contents
 
-- [Components](faq/components.md)
+- [Components](faq/com.md)
 - [Data](faq/data.md)
