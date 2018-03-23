@@ -1,5 +1,10 @@
 # Change Log
 
+## Unreleased Changes
+
+* Updated: Frequently Asked Questions
+* Fixed: Changed loaders to rules in webpack.config.js
+
 ## 3.2.0 (2018-03-12)
 
 * Added: Combo.isRenderable.

@@ -1,6 +1,6 @@
 # Node
 node_modules
-test
+tests
 
 # Windows image file caches
 Thumbs.db
