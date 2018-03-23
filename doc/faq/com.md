@@ -31,7 +31,7 @@ Mount child components inside the `mounted` lifecycle method.
 
 ### Do I need to mount all child components?
 
-No. If a component relies on another parent to be redrawn, render them.
+No. If a child relies on a parent to be redrawn, render them.
 
 	var Foo = new class extends Combo.Component {
 		render() {
