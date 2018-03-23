@@ -1,6 +1,6 @@
 # Components
 
-### How do I mount a child component?
+### Where do I mount a child component?
 
 Mount child components inside the `mounted` lifecycle method.
 
