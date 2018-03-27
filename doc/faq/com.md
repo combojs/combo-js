@@ -1,6 +1,6 @@
-# Components
+# Frequently Asked Questions
 
-### Table of Contents
+### Components
 
 - [Where do I mount a child component?](#where-do-i-mount-a-child-component)
 - [Do I need to mount all child components?](#do-i-need-to-mount-all-child-components)

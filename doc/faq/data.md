@@ -1,6 +1,6 @@
-# Data
+# Frequently Asked Questions
 
-### Table of Contents
+### Data
 
 - [How do I define default component data?](#how-do-i-define-default-component-data)
 - [How do I pass data to a parent component?](#how-do-i-pass-data-to-a-parent-component)

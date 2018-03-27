@@ -1,6 +1,6 @@
-# AJAX
+# Frequently Asked Questions
 
-### Table of Contents
+### Ajax
 
 - [How do I populate data using AJAX?](#how-do-i-populate-data-using-ajax)
 
