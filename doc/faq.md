@@ -12,7 +12,7 @@
 - [How do I store data passed in the render method?](#how-do-i-store-data-passed-in-the-render-method)
 - [How do I populate data using AJAX?](#how-do-i-populate-data-using-ajax)
 
-### Where do I mount a child component?
+## Where do I mount a child component?
 
 Mount child components inside the `mounted` lifecycle method.
 
@@ -41,7 +41,7 @@ Mount child components inside the `mounted` lifecycle method.
 
 	Foo.mount(document.getElementById("root"));
 
-### Do I need to mount all child components?
+## Do I need to mount all child components?
 
 No. If a child relies on a parent to be redrawn, render them.
 
@@ -65,7 +65,7 @@ No. If a child relies on a parent to be redrawn, render them.
 
 	Foo.mount(document.getElementById("root"));
 
-### How do I map an event to a custom method?
+## How do I map an event to a custom method?
 
 **Method 1**
 
@@ -116,7 +116,7 @@ Define an event listener inside the `mounted` lifecycle method.
 
 	Foo.mount(document.getElementById("root"));
 
-### How do I define default component data?
+## How do I define default component data?
 
 Default data is defined in the `created` lifecycle method.
 
@@ -135,7 +135,7 @@ Default data is defined in the `created` lifecycle method.
 
     Foo.mount(document.getElementById("root"));
 
-### How do I pass data to a parent component?
+## How do I pass data to a parent component?
 
 Data is passed through the component's `mount` method.
 
@@ -151,7 +151,7 @@ Data is passed through the component's `mount` method.
         name: "Foo"
     });
 
-### How do I pass data to a child component?
+## How do I pass data to a child component?
 
 Data is passed to child components the same way.
 
@@ -180,7 +180,7 @@ Data is passed to child components the same way.
         name: "Foo"
     });
 
-### How do I pass data to an unmounted component?
+## How do I pass data to an unmounted component?
 
 Data can be passed through a component's `render` method.
 
@@ -206,7 +206,7 @@ Data can be passed through a component's `render` method.
         name: "Foo"
     });
 
-### How do I store data passed in the render method?
+## How do I store data passed in the render method?
 
 Simply use the `update` method.
 
@@ -236,7 +236,7 @@ Simply use the `update` method.
         name: "Foo"
     });
 
-### How do I populate data using AJAX?
+## How do I populate data using AJAX?
 
 Make the request inside the `mounted` lifecycle method.
 
