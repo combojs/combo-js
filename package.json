@@ -7,6 +7,15 @@
     "build": "webpack",
     "doc": "documentation build src/combo.js -f md -o doc/api.md"
   },
+	"keywords": [
+    "javascript",
+    "lightweight",
+    "library",
+    "framework",
+    "ui",
+    "es6",
+    "combo"
+  ],
   "author": "Eric Harms",
   "license": "MIT",
   "devDependencies": {

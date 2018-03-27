@@ -2,6 +2,7 @@
 
 ## Unreleased Changes
 
+* Updated: Keywords in package.json
 * Updated: Frequently Asked Questions
 * Fixed: Changed loaders to rules in webpack.config.js
 
