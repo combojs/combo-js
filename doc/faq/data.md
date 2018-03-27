@@ -1,5 +1,13 @@
 # Data
 
+### Table of Contents
+
+- [How do I define default component data?](#how-do-i-define-default-component-data)
+- [How do I pass data to a parent component?](#how-do-i-pass-data-to-a-parent-component)
+- [How do I pass data to a child component?](#how-do-i-pass-data-to-a-child-component)
+- [How do I pass data to an unmounted component?](#how-do-i-pass-data-to-an-unmounted-component)
+- [How do I store data passed in the render method?](#how-do-i-store-data-passed-in-the-render-method)
+
 ### How do I define default component data?
 
 Default data is defined in the `created` lifecycle method.
