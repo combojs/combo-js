@@ -66,7 +66,7 @@ Data is passed to child components the same way.
 
 ### How do I pass data to an unmounted component?
 
-Data can ne passed through a component's `render` method.
+Data can be passed through a component's `render` method.
 
     var Foo = new class extends Combo.Component {
         render() {
