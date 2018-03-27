@@ -1,5 +1,9 @@
 # Components
 
+[Where do I mount a child component?](#where-do-i-mount-a-child-component)
+[Do I need to mount all child components?](#do-i-need-to-mount-all-child-components)
+[How do I map an event to a custom method?](#how-do-i-map-an-event-to-a-custom-method)
+
 ### Where do I mount a child component?
 
 Mount child components inside the `mounted` lifecycle method.
