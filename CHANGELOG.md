@@ -1,6 +1,6 @@
 # Change Log
 
-## Unreleased Changes
+## 3.2.1 (2018-03-27)
 
 * Updated: Keywords in package.json
 * Updated: Frequently Asked Questions

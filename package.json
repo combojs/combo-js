@@ -1,6 +1,6 @@
 {
   "name": "combo-js",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "description": "A mean component-based user interface library.",
   "main": "dist/combo.js",
   "scripts": {
