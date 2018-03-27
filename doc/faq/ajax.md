@@ -1,6 +1,8 @@
 # AJAX
 
-### How do I populate data using AJAX?
+[How do I populate data using AJAX](#how-do-i-populate-data-using-ajax)
+
+### How do I populate data using AJAX
 
 Make the request inside the `mounted` lifecycle method.
 
