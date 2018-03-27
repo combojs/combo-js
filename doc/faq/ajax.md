@@ -1,6 +1,6 @@
 # AJAX
 
-[How do I populate data using AJAX?](#how-do-i-populate-data-using-ajax)
+* [How do I populate data using AJAX?](#how-do-i-populate-data-using-ajax)
 
 ### How do I populate data using AJAX?
 
