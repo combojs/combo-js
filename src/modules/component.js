@@ -1,378 +1,467 @@
-import {_removeHTML, _replaceHTML} from "./utils.js";
+import {_removeHTML, _replaceHTML, _isObjectEmpty} from "./utils.js";
 
 /**
- * Represents a component or view.
- *
- * @param {Object} options The options.
- * @param {Function} options.cloned Invoked after the component is cloned.
- * @param {Function} options.cloning Invoked before the component is cloned.
- * @param {Function} options.created Invoked after the component is created.
- * @param {Function} options.creating Invoked before the component is created.
- * @param {Function} options.render Invoked when the component needs a render.
- * @param {Function} options.mounted Invoked after the component is mounted.
- * @param {Function} options.mounting Invoked before the component is mounting.
- * @param {Function} options.updated Invoked after the component is updated.
- * @param {Function} options.updating Invoked before the component is updated.
+ * Represents a mounted component or a view.
  *
  * @example
  *
- * var Message = new class extends Combo.Component {
+ * const Example = new class extends Combo.Component {
  *     render() {
  *         return `
- *             <p>Hello ${this.data.name}</p>
+ *             <div>Hello World</div>
  *         `;
  *     }
  * }();
  *
- * Message.mount(document.getElementById("root"), {
- *    name: "World"
- * });
+ * Example.mount(document.getElementById("root"));
  */
 export default class Component {
-	constructor(options) {
-		//
-		// Extend the component with the options object.
-		//
-		Object.assign(this, options);
+	constructor() {
+		/**
+		 * Returns an object that contains the component data.
+		 *
+		 * @returns {object} The data.
+		 *
+		 * @example
+		 *
+		 * const Example = new class extends Combo.Component {
+		 *     created() {
+		 *         this.data = {
+		 *             name: "World"
+		 *         }
+		 *     }
+		 *     render() {
+		 *         return `
+		 *             <div>Hello ${this.data.name}</div>
+		 *         `;
+		 *     }
+		 * }();
+		 *
+		 * Example.mount(document.getElementById("root"));
+		 */
+		this.data = {};
+
+		/**
+		 * Returns an object that contains the component props.
+		 *
+		 * @returns {object} The props.
+		 *
+		 * @example
+		 *
+		 * const Example = new class extends Combo.Component {
+		 *     render() {
+		 *         return `
+		 *             <div>Hello ${this.props.name}</div>
+		 *         `;
+		 *     }
+		 * }();
+		 *
+		 * Example.mount(document.getElementById("root"), {
+		 *     name: "World"
+		 * });
+		 */
+		this.props = {};
+
+		/**
+		 * Returns the element the component is mounted to.
+		 *
+		 * @returns {object} The element.
+		 *
+		 * @example
+		 *
+		 * const Example = new class extends Combo.Component {
+		 *     render() {
+		 *         return `
+		 *             <div>Hello ${this.el.dataset.name}</div>
+		 *         `;
+		 *     }
+		 * }();
+		 *
+		 * Example.mount(document.getElementById("root"));
+		 */
+		this.el = undefined;
 
 		//
-		// If undefined, extend options with a data object.
+		// Invoke the created lifecycle hook.
 		//
-		if(typeof this.data === "undefined") {
-			/**
-			 * Returns an object that contains data specific to the component.
-			 *
-			 * @returns {Object} The data.
-			 *
-			 * @example
-			 *
-			 * var Message = new class extends Combo.Component {
-			 *     render() {
-			 *         return `
-			 *             <p>Hello ${this.data.name}</p>
-			 *         `;
-			 *     }
-			 * }();
-			 *
-			 * Message.mount(document.getElementById("root"), {
-			 *     name: "World"
-			 * });
-			 *
-			 */
-			this.data = {};
-		}
-
-		//
-		// If defined, invoke the created lifecycle method.
-		//
-		if(typeof this.created === "function") {
-			this.created();
-		}
+		this.created();
 	}
 
 	/**
-	 * Returns a new instance of the component.
+	 * Mount the component to a container element.
 	 *
-	 * @returns {Object} The component.
+	 * @param {object} el The element.
+	 * @param {object} [props={}] The props.
 	 *
 	 * @example
 	 *
-	 * var Message1 = new class extends Combo.Component {
-	 *     render() {
-	 *         return `
-	 *             ${this.data.text}
-	 *         `;
+	 * const Example = new class extends Combo.Component {
+	 *     mounted() {
+	 *         console.log("The component was mounted.")
 	 *     }
 	 * }();
 	 *
-	 * var Message2 = Message1.clone();
-	 *
-	 * Message1.update({
-	 *     text: "Hello World";
-	 * });
-	 *
-	 * Message2.update({
-	 *     text: "Goodbye World";
-	 * });
-	 *
-	 * Message1.mount(document.getElementById("root1"));
-	 * Message2.mount(document.getElementById("root2"));
+	 * Example.mount(document.getElementById("root"));
 	 */
-	clone() {
+	mount(el, props={}) {
+		//
+		// Invoke the mounting lifecycle hook.
+		//
+		this.mounting();
 
 		//
-		// If defined, invoke the cloning lifecycle method.
+		// Copy el to this.el.
 		//
-		if(typeof this.cloning === "function") {
-			this.cloning();
+		this.el = el;
+
+ 		//
+		// Handle the props.
+		//
+		if (!_isObjectEmpty(props)) {
+			//
+			// Invoke the receiving lifecycle hook.
+			//
+			this.receiving(props);
+
+			//
+			// Copy props to this.props.
+			//
+			this.props = Object.assign({}, this.props, props);
 		}
 
 		//
-		// Create a new instance of the component.
+		// Render the component.
 		//
-		var clone = Object.assign(Object.create(this), this);
+		_replaceHTML(this.el, this.render());
 
 		//
-		// If defined, invoke the cloned lifecycle method.
+		// Invoke the mounted lifecycle hook.
 		//
-		if(typeof this.cloned === "function") {
-			this.cloned();
-		}
-
-		//
-		// Return the new instance of the component.
-		//
-		return clone;
+		this.mounted();
 	}
 
 	/**
-	 * Update the component's data and force a redraw if it's mounted.
+	 * Unmount the component from its container element.
+	 *
+	 * @param {boolean} [remove=false] Remove the rendered output.
+	 *
+	 * @example
+	 *
+	 * const Example = new class extends Combo.Component {
+	 *     mounted() {
+	 *         this.unmount();
+	 *     }
+	 *     unmounted() {
+	 *         console.log("The component was unmounted.")
+	 *     }
+	 * }();
+	 *
+	 * Example.mount(document.getElementById("root"));
+	 */
+	unmount(remove = true) {
+		//
+		// Invoke the unmounting lifecycle hook.
+		//
+		this.unmounting();
+
+		//
+		// Remove the rendered output on the page.
+		//
+		if(remove === true) { _removeHTML(this.el); }
+
+		//
+		// Delete the assignment to the element.
+		//
+		this.el = undefined;
+
+		//
+		// Invoke the unmounted lifecycle hook.
+		//
+		this.unmounted();
+	}
+
+	/**
+	 * Update a mounted component then re-render it.
 	 *
 	 * @param {Object} [values={}] The values.
 	 *
 	 * @example
 	 *
-	 * var Timer = new class extends Combo.Component {
+	 * const Example = new class extends Combo.Component {
 	 *     created() {
-	 *         this.update({
-	 *             tick: 0
-	 *         });
+	 *         this.update({});
 	 *     }
-	 *     mounted() {
-	 *         setInterval(()=> {
-	 *             this.update({
-	 *                 tick: this.data.tick + 1;
-	 *             });
-	 *         }, 1000);
-	 *     }
-	 *     render() {
-	 *         return `
-	 *              <p>${this.data.tick} seconds elapsed.</p>
-	 *         `;
+	 *     updated() {
+	 *         console.log("The component was updated.")
 	 *     }
 	 * }();
 	 *
-	 * Timer.mount(document.getElementById("root"));
-	 *
+	 * Example.mount(document.getElementById("root"));
 	 */
-	update(values = {}) {
-		var prior = this.data;
+	update(data = {}) {
+		var prev = this.data;
 
 		//
-		// If defined, invoke the updating lifecycle method.
+		// Invoke the updating lifecycle hook.
 		//
-		if(typeof this.updating === "function") {
-			this.updating(prior);
-		}
+		this.updating(prev);
+		//
+		// Copy data to this.data.
+		//
+		this.data = Object.assign({}, this.data, data);
 
 		//
-		// Update the component's data from the values object.
+		// Invoke the updated lifecycle hook.
 		//
-		this.data = Object.assign({}, this.data, values);
+		this.updated(prev);
 
 		//
-		// If mounted, update the component's user interface.
+		// Re-render the component.
 		//
 		this.refresh();
-
-		//
-		// If defined, invoke the updated lifecycle method.
-		//
-		if(typeof this.updated === "function") {
-			this.updated(prior);
-		}
 	}
 
 	/**
-	 * Forces a mounted component to re-render.
+	 * Force a mounted component to re-render itself.
+	 *
+	 * @returns {string} The rendered output.
 	 *
 	 * @example
 	 *
-	 * var Message = new class extends Combo.Component {
+	 * const Example = new class extends Combo.Component {
 	 *     render() {
 	 *         return `
-	 *             <p>Hello ${this.data.name}</p>
+	 *             <div>Hello World</div>
 	 *         `;
 	 *     }
 	 * }();
 	 *
-	 * Message.mount(document.getElementById("root"), {
-	 *     name: "World"
-	 * });
-	 *
-	 * Message.refresh();
-	 *
+	 * Example.mount(document.getElementById("root"));
 	 */
 	refresh() {
-		//
-		// If mounted, re-render the component.
-		//
-		if(this.isMounted) {
-			if(typeof this.render === "function") {
-				_replaceHTML(this.el, this.render());
-			}
-		}
+		this.mount(this.el);
 	}
 
 	/**
-	 * Mounts the component to a container element.
+	 * Add an event listener to one or more child elements.
 	 *
-	 * @param {Element} el The element.
-	 * @param {Object} [values={}] The data.
+	 * @param {string} [selector] The selector string.
+	 * @param {string} [event] The event.
+	 * @param {function} [cb] The callback function.
 	 *
 	 * @example
 	 *
-	 * var List = new class extends Combo.Component {
-	 *     _items() {
-	 *         return this.data.items.map((item) => {
-	 *             return `
-	 *                 <li>${item}</li>
-	 *             `;
-	 *         }).join("");
+	 * const Example = new class extends Combo.Component {
+	 *     created() {
+	 *         this.data = {
+	 *             field1: "",
+	 *             field2: "",
+	 *             field3: ""
+	 *         };
 	 *     }
+	 *     mounted() {
+	 *         this.on("[type='text']", "change", (e) => {
+	 *             this.update({
+	 *                 [e.target.name]: e.target.value
+	 *             });
+	 *         });
+	 *     }
+	 *
 	 *     render() {
 	 *         return `
-	 *             <ul>
-	 *                 ${this.items()}
-	 *             </ul>
+	 *             <input name="field1" type="text" value="${this.data.field1}">
+	 *             <input name="field2" type="text" value="${this.data.field2}">
+	 *             <input name="field3" type="text" value="${this.data.field3}">
+	 *
+	 *             <p>${JSON.stringify(this.data)}</p>
 	 *         `;
 	 *     }
 	 * }();
 	 *
-	 * List.mount(document.getElementById("root"), {
-	 *     items: [
-	 *         "Apple",
-	 *         "Orange",
-	 *         "Banana"
-	 *     ]
+	 * Example.mount(document.getElementById("root"));
+	 */
+	on(selector, event, cb) {
+		var els = this.el.querySelectorAll(selector);
+
+		for(var index = 0, length = els.length; index < length; index++) {
+			els[index].addEventListener(event, (e) => cb(e));
+		}
+	}
+
+	/**
+	 * Returns a boolean value determining if the component is mounted.
+	 *
+	 * @returns {boolean} True if mounted.
+	 *
+	 * @example
+	 *
+	 * const Example = new class extends Combo.Component {
+	 *     render() {
+	 *         return `
+	 *             <div>Hello ${this.isMounted}</div>
+	 *         `;
+	 *     }
+	 * }();
+	 *
+	 * Example.mount(document.getElementById("root"));
+	 */
+	get isMounted() { return !!this.el; }
+
+	/**
+	 * Invoked after the component was created.
+	 *
+	 * @example
+	 *
+	 * const Example = new class extends Combo.Component {
+	 *     created() {
+	 *         console.log("The component was created.")
+	 *     }
+	 * }();
+	 *
+	 * Example.mount(document.getElementById("root"));
+	 */
+	created() {};
+
+	/**
+	 * Invoked before the component is updated.
+	 *
+	 * @param {object} prev The previous data.
+	 *
+	 * @example
+	 *
+	 * const Example = new class extends Combo.Component {
+	 *     created() {
+	 *         this.update({});
+	 *     }
+	 *     updating() {
+	 *         console.log("The component will update.")
+	 *     }
+	 * }();
+	 *
+	 * Example.mount(document.getElementById("root"));
+	 */
+	updating() {};
+
+	/**
+	 * Invoked after the component was updated.
+	 *
+	 * @param {object} prev The previous data.
+	 *
+	 * @example
+	 *
+	 * const Example = new class extends Combo.Component {
+	 *     created() {
+	 *         this.update({});
+	 *     }
+	 *     updated() {
+	 *         console.log("The component was updated.")
+	 *     }
+	 * }();
+	 *
+	 * Example.mount(document.getElementById("root"));
+	 */
+	updated() {};
+
+	/**
+	 * Invoked before the component is mounted.
+	 *
+	 * @example
+	 *
+	 * const Example = new class extends Combo.Component {
+	 *     mounting() {
+	 *         console.log("The component will mount.")
+	 *     }
+	 * }();
+	 *
+	 * Example.mount(document.getElementById("root"));
+	 */
+	mounting() {};
+
+	/**
+	 * Invoked after the component was mounted.
+	 *
+	 * @example
+	 *
+	 * const Example = new class extends Combo.Component {
+	 *     mounted() {
+	 *         console.log("The component was mounted.")
+	 *     }
+	 * }();
+	 *
+	 * Example.mount(document.getElementById("root"));
+	 */
+	mounted() {};
+
+	/**
+	 * Invoked before the component is unmounted.
+	 *
+	 * @example
+	 *
+	 * const Example = new class extends Combo.Component {
+	 *     mounted() {
+	 *         this.unmount();
+	 *     }
+	 *     unmounting() {
+	 *         console.log("The component will unmount.")
+	 *     }
+	 * }();
+	 *
+	 * Example.mount(document.getElementById("root"));
+	 */
+	unmounting() {};
+
+	/**
+	 * Invoked after the component was unmounted.
+	 *
+	 * @example
+	 *
+	 * const Example = new class extends Combo.Component {
+	 *     mounted() {
+	 *         this.unmount();
+	 *     }
+	 *     unmounted() {
+	 *         console.log("The component was unmounted.")
+	 *     }
+	 * }();
+	 *
+	 * Example.mount(document.getElementById("root"));
+	 */
+	unmounted() {};
+
+	/**
+	 * Invoked before the component receives props.
+	 *
+	 * @example
+	 *
+	 * const Example = new class extends Combo.Component {
+	 *     receiving() {
+	 *         console.log("The component will receive props.")
+	 *     }
+	 * }();
+	 *
+	 * Example.mount(document.getElementById("root"), {
+	 *     name: "Combo"
 	 * });
-	 *
 	 */
-	mount(el, values = {}) {
-		//
-		// If defined, invoke the mounting lifecycle method.
-		//
-		if(typeof this.mounting === "function") {
-			this.mounting();
-		}
-
-		/**
-		 * Returns the element the component is mounted to. Use with caution.
-		 *
-		 * @returns {Element} The element.
-		 *
-		 * @example
-		 *
-		 * var Canvas = new class extends Combo.Component {
-		 *     mounted() {
-		 *         if(this.el.getContext) {
-		 *             this.context = this.el.getContext("2d");
-		 *         }
-		 *     }
-		 *     render() {
-		 *         return `
-		 *             <p>Your browser does not support the Canvas element.</p>
-		 *         `;
-		 *     }
-		 * }();
-	 	 *
-	 	 * Canvas.mount(document.getElementById("root"));
-	 	 *
-		 */
-		this.el = el;
-
-		//
-		// Update the data object from the values object.
-		//
-		this.data = Object.assign({}, this.data, values);
-
-		//
-		// If defined, invoke the render lifecycle method.
-		//
-		if(typeof this.render === "function") {
-			_replaceHTML(this.el, this.render());
-		}
-
-		//
-		// If defined, invoke the mounted lifecycle method.
-		//
-		if(typeof this.mounted === "function") {
-			this.mounted();
-		}
-	}
+	receiving() {};
 
 	/**
-	 * Unmounts the component from its container element.
+	 * Invoked when the component is mounted, updated, or refreshed.
 	 *
-	 * @param {boolean} [remove=false] Remove the HTML.
+	 * @returns {string} The rendered output.
 	 *
 	 * @example
 	 *
-	 * var Alert = new class extends Combo.Component {
-	 *     _close() {
-	 *         this.unmount(true);
-	 *     }
+	 * const Example = new class extends Combo.Component {
 	 *     render() {
 	 *         return `
-	 *             <div>
-	 *                 ${this.data.text}
-	 *                 <button onclick="${this.ref}._close()">Close</button>
-	 *             </div>
+	 *             <div>Hello World</div>
 	 *         `;
 	 *     }
 	 * }();
 	 *
-	 * Alert.mount(document.getElementById("root"), {
-	 *      text: "The college will be closed today."
-	 * });
-	 *
+	 * Example.mount(document.getElementById("root"));
 	 */
-	unmount(remove = false) {
-		//
-		// If defined, invoke the unmounting lifecycle method.
-		//
-		if(typeof this.unmounting === "function") {
-			this.unmounting();
-		}
+	render() { return ""; };
+};
 
-		//
-		// If true, remove the component's HTML from the page.
-		//
-		if(remove === true) {
-			_removeHTML(this.el);
-		}
-
-		//
-		// Delete the assignment to the container element.
-		//
-		delete this.el;
-
-		//
-		// If defined, invoke the unmounted lifecycle method.
-		//
-		if(typeof this.unmounted === "function") {
-			this.unmounted();
-		}
-	}
-
-	/**
-	 * Returns a boolean value that indicates if the component is mounted.
-	 *
-	 * @returns {boolean} True if the component is mounted.
-	 *
-	 * @example
-	 *
-	 * var Message = new class extends Combo.Component {
-	 *     render() {
-	 *         return `
-	 *             <p>Hello ${this.data.name}</p>
-	 *         `;
-	 *     }
-	 * }();
-	 *
-	 * console.log(Message.isMounted);
-	 */
-	get isMounted() {
-		return !!this.el;
-	}
-}

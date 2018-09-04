@@ -1,4 +1,19 @@
 /**
+ * Determine if an object contains any properties.
+ *
+ * @private
+ * @returns {boolean} True if empty
+ *
+ * @example
+ *
+ * console.log(isObjectEmpty({}));
+ */
+
+export function _isObjectEmpty(props) {
+	return Object.keys(props).length === 0 && props.constructor === Object
+}
+
+/**
  * Removes the innerHTML of an element.
  *
  * @private
@@ -23,7 +38,7 @@ export function _removeHTML(el) {
  * @private
  * @param {Element} el The element.
  * @param {string} html The HTML.
- * @param {boolean} append Reserved for future use.
+ * @param {boolean} append Reserved for possible future use.
  *
  * @example
  *
@@ -37,61 +52,3 @@ export function _replaceHTML(el, html, append = false) {
 
 	el.insertAdjacentHTML("beforeEnd", html);
 }
-
-/**
- * Returns a boolean value determining if an object is a component.
- *
- * @param {Object} obj The object.
- *
- * @returns {boolean} True if `obj` is a component.
- *
- * @example
- *
- * var Message = new class extends Combo.Component {
- *     render() {
- *         return `
- *             <p>Hello ${this.data.name}</p>
- *         `;
- *     }
- * }();
- *
- * console.log(Combo.isComponent(Message)); // "true"
- */
-export function isComponent(obj) {
-	return typeof obj.mount === "function"
-}
-
-/**
- * Returns a boolean value determining if a component is renderable.
- *
- * @param {Object} com The component.
- *
- * @returns {boolean} True if `com` is renderable.
- *
- * @example
- *
- * var Message = new class extends Combo.Component {
- *     render() {
- *         return `
- *             <p>Hello ${this.data.name}</p>
- *         `;
- *     }
- * }();
- *
- * console.log(Combo.isRenderable(Message)); // "true"
- */
-export function isRenderable(com) {
-	return typeof com.render === "function"
-}
-
-/**
- * Returns the version number.
- *
- * @returns {string} The version number.
- *
- * @example
- *
- * console.log(Combo.version);
- *
- */
-export const version = "$VERSION";

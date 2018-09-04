@@ -10,39 +10,7 @@ A mean component-based user interface library.
 ## Documentation
 
 * [Website](http://www.combojs.com/)
-* [API Reference](https://github.com/combojs/combo-js/blob/master/doc/api.md)
-* [Frequently Asked Questions](https://github.com/combojs/combo-js/blob/master/doc/faq.md)
-* [Examples](https://github.com/combojs/combo-examples/)
-* [Boilerplate/Seed](https://github.com/combojs/combo-seed)
-
-## Quick Example
-
-More examples can be found [here](https://github.com/combojs/combo-examples/).
-
-	var List = new class extends Combo.Component {
-	  _items() {
-	    return this.data.items.map((item) => {
-	      return `
-	        <li>${item}</li>
-	      `;
-	    }).join("");
-	  }
-	  render() {
-	    return `
-	      <ul>
-	        ${this._items()}
-	      </ul>
-	    `;
-	  }
-	}();
-
-	List.mount(document.getElementById("root"), {
-	  items: [
-	    "Apple",
-	    "Orange",
-	    "Banana"
-	  ]
-	});
+* [Documentation](https://combo-js.gitbook.io/)
 
 ## Contributing
 

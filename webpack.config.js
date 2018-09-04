@@ -1,61 +1,41 @@
 // require --------------------------------------------------------------------
 
-var path            = require("path");
-var webpack         = require("webpack");
-var minifyPlugin    = require("babel-minify-webpack-plugin");
+const path 			= require("path");
 
 // exports --------------------------------------------------------------------
 
 module.exports = {
 
-    // entry ------------------------------------------------------------------
+	// mode -------------------------------------------------------------------
 
-    entry: "./src/combo.js",
+	mode: "development",
 
-    // output -----------------------------------------------------------------
+	// entry ------------------------------------------------------------------
 
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: "combo.js",
-        library: "Combo",
-        libraryTarget: 'umd',
-        umdNamedDefine: true
-    },
+	entry: "./src/combo.js",
 
-    // plugins ---------------------------------------------------------------
+	// output -----------------------------------------------------------------
 
-    plugins: [
-    	new minifyPlugin()
-    ],
+	output: {
+		path: path.resolve(__dirname, 'dist'),
+		filename: "combo.js",
+		library: "Combo",
+		libraryTarget: "umd",
+		umdNamedDefine: true
+	},
 
-    // module -----------------------------------------------------------------
+	// module -----------------------------------------------------------------
 
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-            	exclude: /node_modules/,
-                loader: "string-replace-loader",
-                query: {
-                    search: "$VERSION",
-                    replace: "3.2.1"
-                }
-            },
-            {
-                test: /\.js$/,
-            	exclude: /node_modules/,
-                loader: "babel-loader",
-                query: {
-                    presets: ["es2015"]
-                }
-            },
-            {
-            	test: /\.js$/,
-            	exclude: /node_modules/,
-            	loader: "eslint-loader"
-            }
-        ]
-    }
-}
+	module: {
 
+		// rules --------------------------------------------------------------
 
+		rules: [
+			{
+				test: /\.js$/,
+				loader: 'babel-loader',
+				exclude: /node_modules/
+			}
+		]
+	}
+};
