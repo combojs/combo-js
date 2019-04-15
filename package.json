@@ -2,7 +2,7 @@
 	"main": "dist/combo.js",
 	"name": "combo-js",
 	"description": "A mean component-based user interface library.",
-	"version": "4.0.0",
+	"version": "5.0.0",
 	"author": "Eric Harms",
 	"license": "MIT",
 	"keywords": [

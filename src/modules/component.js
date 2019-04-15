@@ -18,37 +18,13 @@ import {_removeHTML, _replaceHTML, _isObjectEmpty} from "./utils.js";
 export default class Component {
 	constructor() {
 		/**
-		 * Returns an object that contains the component data.
-		 *
-		 * @returns {object} The data.
-		 *
-		 * @example
-		 *
-		 * const Example = new class extends Combo.Component {
-		 *     created() {
-		 *         this.data = {
-		 *             name: "World"
-		 *         }
-		 *     }
-		 *     render() {
-		 *         return `
-		 *             <div>Hello ${this.data.name}</div>
-		 *         `;
-		 *     }
-		 * }();
-		 *
-		 * Example.mount(document.getElementById("root"));
-		 */
-		this.data = {};
-
-		/**
 		 * Returns an object that contains the component props.
 		 *
 		 * @returns {object} The props.
 		 *
 		 * @example
 		 *
-		 * const Example = new class extends Combo.Component {
+		 * const Example = new class extends Component {
 		 *     render() {
 		 *         return `
 		 *             <div>Hello ${this.props.name}</div>
@@ -63,13 +39,37 @@ export default class Component {
 		this.props = {};
 
 		/**
+		 * Returns an object that contains the component state.
+		 *
+		 * @returns {object} The data.
+		 *
+		 * @example
+		 *
+		 * const Example = new class extends Component {
+		 *     created() {
+		 *         this.state = {
+		 *             name: "World"
+		 *         }
+		 *     }
+		 *     render() {
+		 *         return `
+		 *             <div>Hello ${this.data.name}</div>
+		 *         `;
+		 *     }
+		 * }();
+		 *
+		 * Example.mount(document.getElementById("root"));
+		 */
+		this.state = {};
+
+		/**
 		 * Returns the element the component is mounted to.
 		 *
 		 * @returns {object} The element.
 		 *
 		 * @example
 		 *
-		 * const Example = new class extends Combo.Component {
+		 * const Example = new class extends Component {
 		 *     render() {
 		 *         return `
 		 *             <div>Hello ${this.el.dataset.name}</div>
@@ -95,7 +95,7 @@ export default class Component {
 	 *
 	 * @example
 	 *
-	 * const Example = new class extends Combo.Component {
+	 * const Example = new class extends Component {
 	 *     mounted() {
 	 *         console.log("The component was mounted.")
 	 *     }
@@ -103,51 +103,59 @@ export default class Component {
 	 *
 	 * Example.mount(document.getElementById("root"));
 	 */
-	mount(el, props={}) {
+	mount(el, props = {}) {
 		//
-		// Invoke the mounting lifecycle hook.
+		// Ensure we should receive properties.
 		//
-		this.mounting();
-
-		//
-		// Copy el to this.el.
-		//
-		this.el = el;
-
- 		//
-		// Handle the props.
-		//
-		if (!_isObjectEmpty(props)) {
-			//
-			// Invoke the receiving lifecycle hook.
-			//
-			this.receiving(props);
+		if(!_isObjectEmpty(props)) {
+ 			//
+ 			// Invoke the receiving lifecycle hook.
+ 			//
+ 			props = this.receiving(props);
 
 			//
 			// Copy props to this.props.
 			//
 			this.props = Object.assign({}, this.props, props);
+
+ 			//
+ 			// Invoke the received lifecycle hook.
+ 			//
+ 			this.received(props);
 		}
 
 		//
-		// Render the component.
+		// Ensure the component should mount.
 		//
-		_replaceHTML(this.el, this.render());
+		if(this.canMount(el, props)) {
+ 			//
+ 			// Invoke the mounting lifecycle hook.
+ 			//
+ 			this.mounting();
 
-		//
-		// Invoke the mounted lifecycle hook.
-		//
-		this.mounted();
+ 			//
+ 			// Create the element assignment.
+ 			//
+ 			this.el = el
+
+ 			//
+ 			// Invoke the mounted lifecycle hook.
+ 			//
+ 			this.mounted();
+
+ 			//
+ 			// Render the component on the page.
+ 			//
+ 			this.refresh();
+		}
 	}
 
 	/**
 	 * Unmount the component from its container element.
 	 *
-	 * @param {boolean} [remove=false] Remove the rendered output.
-	 *
 	 * @example
 	 *
-	 * const Example = new class extends Combo.Component {
+	 * const Example = new class extends Component {
 	 *     mounted() {
 	 *         this.unmount();
 	 *     }
@@ -158,30 +166,25 @@ export default class Component {
 	 *
 	 * Example.mount(document.getElementById("root"));
 	 */
-	unmount(remove = true) {
+	unmount() {
 		//
-		// Invoke the unmounting lifecycle hook.
+		// Ensure the component should unmount.
 		//
-		this.unmounting();
+		if(this.canUnmount()) {
+  			//
+ 			// Invoke the unmounting lifecycle hook.
+ 			//
+ 			this.unmounting();
 
-		//
-		// Remove the rendered output on the page.
-		//
-		if(remove === true) { _removeHTML(this.el); }
-
-		//
-		// Delete the assignment to the element.
-		//
-		this.el = undefined;
-
-		//
-		// Invoke the unmounted lifecycle hook.
-		//
-		this.unmounted();
+ 			//
+ 			// Invoke the unmounted lifecycle hook.
+ 			//
+ 			this.unmounted();
+		}
 	}
 
 	/**
-	 * Update a mounted component then re-render it.
+	 * Update a component state and force it re-render
 	 *
 	 * @param {Object} [values={}] The values.
 	 *
@@ -198,37 +201,46 @@ export default class Component {
 	 *
 	 * Example.mount(document.getElementById("root"));
 	 */
-	update(data = {}) {
-		var prev = this.data;
+	update(values=[]) {
+		//
+		// Ensure that the component should update.
+		//
+		if(this.canUpdate(values)) {
+			//
+			// Make a copy of the original state.
+			//
+			let prev = this.state;
 
-		//
-		// Invoke the updating lifecycle hook.
-		//
-		this.updating(prev);
-		//
-		// Copy data to this.data.
-		//
-		this.data = Object.assign({}, this.data, data);
+  			//
+ 			// Invoke the updating lifecycle hook.
+ 			//
+ 			this.updating(values, prev);
 
-		//
-		// Invoke the updated lifecycle hook.
-		//
-		this.updated(prev);
+  			//
+ 			// Copy the values to this.state.
+ 			//
+ 			this.state = Object.assign({}, this.state, values);
 
-		//
-		// Re-render the component.
-		//
-		this.refresh();
+ 			//
+ 			// Invoke the updated lifecycle hook.
+ 			//
+ 			this.updated(values, prev);
+
+  			//
+ 			// Render the component.
+ 			//
+ 			this.refresh();
+		}
 	}
 
 	/**
-	 * Force a mounted component to re-render itself.
+	 * Force a component to re-render itself.
 	 *
 	 * @returns {string} The rendered output.
 	 *
 	 * @example
 	 *
-	 * const Example = new class extends Combo.Component {
+	 * const Example = new class extends Component {
 	 *     render() {
 	 *         return `
 	 *             <div>Hello World</div>
@@ -239,8 +251,35 @@ export default class Component {
 	 * Example.mount(document.getElementById("root"));
 	 */
 	refresh() {
-		this.mount(this.el);
+		//
+		// Render the component on the page.
+		//
+		_replaceHTML(this.el, this.render());
+
+		//
+		// Invoke the rerender lifecycle hook.
+		//
+		this.rendered();
 	}
+
+	/**
+	 * Returns a boolean value determining if the component is mounted.
+	 *
+	 * @returns {boolean} True if mounted.
+	 *
+	 * @example
+	 *
+	 * const Example = new class extends Component {
+	 *     render() {
+	 *         return `
+	 *             <div>Hello ${this.isMounted}</div>
+	 *         `;
+	 *     }
+	 * }();
+	 *
+	 * Example.mount(document.getElementById("root"));
+	 */
+	get isMounted() { return !!this.el; }
 
 	/**
 	 * Add an event listener to one or more child elements.
@@ -289,115 +328,150 @@ export default class Component {
 	}
 
 	/**
-	 * Returns a boolean value determining if the component is mounted.
-	 *
-	 * @returns {boolean} True if mounted.
+	 * Invoked when the component is created.
 	 *
 	 * @example
 	 *
-	 * const Example = new class extends Combo.Component {
+	 * const Example = new class extends Component {
+	 *     created() {
+	 *         console.log("The component was created.");
+	 *     }
+	 * }();
+	 *
+	 * Example.mount(document.getElementById("root"));
+	 */
+	created () {}
+
+	/**
+	 * Invoked before the component is assigning props.
+	 *
+	 * @param {object} props The new component props
+	 *
+	 * @returns {object} The modified props object
+	 *
+	 * @example
+	 *
+	 * const Example = new class extends Component {
+	 *     receiving(props) {
+	 *         return {
+	 *             text: "New value"
+	 *         }
+	 *     }
 	 *     render() {
 	 *         return `
-	 *             <div>Hello ${this.isMounted}</div>
+	 *             <h1>${this.props.text}
 	 *         `;
 	 *     }
 	 * }();
 	 *
-	 * Example.mount(document.getElementById("root"));
+	 * Example.mount(document.getElementById("root"), {
+	 *     text: "Passed value"
+	 * });
 	 */
-	get isMounted() { return !!this.el; }
+	receiving (props) { return props; }
 
 	/**
-	 * Invoked after the component was created.
+	 * Invoked after the component is assigned props.
+	 *
+	 * @param {object} props The new component props
 	 *
 	 * @example
 	 *
-	 * const Example = new class extends Combo.Component {
-	 *     created() {
-	 *         console.log("The component was created.")
+	 * const Example = new class extends Component {
+	 *     received(props) {
+	 *         console.log("The component received props.");
+	 *     }
+	 * }();
+	 *
+	 * Example.mount(document.getElementById("root"), {
+	 *     name: "Combo"
+	 * });
+	 */
+	received (props) {}
+
+	/**
+	 * Invoked before the mount process. Can be used to stop it.
+	 *
+	 * @returns {boolean} True If the component should mount.
+	 *
+	 * @example
+	 *
+	 * const Example = new class extends Component {
+	 *     canMount() {
+	 *         return false;
+	 *     }
+	 *     render() {
+	 *         return `
+	 *             <p>This component won't be mounted.</p>
+	 *         `;`
 	 *     }
 	 * }();
 	 *
 	 * Example.mount(document.getElementById("root"));
 	 */
-	created() {};
-
-	/**
-	 * Invoked before the component is updated.
-	 *
-	 * @param {object} prev The previous data.
-	 *
-	 * @example
-	 *
-	 * const Example = new class extends Combo.Component {
-	 *     created() {
-	 *         this.update({});
-	 *     }
-	 *     updating() {
-	 *         console.log("The component will update.")
-	 *     }
-	 * }();
-	 *
-	 * Example.mount(document.getElementById("root"));
-	 */
-	updating() {};
-
-	/**
-	 * Invoked after the component was updated.
-	 *
-	 * @param {object} prev The previous data.
-	 *
-	 * @example
-	 *
-	 * const Example = new class extends Combo.Component {
-	 *     created() {
-	 *         this.update({});
-	 *     }
-	 *     updated() {
-	 *         console.log("The component was updated.")
-	 *     }
-	 * }();
-	 *
-	 * Example.mount(document.getElementById("root"));
-	 */
-	updated() {};
+	canMount (el, props = {}) { return true; }
 
 	/**
 	 * Invoked before the component is mounted.
 	 *
 	 * @example
 	 *
-	 * const Example = new class extends Combo.Component {
+	 * const Example = new class extends Component {
 	 *     mounting() {
-	 *         console.log("The component will mount.")
+	 *         console.log("The component will mount.");
 	 *     }
 	 * }();
 	 *
 	 * Example.mount(document.getElementById("root"));
 	 */
-	mounting() {};
+	mounting () {}
 
 	/**
-	 * Invoked after the component was mounted.
+	 * Invoked after the component is mounted.
 	 *
 	 * @example
 	 *
-	 * const Example = new class extends Combo.Component {
+	 * const Example = new class extends Component {
 	 *     mounted() {
-	 *         console.log("The component was mounted.")
+	 *         console.log("The component has mounted.");
 	 *     }
 	 * }();
 	 *
 	 * Example.mount(document.getElementById("root"));
 	 */
-	mounted() {};
+	mounted () {}
+
+	/**
+	 * Invoked before the unmount process. Can be used to stop it.
+	 *
+	 * @returns {boolean} True If the component should unmount.
+	 *
+	 * @example
+	 *
+	 * const Example = new class extends Component {
+	 *     mounted() {
+	 *         this.unmount();
+	 *     }
+	 *     canUnmount() {
+	 *         return false;
+	 *     }
+	 *     render() {
+	 *         return `
+	 *             <p>This component won't be unmounted.</p>
+	 *         `;`
+	 *     }
+	 * }();
+	 *
+	 * Example.mount(document.getElementById("root"));
+	 */
+	canUnmount () { return true; }
 
 	/**
 	 * Invoked before the component is unmounted.
 	 *
 	 * @example
 	 *
-	 * const Example = new class extends Combo.Component {
+	 * const Example = new class extends Component {
 	 *     mounted() {
 	 *         this.unmount();
 	 *     }
@@ -408,14 +482,14 @@ export default class Component {
 	 *
 	 * Example.mount(document.getElementById("root"));
 	 */
-	unmounting() {};
+	unmounting () {}
 
 	/**
 	 * Invoked after the component was unmounted.
 	 *
 	 * @example
 	 *
-	 * const Example = new class extends Combo.Component {
+	 * const Example = new class extends Component {
 	 *     mounted() {
 	 *         this.unmount();
 	 *     }
@@ -429,39 +503,84 @@ export default class Component {
 	unmounted() {};
 
 	/**
-	 * Invoked before the component receives props.
+	 * Invoked before the update process.
+	 *
+	 * @param {object} newState The new state
+	 *
+	 * @returns {boolean} True If the component should update.
 	 *
 	 * @example
 	 *
-	 * const Example = new class extends Combo.Component {
-	 *     receiving() {
-	 *         console.log("The component will receive props.")
+	 * const Example = new class extends Component {
+	 *     created() {
+	 *         this.update({});
 	 *     }
-	 * }();
-	 *
-	 * Example.mount(document.getElementById("root"), {
-	 *     name: "Combo"
-	 * });
-	 */
-	receiving() {};
-
-	/**
-	 * Invoked when the component is mounted, updated, or refreshed.
-	 *
-	 * @returns {string} The rendered output.
-	 *
-	 * @example
-	 *
-	 * const Example = new class extends Combo.Component {
-	 *     render() {
-	 *         return `
-	 *             <div>Hello World</div>
-	 *         `;
+	 *     canUpdate() {
+	 *         return false;
+	 *     }
+	 *     updating(prev) {
+	 *         console.log("This life cycle method will never fire.");
 	 *     }
 	 * }();
 	 *
 	 * Example.mount(document.getElementById("root"));
 	 */
-	render() { return ""; };
-};
+	canUpdate (newState) { return true; }
+
+	/**
+	 * Invoked before the component is updated.
+	 *
+	 * @param {object} prev The previous component state
+	 *
+	 * @example
+	 *
+	 * const Example = new class extends Component {
+	 *     created() {
+	 *         this.update({});
+	 *     }
+	 *     updating(prev) {
+	 *         console.log("The component will update.");
+	 *     }
+	 * }();
+	 *
+	 * Example.mount(document.getElementById("root"));
+	 */
+	updating (prev) {}
+
+	/**
+	 * Invoked after the component was updated.
+	 *
+	 * @param {object} prev The previous component state
+	 *
+	 * @example
+	 *
+	 * const Example = new class extends Component {
+	 *     created() {
+	 *         this.update({});
+	 *     }
+	 *     updated(prev) {
+	 *         console.log("The component was updated.");
+	 *     }
+	 * }();
+	 *
+	 * Example.mount(document.getElementById("root"));
+	 */
+	updated (prev) {}
+
+	/**
+	 * Invoked after the component was rendered.
+	 *
+	 * @example
+	 *
+	 * const Example = new class extends Component {
+	 *     rendered() {
+	 *         console.log("The component was rendered.");
+	 *     }
+	 * }();
+	 *
+	 * Example.mount(document.getElementById("root"));
+	 */
+	rendered() {}
+}
+
 
