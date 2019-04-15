@@ -402,7 +402,7 @@ export default class Component {
 	 *     }
 	 *     render() {
 	 *         return `
-	 *             <p>This component won't be mounted.</p>
+	 *             <p>This component will not be mounted.</p>
 	 *         `;
 	 *     }
 	 * }();
@@ -457,7 +457,7 @@ export default class Component {
 	 *     }
 	 *     render() {
 	 *         return `
-	 *             <p>This component won't be unmounted.</p>
+	 *             <p>This component will not be unmounted.</p>
 	 *         `;
 	 *     }
 	 * }();
